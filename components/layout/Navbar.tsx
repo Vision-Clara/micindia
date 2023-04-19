@@ -3,37 +3,35 @@ import Image from "next/image";
 
 import logo from "../../assets/mic_logo.jpeg";
 
-import "../../styles/Navbar.module.css";
-
 const Navbar = () => {
 
   return (
-    <div className="nav-bar">
-      <div className="mic-logo">
+    <div >
+      <div >
         <Link href="/">
-          <Image src={logo} alt="logo"></Image>
+          <Image src={logo} alt="logo" height={100}></Image>
         </Link>
       </div>
 
         <div>
-          <ul className="nav-menu">
-            <li className="nav-item">
-              <Link href="/" className="nav-link">
+          <ul>
+            <li>
+              <Link href="/">
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link href="/about" className="nav-link">
+            <li>
+              <Link href="/about">
                 About Us
               </Link>
             </li>
-            <li className="nav-item">
-              <Link href="/blood-donate" className="nav-link">
+            <li>
+              <Link href="/blood-donate">
                 Be a Hero
               </Link>
             </li>
-            <li className="nav-item">
-              <Link href="/join" className="nav-link">
+            <li>
+              <Link href="/join">
                 Join Us
               </Link>
             </li>
