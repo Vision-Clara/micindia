@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import logo from "../../assets/mic_logo.jpeg";
+import logo from "../../assets/logo/mic_logo.jpeg";
 
 const Navbar = () => {
 
