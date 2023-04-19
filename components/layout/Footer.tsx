@@ -69,7 +69,6 @@ const Footer = () => {
         <br /> +91 8104744738, +91 9993987710,
         <br /> micorganisationindia@gmail.com
         </div>
-        
       </div>
 
       <div>
