@@ -10,9 +10,6 @@ export default function Home() {
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
       <main >
-        <div>
-          <h1>Heading</h1>
-        </div>
       </main>
     </>
   )

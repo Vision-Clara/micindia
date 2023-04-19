@@ -10,69 +10,79 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div >
-      <div >
-        <div >Follow MIC</div>
-        <div >
-          <div >
+    <div className="p-8 bg-indigo-500 text-white flex justify-between">
+      <div>
+        <div className="font-bold">Follow MIC</div>
+        <div className="w-64 mt-4 flex justify-between">
+          <div>
             <a href="https://www.instagram.com/mic_organisation_india/">
-              <Image src={insta} alt="micindia" />
+              <Image src={insta} alt="micindia" className="w-8"/>
             </a>
           </div>
           <div >
             <a href="https://twitter.com/micorganisation">
-              <Image src={twitter} alt="micindia" />
+              <Image src={twitter} alt="micindia" className="w-8"/>
             </a>
           </div>
           <div >
             <a href="https://www.facebook.com/MICOrganisation/">
-              <Image src={facebook} alt="micindia" />
+              <Image src={facebook} alt="micindia" className="w-8"/>
             </a>
           </div>
           <div >
             <a href="https://in.linkedin.com/in/mic-organisation-india-20035219b">
-              <Image src={linkedin} alt="micindia" />
+              <Image src={linkedin} alt="micindia" className="w-8"/>
             </a>
           </div>
           <div >
             <a href="https://wa.me/918104744738?text=Hello I want to connect with MIC.">
-              <Image src={whatsapp} alt="micindia" />
+              <Image src={whatsapp} alt="micindia" className="w-8"/>
             </a>
           </div>
         </div>
       </div>
+
       <div >
-        <div >Quick Links</div>
-        <Link href="/" >
-          Home
-        </Link>
-        <Link href="/about" >
-          About
-        </Link>
-        <Link href="/join" >
-          Join Us
-        </Link>
-        <Link href="/feedback" >
-          Feedback
-        </Link>
+        <div className="font-bold">Quick Links</div>
+        <div className="mt-4">
+          <ul>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <Link href="/join">Join Us</Link>
+            </li>
+            <li>
+              <Link href="/feedback">Feedback</Link>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <div>
-        <div>Contact Us</div>
+        <div className="font-bold">Contact Us</div>
+        <div className="mt-4">
         MIC 354 Ring Road, Piplya Rao Indore,
         <br /> +91 8104744738, +91 9993987710,
         <br /> micorganisationindia@gmail.com
+        </div>
+        
       </div>
+
       <div>
-        <div>Registered Under</div>
-        <div>
+        <div className="font-bold">Registered Under</div>
+        <div className="w-56 mt-4 flex justify-between">
           <div>
             <a href="http://mp.gov.in/">
-              <Image src={mp} alt="collab" />
+              <Image src={mp} alt="collab" className="w-24"/>
             </a>
           </div>
           <div>
             <a href="https://www.niti.gov.in/">
-              <Image src={niti} width="80" alt="collab" />
+              <Image src={niti}  alt="collab" className="w-24"/>
             </a>
           </div>
         </div>
