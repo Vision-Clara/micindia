@@ -6,7 +6,7 @@ import logo from "../../assets/logo/mic_logo.jpeg";
 const Navbar = () => {
 
   return (
-    <div >
+    <header >
       <div >
         <Link href="/">
           <Image src={logo} alt="logo" height={100}></Image>
@@ -37,7 +37,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-    </div>
+    </header>
   );
 };
 
