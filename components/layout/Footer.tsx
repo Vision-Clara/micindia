@@ -30,8 +30,8 @@ const Footer = () => {
     <footer className="p-6 bg-indigo-500 text-white flex flex-wrap justify-between gap-y-5">
       <section>
         <h3 className="font-bold">Follow MIC</h3>
-        <ul className="mt-2 flex gap-x-5">
-          <li>
+        <ul className="mt-2 h-10 flex items-center gap-x-5">
+          <li className="hover:pb-2 transition-all ease-in-out delay-75">
             <Link href={MIC_INSTA_URL} target="_blank">
               <Image
                 src={insta}
@@ -40,17 +40,17 @@ const Footer = () => {
               />
             </Link>
           </li>
-          <li>
+          <li className="hover:pb-2 transition-all ease-in-out delay-75">
             <Link href={MIC_TWITTER_URL} target="_blank">
               <Image src={twitter} alt="@micorganisation" className="w-8" />
             </Link>
           </li>
-          <li>
+          <li className="hover:pb-2 transition-all ease-in-out delay-75">
             <Link href={MIC_FB_URL} target="_blank">
               <Image src={facebook} alt="@MICOrganisation" className="w-8" />
             </Link>
           </li>
-          <li>
+          <li className="hover:pb-2 transition-all ease-in-out delay-75">
             <Link href={MIC_LINKEDIN_URL} target="_blank">
               <Image
                 src={linkedin}
@@ -59,7 +59,7 @@ const Footer = () => {
               />
             </Link>
           </li>
-          <li>
+          <li className="hover:pb-2 transition-all ease-in-out delay-75">
             <Link href={MIC_WHATSAPP_URL} target="_blank">
               <Image src={whatsapp} alt="@whatsapp" className="w-8" />
             </Link>
@@ -70,16 +70,16 @@ const Footer = () => {
       <section>
         <h3 className="font-bold">Quick Links</h3>
         <ul className="mt-2">
-          <li>
+          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
             <Link href="/">Home</Link>
           </li>
-          <li>
+          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
             <Link href="/about">About</Link>
           </li>
-          <li>
+          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
             <Link href="/join">Join Us</Link>
           </li>
-          <li>
+          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
             <Link href="/feedback">Feedback</Link>
           </li>
         </ul>
