@@ -19,6 +19,8 @@ const MIC_LINKEDIN_URL =
   "https://in.linkedin.com/in/mic-organisation-india-20035219b";
 const MIC_WHATSAPP_URL =
   "https://wa.me/918104744738?text=Hello I want to connect with MIC.";
+const NITI_URL = "https://www.niti.gov.in/";
+const MP_URL = "http://mp.gov.in/";
 
 const Footer = () => {
   return (
@@ -93,12 +95,12 @@ const Footer = () => {
         <div className="font-bold">Registered Under</div>
         <div className="mt-2 flex justify-between gap-x-4">
           <div>
-            <Link href="http://mp.gov.in/">
+            <Link href={MP_URL}>
               <Image src={mp} alt="collab" className="w-24" />
             </Link>
           </div>
           <div>
-            <Link href="https://www.niti.gov.in/">
+            <Link href={NITI_URL}>
               <Image
                 src={niti}
                 alt="collab"
