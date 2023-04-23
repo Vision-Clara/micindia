@@ -1,5 +1,5 @@
 // import logos and social icons
-import niti from "../../assets/logo/niti_logo.webp";
+import niti from "../../assets/logo/nitiayog-logo.png";
 import mp from "../../assets/logo/mp_logo.png";
 import insta from "../../assets/social/instagram.png";
 import twitter from "../../assets/social/twitter.png";
@@ -102,7 +102,7 @@ const Footer = () => {
               <Image
                 src={niti}
                 alt="collab"
-                className="w-24 bg-white rounded-full"
+                className="w-24 bg-white rounded"
               />
             </Link>
           </div>
