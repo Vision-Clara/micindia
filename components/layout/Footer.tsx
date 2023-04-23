@@ -6,6 +6,8 @@ import twitter from "../../assets/social/twitter.png";
 import facebook from "../../assets/social/facebook.png";
 import linkedin from "../../assets/social/linkedin.png";
 import whatsapp from "../../assets/social/whatsapp.png";
+import verified from "../../assets/icon/verified.png";
+import contact from "../../assets/icon/contact.png";
 
 //import next components
 import Image from "next/image";
@@ -21,12 +23,13 @@ const MIC_WHATSAPP_URL =
   "https://wa.me/918104744738?text=Hello I want to connect with MIC.";
 const NITI_URL = "https://www.niti.gov.in/";
 const MP_URL = "http://mp.gov.in/";
+const MAP_URL = "https://goo.gl/maps/CyFRvmAWAyDYpr4s8";
 
 const Footer = () => {
   return (
     <footer className="p-6 bg-indigo-500 text-white flex flex-wrap justify-between gap-y-5">
       <section>
-        <div className="font-bold">Follow MIC</div>
+        <h3 className="font-bold">Follow MIC</h3>
         <ul className="mt-2 flex gap-x-5">
           <li>
             <Link href={MIC_INSTA_URL} target="_blank">
@@ -65,7 +68,7 @@ const Footer = () => {
       </section>
 
       <section>
-        <div className="font-bold">Quick Links</div>
+        <h3 className="font-bold">Quick Links</h3>
         <ul className="mt-2">
           <li>
             <Link href="/">Home</Link>
@@ -83,16 +86,38 @@ const Footer = () => {
       </section>
 
       <section>
-        <div className="font-bold">Contact Us</div>
+        <h3 className="font-bold">
+          <Image
+            className="w-7 inline-block"
+            src={contact}
+            alt="contact"
+          ></Image>
+          <span className="align-bottom">Contact Us</span>
+        </h3>
         <div className="mt-2">
           MIC 354 Ring Road, Piplya Rao Indore, <br /> +91 8104744738, +91
           9993987710, <br />
           micorganisationindia@gmail.com
         </div>
+        <div className="mt-2">
+          <Link
+            className="bg-white p-2 text-indigo-500 rounded font-bold"
+            href={MAP_URL}
+          >
+            View on Map
+          </Link>
+        </div>
       </section>
 
       <section>
-        <div className="font-bold">Registered Under</div>
+        <h3 className="font-bold">
+          <Image
+            className="w-7 inline-block"
+            src={verified}
+            alt="verified"
+          ></Image>
+          <span className="align-bottom">Registered</span>
+        </h3>
         <div className="mt-2 flex justify-between gap-x-4">
           <div>
             <Link href={MP_URL}>
