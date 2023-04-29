@@ -10,6 +10,7 @@ import whatsapp from "../../assets/social/whatsapp.png";
 //import next components
 import { Link, Image } from "@chakra-ui/next-js";
 import { Box, Flex, Button, Heading } from "@chakra-ui/react";
+import VerifiedIcon from "../icon/VerifiedIcon";
 
 //Declare constants
 const MIC_INSTA_URL = "https://www.instagram.com/mic_organisation_india/";
@@ -34,7 +35,7 @@ const Footer = () => {
       gap="20px"
     >
       <Box as="section">
-        <Heading as="h2" fontSize="xl" marginBottom="10px">
+        <Heading as="h2" size={["sm", "sm", "md"]} marginBottom="10px">
           Follow MIC
         </Heading>
         <Flex as="ul" gap="20px" listStyleType="none">
@@ -71,7 +72,7 @@ const Footer = () => {
       </Box>
 
       <Box as="section">
-        <Heading as="h2" fontSize="xl" marginBottom="10px">
+        <Heading as="h2" size={["sm", "sm", "md"]} marginBottom="10px">
           Quick Links
         </Heading>
         <Box as="ul" gap="20px" listStyleType="none">
@@ -91,7 +92,7 @@ const Footer = () => {
       </Box>
 
       <Box as="section">
-        <Heading as="h2" fontSize="xl" marginBottom="10px">
+        <Heading as="h2" size={["sm", "sm", "md"]} marginBottom="10px">
           Contact Us
         </Heading>
         <Box as="p">
@@ -102,7 +103,8 @@ const Footer = () => {
       </Box>
 
       <Box as="section">
-        <Heading as="h2" fontSize="xl" marginBottom="10px">
+        <Heading as="h2" size={["sm", "sm", "md"]} marginBottom="10px">
+          <VerifiedIcon />
           Registered
         </Heading>
         <Flex gap="20px">

@@ -7,6 +7,9 @@ import styles from "./styles";
 // Foundation styles overrieds
 import fonts from "./foundations/font";
 
+// Component styles overrdes
+import Heading from "./components/Heading";
+
 const overrides = {
   layerStyles: {
     base: {
@@ -16,7 +19,7 @@ const overrides = {
   },
   fonts,
   styles,
-  components: {},
+  components: { Heading },
 };
 
 export default extendTheme(overrides);
