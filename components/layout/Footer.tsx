@@ -11,7 +11,7 @@ import contact from "../../assets/icon/contact.png";
 
 //import next components
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@chakra-ui/next-js";
 
 //Declare constants
 const MIC_INSTA_URL = "https://www.instagram.com/mic_organisation_india/";
