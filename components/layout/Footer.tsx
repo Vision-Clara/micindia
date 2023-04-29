@@ -27,110 +27,85 @@ const MAP_URL = "https://goo.gl/maps/CyFRvmAWAyDYpr4s8";
 
 const Footer = () => {
   return (
-    <footer className="p-6 bg-indigo-500 text-white flex flex-wrap justify-between gap-y-5">
+    <footer>
       <section>
-        <h3 className="font-bold">Follow MIC</h3>
-        <ul className="mt-2 h-10 flex items-center gap-x-5">
-          <li className="hover:pb-2 transition-all ease-in-out delay-75">
+        <h3>Follow MIC</h3>
+        <ul>
+          <li>
             <Link href={MIC_INSTA_URL} target="_blank">
-              <Image
-                src={insta}
-                alt="@mic_organisation_india"
-                className="w-8"
-              />
+              <Image src={insta} alt="@mic_organisation_india" />
             </Link>
           </li>
-          <li className="hover:pb-2 transition-all ease-in-out delay-75">
+          <li>
             <Link href={MIC_TWITTER_URL} target="_blank">
               <Image src={twitter} alt="@micorganisation" className="w-8" />
             </Link>
           </li>
-          <li className="hover:pb-2 transition-all ease-in-out delay-75">
+          <li>
             <Link href={MIC_FB_URL} target="_blank">
               <Image src={facebook} alt="@MICOrganisation" className="w-8" />
             </Link>
           </li>
-          <li className="hover:pb-2 transition-all ease-in-out delay-75">
+          <li>
             <Link href={MIC_LINKEDIN_URL} target="_blank">
-              <Image
-                src={linkedin}
-                alt="@mic-organisation-india-20035219b"
-                className="w-8"
-              />
+              <Image src={linkedin} alt="@mic-organisation-india-20035219b" />
             </Link>
           </li>
-          <li className="hover:pb-2 transition-all ease-in-out delay-75">
+          <li>
             <Link href={MIC_WHATSAPP_URL} target="_blank">
-              <Image src={whatsapp} alt="@whatsapp" className="w-8" />
+              <Image src={whatsapp} alt="@whatsapp" />
             </Link>
           </li>
         </ul>
       </section>
 
       <section>
-        <h3 className="font-bold">Quick Links</h3>
-        <ul className="mt-2">
-          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
+        <h3>Quick Links</h3>
+        <ul>
+          <li>
             <Link href="/">Home</Link>
           </li>
-          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
+          <li>
             <Link href="/about">About</Link>
           </li>
-          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
+          <li>
             <Link href="/join">Join Us</Link>
           </li>
-          <li className="hover:text-indigo-800 hover:font-bold transition-all ease-in-out delay-75">
+          <li>
             <Link href="/feedback">Feedback</Link>
           </li>
         </ul>
       </section>
 
       <section>
-        <h3 className="font-bold">
-          <Image
-            className="w-7 inline-block"
-            src={contact}
-            alt="contact"
-          ></Image>
-          <span className="align-bottom">Contact Us</span>
+        <h3>
+          <Image src={contact} alt="contact"></Image>
+          <span>Contact Us</span>
         </h3>
-        <div className="mt-2">
+        <div>
           MIC 354 Ring Road, Piplya Rao Indore, <br /> +91 8104744738, +91
           9993987710, <br />
           micorganisationindia@gmail.com
         </div>
-        <div className="mt-2">
-          <Link
-            className="bg-white p-2 text-indigo-500 rounded font-bold"
-            href={MAP_URL}
-          >
-            View on Map
-          </Link>
+        <div>
+          <Link href={MAP_URL}>View on Map</Link>
         </div>
       </section>
 
       <section>
-        <h3 className="font-bold">
-          <Image
-            className="w-7 inline-block"
-            src={verified}
-            alt="verified"
-          ></Image>
-          <span className="align-bottom">Registered</span>
+        <h3>
+          <Image src={verified} alt="verified"></Image>
+          <span>Registered</span>
         </h3>
-        <div className="mt-2 flex justify-between gap-x-4">
+        <div>
           <div>
             <Link href={MP_URL}>
-              <Image src={mp} alt="collab" className="w-24" />
+              <Image src={mp} alt="collab" />
             </Link>
           </div>
           <div>
             <Link href={NITI_URL}>
-              <Image
-                src={niti}
-                alt="collab"
-                className="w-24 bg-white rounded"
-              />
+              <Image src={niti} alt="collab" />
             </Link>
           </div>
         </div>

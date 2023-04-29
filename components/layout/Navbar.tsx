@@ -1,34 +1,35 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Box } from "@chakra-ui/react";
 
 import logo from "../../assets/logo/mic_logo.jpeg";
 
 const Navbar = () => {
   return (
-    <header className="flex  justify-between items-stretch">
-      <section>
+    <Box as="header" bg="blue.500">
+      <Box as="section">
         <Link href="/">
-          <Image src={logo} alt="mic logo" className="w-32"></Image>
+          <Image src={logo} alt="mic logo"></Image>
         </Link>
-      </section>
+      </Box>
 
-      <nav className="mr-10">
-        <ul className="flex gap-10 h-full items-center font-bold text-slate-500">
-          <li className="hover:text-indigo-500 hover:pb-2 transition-all ease-in-out delay-75">
+      <nav>
+        <ul>
+          <li>
             <Link href="/">Home</Link>
           </li>
-          <li className="hover:text-indigo-500 hover:pb-2 transition-all ease-in-out delay-75">
+          <li>
             <Link href="/about">About Us</Link>
           </li>
-          <li className="hover:text-indigo-500 hover:pb-2 transition-all ease-in-out delay-75">
+          <li>
             <Link href="/blood-donate">Be a Hero</Link>
           </li>
-          <li className="hover:text-indigo-500 hover:pb-2 transition-all ease-in-out delay-75">
+          <li>
             <Link href="/join">Join Us</Link>
           </li>
         </ul>
       </nav>
-    </header>
+    </Box>
   );
 };
 
