@@ -34,7 +34,7 @@ const Footer = () => {
       gap="20px"
     >
       <Box as="section">
-        <Heading as="h2" fontSize="xl" fontFamily="'Montserrat', sans-serif">
+        <Heading as="h2" fontSize="xl" marginBottom="10px">
           Follow MIC
         </Heading>
         <Flex as="ul" gap="20px" listStyleType="none">
@@ -71,7 +71,7 @@ const Footer = () => {
       </Box>
 
       <Box as="section">
-        <Heading as="h2" fontSize="xl" fontFamily="'Montserrat', sans-serif">
+        <Heading as="h2" fontSize="xl" marginBottom="10px">
           Quick Links
         </Heading>
         <Box as="ul" gap="20px" listStyleType="none">
@@ -91,7 +91,7 @@ const Footer = () => {
       </Box>
 
       <Box as="section">
-        <Heading as="h2" fontSize="xl" fontFamily="'Montserrat', sans-serif">
+        <Heading as="h2" fontSize="xl" marginBottom="10px">
           Contact Us
         </Heading>
         <Box as="p">
@@ -102,7 +102,7 @@ const Footer = () => {
       </Box>
 
       <Box as="section">
-        <Heading as="h2" fontSize="xl" fontFamily="'Montserrat', sans-serif">
+        <Heading as="h2" fontSize="xl" marginBottom="10px">
           Registered
         </Heading>
         <Flex gap="20px">
@@ -113,7 +113,7 @@ const Footer = () => {
           </Box>
           <Box>
             <Link href={NITI_URL}>
-              <Image src={niti} alt="collab" w="100px" />
+              <Image src={niti} alt="collab" w="100px" borderRadius="5px" />
             </Link>
           </Box>
         </Flex>
