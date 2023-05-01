@@ -2,13 +2,12 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 
 const About = () => {
   return (
-    <Box>
-      <Box
-        as="section"
-        textAlign="center"
-        marginY={{ base: "20px", md: "30px" }}
-        marginX={{ base: "20px", md: "200px" }}
-      >
+    <Box
+      as="main"
+      my={{ base: "20px", md: "30px" }}
+      mx={{ base: "20px", md: "200px" }}
+    >
+      <Box as="section" textAlign="center">
         <Heading as="h1" size={["lg", "xl", "2xl"]}>
           Our Vision
         </Heading>
@@ -20,12 +19,7 @@ const About = () => {
           strong foundation and bright future.
         </Text>
       </Box>
-      <Box
-        as="section"
-        textAlign="center"
-        marginY={{ base: "20px", md: "30px" }}
-        marginX={{ base: "20px", md: "200px" }}
-      >
+      <Box as="section" textAlign="center">
         <Heading as="h1" size={["lg", "xl", "2xl"]}>
           Our Mission
         </Heading>

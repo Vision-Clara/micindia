@@ -28,18 +28,19 @@ const CustomCard = ({
       variant="outline"
     >
       <Image
-        maxW={{ base: "100%", sm: "200px" }}
+        maxW={{ base: "100%", md: "400px", sm: "200px" }}
         src={image}
         alt="Caffe Latte"
       />
-
       <Stack>
         <CardBody>
           <Heading as="h1" size={["lg", "xl", "2xl"]}>
             {heading}
           </Heading>
 
-          <Text py="2">{description}</Text>
+          <Text py="2" fontSize={["md", "lg", "xl"]}>
+            {description}
+          </Text>
         </CardBody>
 
         <CardFooter>

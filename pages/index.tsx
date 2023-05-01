@@ -1,6 +1,7 @@
 import CustomCard from "@/components/card/CustomCard";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import Head from "next/head";
+import { Link } from "@chakra-ui/next-js";
 
 import flag from "/assets/bg/flag.jpg";
 import CustomStat from "@/components/stat/CustomStat";
@@ -14,27 +15,64 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
-      <main>
-        <Box mx={["10px", "20px", "30px"]} my={["10px", "20px", "30px"]}>
+      <Box as="main">
+        <Flex
+          as="section"
+          direction="column"
+          gap={["20px", "30px", "40px"]}
+          my={["20px", "30px", "40px"]}
+          mx={["10px", "20px", "30px"]}
+        >
           <CustomCard
             heading="The heading"
             description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
             image={flag}
           />
+          <CustomCard
+            heading="The heading"
+            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+            image={flag}
+          />
+          <CustomCard
+            heading="The heading"
+            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+            image={flag}
+          />
+        </Flex>
 
-          <CustomCard
-            heading="The heading"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-            image={flag}
-          />
-          <CustomCard
-            heading="The heading"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-            image={flag}
-          />
-          <CustomStat></CustomStat>
-        </Box>
-      </main>
+        <Flex
+          as="section"
+          direction={{ base: "column", sm: "row" }}
+          justify="space-around"
+          flexWrap="wrap"
+          gap={["20px", "30px", "40px"]}
+          my={["20px", "30px", "40px"]}
+          mx={["10px", "20px", "30px"]}
+        >
+          <CustomStat count={3000} heading="Social Drives"></CustomStat>
+          <CustomStat count={100} heading="Events"></CustomStat>
+          <CustomStat count={300} heading="Volunteers"></CustomStat>
+          <CustomStat count={50} heading="Blood Camps"></CustomStat>
+        </Flex>
+
+        <Flex
+          as="section"
+          direction="column"
+          justify="center"
+          align="center"
+          p="30px"
+          gap={["20px", "30px", "40px"]}
+          my={["20px", "30px", "40px"]}
+          bgColor="gray.100"
+        >
+          <Heading as="h2" size={["md", "lg", "xl"]} textAlign="center">
+            Join Our Hands, and lets develop this nation together.
+          </Heading>
+          <Box layerStyle="base" p="10px" borderRadius="5px">
+            <Link href="/join">JoinUs</Link>
+          </Box>
+        </Flex>
+      </Box>
     </>
   );
 }
