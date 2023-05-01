@@ -1,4 +1,9 @@
+import CustomCard from "@/components/card/CustomCard";
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
+
+import flag from "/assets/bg/flag.jpg";
+import CustomStat from "@/components/stat/CustomStat";
 
 export default function Home() {
   return (
@@ -9,7 +14,27 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
-      <main></main>
+      <main>
+        <Box mx={["10px", "20px", "30px"]} my={["10px", "20px", "30px"]}>
+          <CustomCard
+            heading="The heading"
+            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+            image={flag}
+          />
+
+          <CustomCard
+            heading="The heading"
+            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+            image={flag}
+          />
+          <CustomCard
+            heading="The heading"
+            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+            image={flag}
+          />
+          <CustomStat></CustomStat>
+        </Box>
+      </main>
     </>
   );
 }
