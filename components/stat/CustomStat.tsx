@@ -1,37 +1,13 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 
-const CustomStat = () => {
+const CustomStat = ({ count, heading }: { count: number; heading: string }) => {
   return (
-    <Flex
-      direction={{ base: "column", sm: "row" }}
-      justify="space-between"
-      flexWrap="wrap"
-    >
-      <Box textAlign="center">
-        <Box>+200</Box>
-        <Heading as="h2" size={["md", "lg", "xl"]}>
-          Volunteers
-        </Heading>
-      </Box>
-      <Box textAlign="center">
-        <Box>+200</Box>
-        <Heading as="h2" size={["md", "lg", "xl"]}>
-          Volunteers
-        </Heading>
-      </Box>
-      <Box textAlign="center">
-        <Box>+200</Box>
-        <Heading as="h2" size={["md", "lg", "xl"]}>
-          Volunteers
-        </Heading>
-      </Box>
-      <Box textAlign="center">
-        <Box>+200</Box>
-        <Heading as="h2" size={["md", "lg", "xl"]}>
-          Volunteers
-        </Heading>
-      </Box>
-    </Flex>
+    <Box textAlign="center">
+      <Box fontSize="lg">+{count}</Box>
+      <Heading as="h2" size={["lg", "lg", "xl"]}>
+        {heading}
+      </Heading>
+    </Box>
   );
 };
 
