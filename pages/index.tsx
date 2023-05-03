@@ -1,9 +1,9 @@
-import CustomCard from "@/components/card/CustomCard";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import Head from "next/head";
 import { Link } from "@chakra-ui/next-js";
 
 import flag from "/assets/bg/flag.jpg";
+import FeatureCard from "@/components/card/FeatureCard";
 import CustomStat from "@/components/stat/CustomStat";
 
 export default function Home() {
@@ -19,24 +19,27 @@ export default function Home() {
         <Flex
           as="section"
           direction="column"
-          gap={["20px", "30px", "40px"]}
-          my={["20px", "30px", "40px"]}
-          mx={["10px", "20px", "30px"]}
+          gap={["20px", "30px", "60px"]}
+          my={["20px", "30px", "60px"]}
+          mx={["20px", "30px", "60px"]}
         >
-          <CustomCard
+          <FeatureCard
             heading="The heading"
             description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
             image={flag}
+            imagePos="left"
           />
-          <CustomCard
+          <FeatureCard
             heading="The heading"
             description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
             image={flag}
+            imagePos="right"
           />
-          <CustomCard
+          <FeatureCard
             heading="The heading"
             description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
             image={flag}
+            imagePos="left"
           />
         </Flex>
 
@@ -47,7 +50,7 @@ export default function Home() {
           flexWrap="wrap"
           gap={["20px", "30px", "40px"]}
           my={["20px", "30px", "40px"]}
-          mx={["10px", "20px", "30px"]}
+          mx={["20px", "30px", "40px"]}
         >
           <CustomStat count={3000} heading="Social Drives"></CustomStat>
           <CustomStat count={100} heading="Events"></CustomStat>
