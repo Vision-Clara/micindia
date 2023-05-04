@@ -38,23 +38,59 @@ const Footer = () => {
         <Heading as="h2" size={["sm", "sm", "md"]} marginBottom="10px">
           Follow MIC
         </Heading>
-        <Flex as="ul" gap="20px" listStyleType="none">
-          <Box as="li">
+        <Flex as="ul" align="center" h="50px" gap="20px" listStyleType="none">
+          <Box
+            as="li"
+            sx={{
+              transition: "all 100ms ease-in-out",
+              ":hover": {
+                paddingBottom: "10px",
+                color: "blue.500",
+              },
+            }}
+          >
             <Link href={MIC_INSTA_URL} target="_blank">
               <Image src={insta} alt="@mic_organisation_india" w="35px" />
             </Link>
           </Box>
-          <Box as="li">
+          <Box
+            as="li"
+            sx={{
+              transition: "all 100ms ease-in-out",
+              ":hover": {
+                paddingBottom: "10px",
+                color: "blue.500",
+              },
+            }}
+          >
             <Link href={MIC_TWITTER_URL} target="_blank">
               <Image src={twitter} alt="@micorganisation" w="35px" />
             </Link>
           </Box>
-          <Box as="li">
+          <Box
+            as="li"
+            sx={{
+              transition: "all 100ms ease-in-out",
+              ":hover": {
+                paddingBottom: "10px",
+                color: "blue.500",
+              },
+            }}
+          >
             <Link href={MIC_FB_URL} target="_blank">
               <Image src={facebook} alt="@MICOrganisation" w="35px" />
             </Link>
           </Box>
-          <Box as="li">
+          <Box
+            as="li"
+            sx={{
+              transition: "all 100ms ease-in-out",
+              ":hover": {
+                paddingBottom: "10px",
+                color: "blue.500",
+              },
+            }}
+          >
             <Link href={MIC_LINKEDIN_URL} target="_blank">
               <Image
                 src={linkedin}
@@ -63,7 +99,16 @@ const Footer = () => {
               />
             </Link>
           </Box>
-          <Box as="li">
+          <Box
+            as="li"
+            sx={{
+              transition: "all 100ms ease-in-out",
+              ":hover": {
+                paddingBottom: "10px",
+                color: "blue.500",
+              },
+            }}
+          >
             <Link href={MIC_WHATSAPP_URL} target="_blank">
               <Image src={whatsapp} alt="@whatsapp" w="35px" />
             </Link>
