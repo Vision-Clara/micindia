@@ -31,17 +31,53 @@ const Navbar = () => {
 
       <Show above="md">
         <Box as="nav">
-          <Flex as="ul" gap="30px" listStyleType="none">
-            <Box as="li">
+          <Flex as="ul" alignItems="center" gap="30px" listStyleType="none">
+            <Box
+              as="li"
+              sx={{
+                transition: "all 100ms ease-in-out",
+                ":hover": {
+                  paddingBottom: "10px",
+                  color: "blue.500",
+                },
+              }}
+            >
               <Link href="/">Home</Link>
             </Box>
-            <Box as="li">
+            <Box
+              as="li"
+              sx={{
+                transition: "all 100ms ease-in-out",
+                ":hover": {
+                  paddingBottom: "10px",
+                  color: "blue.500",
+                },
+              }}
+            >
               <Link href="/about">About Us</Link>
             </Box>
-            <Box as="li">
+            <Box
+              as="li"
+              sx={{
+                transition: "all 100ms ease-in-out",
+                ":hover": {
+                  paddingBottom: "10px",
+                  color: "blue.500",
+                },
+              }}
+            >
               <Link href="/blood-donate">Be a Hero</Link>
             </Box>
-            <Box as="li">
+            <Box
+              as="li"
+              sx={{
+                transition: "all 100ms ease-in-out",
+                ":hover": {
+                  paddingBottom: "10px",
+                  color: "blue.500",
+                },
+              }}
+            >
               <Link href="/join">Join Us</Link>
             </Box>
           </Flex>

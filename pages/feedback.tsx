@@ -1,8 +1,6 @@
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Box,
   Input,
   Textarea,
@@ -15,7 +13,7 @@ const Feedback = () => {
     <Box
       w={["90%", "450px", "450px"]}
       mx="auto"
-      my="10px"
+      my="50px"
       p="20px"
       border="1px"
       borderRadius="5px"
