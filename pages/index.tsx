@@ -6,6 +6,23 @@ import flag from "/assets/bg/flag.jpg";
 import FeatureCard from "@/components/card/FeatureCard";
 import CustomStat from "@/components/stat/CustomStat";
 
+const features = [
+  {
+    id: 1,
+    featureHeading: "The heading",
+    featureImage: flag,
+    featureDesc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+  },
+  {
+    id: 2,
+    featureHeading: "The heading",
+    featureImage: flag,
+    featureDesc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -15,35 +32,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
-      <Box as="main" mx={["20px", "30px", "60px"]}>
-        <Box as="section">
-          <Heading as="h2" size={["md", "lg", "xl"]}>
-            Working Areas
-          </Heading>
-          <Flex
-            direction="column"
-            gap={["20px", "30px", "60px"]}
-            my={["20px", "30px", "60px"]}
-          >
-            <FeatureCard
-              heading="The heading"
-              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-              image={flag}
-              imagePos="left"
-            />
-            <FeatureCard
-              heading="The heading"
-              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-              image={flag}
-              imagePos="right"
-            />
-            <FeatureCard
-              heading="The heading"
-              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-              image={flag}
-              imagePos="left"
-            />
-          </Flex>
+      <Box as="main">
+        <Box
+          as="section"
+          my={["20px", "30px", "60px"]}
+          mx={["20px", "30px", "60px"]}
+        >
+          {features.map((item, index) => {
+            return (
+              <FeatureCard
+                heading={item.featureHeading}
+                description={item.featureDesc}
+                image={item.featureImage}
+                key={item.id}
+                index={index}
+              />
+            );
+          })}
         </Box>
 
         <Flex
