@@ -15,33 +15,36 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
-      <Box as="main">
-        <Flex
-          as="section"
-          direction="column"
-          gap={["20px", "30px", "60px"]}
-          my={["20px", "30px", "60px"]}
-          mx={["20px", "30px", "60px"]}
-        >
-          <FeatureCard
-            heading="The heading"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-            image={flag}
-            imagePos="left"
-          />
-          <FeatureCard
-            heading="The heading"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-            image={flag}
-            imagePos="right"
-          />
-          <FeatureCard
-            heading="The heading"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
-            image={flag}
-            imagePos="left"
-          />
-        </Flex>
+      <Box as="main" mx={["20px", "30px", "60px"]}>
+        <Box as="section">
+          <Heading as="h2" size={["md", "lg", "xl"]}>
+            Working Areas
+          </Heading>
+          <Flex
+            direction="column"
+            gap={["20px", "30px", "60px"]}
+            my={["20px", "30px", "60px"]}
+          >
+            <FeatureCard
+              heading="The heading"
+              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+              image={flag}
+              imagePos="left"
+            />
+            <FeatureCard
+              heading="The heading"
+              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+              image={flag}
+              imagePos="right"
+            />
+            <FeatureCard
+              heading="The heading"
+              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora."
+              image={flag}
+              imagePos="left"
+            />
+          </Flex>
+        </Box>
 
         <Flex
           as="section"
