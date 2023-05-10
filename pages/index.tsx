@@ -1,10 +1,11 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 import Head from "next/head";
 import { Link } from "@chakra-ui/next-js";
 
 import flag from "/assets/bg/flag.jpg";
 import FeatureCard from "@/components/card/FeatureCard";
 import CustomStat from "@/components/stat/CustomStat";
+import EventCard from "@/components/card/EventCard";
 
 const features = [
   {
@@ -35,9 +36,12 @@ export default function Home() {
       <Box as="main">
         <Box
           as="section"
-          my={["20px", "30px", "60px"]}
-          mx={["20px", "30px", "60px"]}
+          my={["20px", "30px", "50px", "100px"]}
+          mx={["20px", "30px", "100px", "200px"]}
         >
+          <Heading as="h1" size={["md", "lg", "xl"]} textAlign="center">
+            MIC Working Areas
+          </Heading>
           {features.map((item, index) => {
             return (
               <FeatureCard
@@ -49,6 +53,23 @@ export default function Home() {
               />
             );
           })}
+        </Box>
+        <Box
+          as="section"
+          my={["20px", "30px", "40px"]}
+          mx={["20px", "30px", "40px"]}
+        >
+          <Heading as="h1" size={["md", "lg", "xl"]} textAlign="center">
+            Recent Events
+          </Heading>
+          <SimpleGrid
+            spacing={4}
+            templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+          >
+            <EventCard></EventCard>
+            <EventCard></EventCard>
+            <EventCard></EventCard>
+          </SimpleGrid>
         </Box>
 
         <Flex
