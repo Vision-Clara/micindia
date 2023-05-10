@@ -54,6 +54,29 @@ const events = [
   },
 ];
 
+const stats = [
+  {
+    id: 1,
+    count: 3000,
+    heading: "Social Drives",
+  },
+  {
+    id: 2,
+    count: 100,
+    heading: "Events",
+  },
+  {
+    id: 3,
+    count: 300,
+    heading: "Volunteers",
+  },
+  {
+    id: 4,
+    count: 50,
+    heading: "Blood Camps",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -123,10 +146,14 @@ export default function Home() {
             my={["20px", "30px", "40px"]}
             mx={["20px", "30px", "40px"]}
           >
-            <CustomStat count={3000} heading="Social Drives"></CustomStat>
-            <CustomStat count={100} heading="Events"></CustomStat>
-            <CustomStat count={300} heading="Volunteers"></CustomStat>
-            <CustomStat count={50} heading="Blood Camps"></CustomStat>
+            {stats.map((item) => {
+              return (
+                <CustomStat
+                  count={item.count}
+                  heading={item.heading}
+                ></CustomStat>
+              );
+            })}
           </Flex>
         </Box>
 
