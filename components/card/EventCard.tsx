@@ -7,8 +7,6 @@ import {
   Text,
   Stack,
   Divider,
-  ButtonGroup,
-  Button,
   Box,
   Flex,
 } from "@chakra-ui/react";
@@ -19,25 +17,34 @@ import flag from "/assets/bg/flag.jpg";
 import MapIcon from "../icon/MapIcon";
 import InstaIcon from "../icon/InstaIcon";
 import TwitterIcon from "../icon/TwitterIcon";
+import { StaticImageData } from "next/image";
 
-const EventCard = () => {
+const EventCard = ({
+  eventHeading,
+  eventImage,
+  eventDesc,
+  eventDate,
+  eventLocation,
+}: {
+  eventHeading: string;
+  eventImage: StaticImageData;
+  eventDesc: string;
+  eventDate: string;
+  eventLocation: string;
+}) => {
   return (
     <Card maxW="sm">
       <CardBody>
         <Image
-          src={flag}
+          src={eventImage}
           alt="Green double couch with wooden legs"
           borderRadius="lg"
         />
         <Stack mt="6" spacing="3">
           <Heading as="h2" size={["sm", "sm", "md"]}>
-            Living room Sofa
+            {eventHeading}
           </Heading>
-          <Text fontSize={["sm", "md", "md"]}>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
-          </Text>
+          <Text fontSize={["sm", "md", "md"]}>{eventDesc}</Text>
           <Flex gap="3">
             <Flex
               alignItems="center"
@@ -51,7 +58,7 @@ const EventCard = () => {
             >
               <CalendarIcon boxSize={4} color="yellow" />
               <Text fontWeight="bold" fontSize="sm">
-                10-03-11
+                {eventDate}
               </Text>
             </Flex>
 
@@ -67,7 +74,7 @@ const EventCard = () => {
             >
               <MapIcon color="yellow" />
               <Text fontWeight="bold" fontSize="sm">
-                Indore
+                {eventLocation}
               </Text>
             </Flex>
           </Flex>

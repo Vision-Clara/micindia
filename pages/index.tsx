@@ -24,6 +24,36 @@ const features = [
   },
 ];
 
+const events = [
+  {
+    id: 1,
+    eventHeading: "Event Heading",
+    eventImage: flag,
+    eventDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
+    eventDate: "10-03-23",
+    eventLocation: "Indore",
+  },
+  {
+    id: 2,
+    eventHeading: "Event Heading",
+    eventImage: flag,
+    eventDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
+    eventDate: "10-03-23",
+    eventLocation: "Indore",
+  },
+  {
+    id: 3,
+    eventHeading: "Event Heading",
+    eventImage: flag,
+    eventDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
+    eventDate: "10-03-23",
+    eventLocation: "Indore",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -40,15 +70,15 @@ export default function Home() {
           mx={["20px", "30px", "100px", "200px"]}
         >
           <Heading as="h1" size={["md", "lg", "xl"]} textAlign="center">
-            MIC Working Areas
+            We Focus On Various Fields
           </Heading>
           {features.map((item, index) => {
             return (
               <FeatureCard
+                key={item.id}
                 heading={item.featureHeading}
                 description={item.featureDesc}
                 image={item.featureImage}
-                key={item.id}
                 index={index}
               />
             );
@@ -66,26 +96,39 @@ export default function Home() {
             spacing={4}
             templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
           >
-            <EventCard></EventCard>
-            <EventCard></EventCard>
-            <EventCard></EventCard>
+            {events.map((item) => {
+              return (
+                <EventCard
+                  key={item.id}
+                  eventHeading={item.eventHeading}
+                  eventDesc={item.eventDesc}
+                  eventImage={item.eventImage}
+                  eventDate={item.eventDate}
+                  eventLocation={item.eventLocation}
+                />
+              );
+            })}
           </SimpleGrid>
         </Box>
-
-        <Flex
-          as="section"
-          direction={{ base: "column", sm: "row" }}
-          justify="space-around"
-          flexWrap="wrap"
-          gap={["20px", "30px", "40px"]}
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
-          <CustomStat count={3000} heading="Social Drives"></CustomStat>
-          <CustomStat count={100} heading="Events"></CustomStat>
-          <CustomStat count={300} heading="Volunteers"></CustomStat>
-          <CustomStat count={50} heading="Blood Camps"></CustomStat>
-        </Flex>
+        <Box as="section">
+          <Heading as="h1" size={["md", "lg", "xl"]} textAlign="center">
+            Our Numbers Tell the Story
+          </Heading>
+          <Flex
+            as="section"
+            direction={{ base: "column", sm: "row" }}
+            justify="space-around"
+            flexWrap="wrap"
+            gap={["20px", "30px", "40px"]}
+            my={["20px", "30px", "40px"]}
+            mx={["20px", "30px", "40px"]}
+          >
+            <CustomStat count={3000} heading="Social Drives"></CustomStat>
+            <CustomStat count={100} heading="Events"></CustomStat>
+            <CustomStat count={300} heading="Volunteers"></CustomStat>
+            <CustomStat count={50} heading="Blood Camps"></CustomStat>
+          </Flex>
+        </Box>
 
         <Flex
           as="section"
