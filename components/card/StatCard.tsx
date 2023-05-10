@@ -1,6 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 
-const CustomStat = ({ count, heading }: { count: number; heading: string }) => {
+const StatCard = ({ count, heading }: { count: number; heading: string }) => {
   return (
     <Box textAlign="center">
       <Box fontSize="lg">+{count}</Box>
@@ -11,4 +11,4 @@ const CustomStat = ({ count, heading }: { count: number; heading: string }) => {
   );
 };
 
-export default CustomStat;
+export default StatCard;

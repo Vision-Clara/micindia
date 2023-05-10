@@ -4,7 +4,7 @@ import { Link } from "@chakra-ui/next-js";
 
 import flag from "/assets/bg/flag.jpg";
 import FeatureCard from "@/components/card/FeatureCard";
-import Stat from "@/components/stat/Stat";
+import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 
 const features = [
@@ -147,7 +147,7 @@ export default function Home() {
             mx={["20px", "30px", "40px"]}
           >
             {stats.map((item) => {
-              return <Stat count={item.count} heading={item.heading}></Stat>;
+              return <StatCard count={item.count} heading={item.heading} />;
             })}
           </Flex>
         </Box>
