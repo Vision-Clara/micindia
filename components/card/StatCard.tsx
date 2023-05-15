@@ -1,10 +1,10 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
 const StatCard = ({ count, heading }: { count: number; heading: string }) => {
   return (
     <Box textAlign="center">
-      <Box fontSize="lg">+{count}</Box>
-      <Heading as="h2" size={["lg", "lg", "xl"]}>
+      <Text fontSize="lg">+{count}</Text>
+      <Heading as="h3" size={["sm", "md", "lg"]}>
         {heading}
       </Heading>
     </Box>

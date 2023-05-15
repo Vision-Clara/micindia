@@ -41,7 +41,7 @@ const EventCard = ({
           borderRadius="lg"
         />
         <Stack mt="6" spacing="3">
-          <Heading as="h2" size={["sm", "sm", "md"]}>
+          <Heading as="h3" size={["sm", "md", "lg"]}>
             {eventHeading}
           </Heading>
           <Text fontSize={["sm", "md", "md"]}>{eventDesc}</Text>

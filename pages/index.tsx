@@ -22,6 +22,13 @@ const features = [
     featureDesc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
   },
+  {
+    id: 3,
+    featureHeading: "The heading",
+    featureImage: flag,
+    featureDesc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+  },
 ];
 
 const events = [
@@ -89,11 +96,16 @@ export default function Home() {
       <Box as="main">
         <Box
           as="section"
-          my={["20px", "30px", "50px", "100px"]}
-          mx={["20px", "30px", "100px", "200px"]}
+          my={["20px", "30px", "40px"]}
+          mx={["20px", "30px", "150px"]}
         >
-          <Heading as="h1" size={["md", "lg", "xl"]} textAlign="center">
-            We Focus On Various Fields
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            my={["10px", "20px", "30px"]}
+            textAlign="center"
+          >
+            Our Focus
           </Heading>
           {features.map((item, index) => {
             return (
@@ -107,12 +119,18 @@ export default function Home() {
             );
           })}
         </Box>
+
         <Box
           as="section"
           my={["20px", "30px", "40px"]}
           mx={["20px", "30px", "40px"]}
         >
-          <Heading as="h1" size={["md", "lg", "xl"]} textAlign="center">
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            my={["10px", "20px", "30px"]}
+          >
             Recent Events
           </Heading>
           <SimpleGrid
@@ -133,21 +151,34 @@ export default function Home() {
             })}
           </SimpleGrid>
         </Box>
-        <Box as="section">
-          <Heading as="h1" size={["md", "lg", "xl"]} textAlign="center">
+
+        <Box
+          as="section"
+          my={["20px", "30px", "40px"]}
+          mx={["20px", "30px", "40px"]}
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            my={["10px", "20px", "30px"]}
+          >
             Our Numbers Tell the Story
           </Heading>
           <Flex
-            as="section"
             direction={{ base: "column", sm: "row" }}
             justify="space-around"
             flexWrap="wrap"
             gap={["20px", "30px", "40px"]}
-            my={["20px", "30px", "40px"]}
-            mx={["20px", "30px", "40px"]}
           >
             {stats.map((item) => {
-              return <StatCard count={item.count} heading={item.heading} />;
+              return (
+                <StatCard
+                  key={item.id}
+                  count={item.count}
+                  heading={item.heading}
+                />
+              );
             })}
           </Flex>
         </Box>

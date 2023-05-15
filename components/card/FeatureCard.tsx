@@ -21,7 +21,6 @@ const FeatureCard = ({
       direction={{ base: "column", md: isReverse ? "row-reverse" : "row" }}
       align="center"
       gap="10"
-      my={["20px", "30px", "100px"]}
     >
       <Box>
         <Image src={image} alt="Caffe Latte" />
