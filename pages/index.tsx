@@ -6,6 +6,7 @@ import flag from "/assets/bg/flag.jpg";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
+import TestimonialCard from "@/components/card/TestimonialCard";
 
 const features = [
   {
@@ -81,6 +82,33 @@ const stats = [
     id: 4,
     count: 50,
     heading: "Blood Camps",
+  },
+];
+
+const testimonials = [
+  {
+    id: 1,
+    profilePhoto: "https://bit.ly/sage-adebayo",
+    personName: "Segun Adebayo",
+    designation: "Creator, Chakra UI",
+    message:
+      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+  },
+  {
+    id: 2,
+    profilePhoto: "https://bit.ly/sage-adebayo",
+    personName: "Segun Adebayo",
+    designation: "Creator, Chakra UI",
+    message:
+      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+  },
+  {
+    id: 3,
+    profilePhoto: "https://bit.ly/sage-adebayo",
+    personName: "Segun Adebayo",
+    designation: "Creator, Chakra UI",
+    message:
+      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
   },
 ];
 
@@ -200,6 +228,37 @@ export default function Home() {
             <Link href="/join">JoinUs</Link>
           </Box>
         </Flex>
+
+        <Box
+          as="section"
+          my={["20px", "30px", "40px"]}
+          mx={["20px", "30px", "40px"]}
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            my={["10px", "20px", "30px"]}
+          >
+            Testimonials
+          </Heading>
+          <SimpleGrid
+            spacing={4}
+            templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+          >
+            {testimonials.map((item) => {
+              return (
+                <TestimonialCard
+                  key={item.id}
+                  profilePhoto={item.profilePhoto}
+                  personName={item.personName}
+                  designation={item.designation}
+                  message={item.message}
+                />
+              );
+            })}
+          </SimpleGrid>
+        </Box>
       </Box>
     </>
   );

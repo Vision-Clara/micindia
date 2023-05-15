@@ -13,7 +13,6 @@ import {
 
 import { CalendarIcon } from "@chakra-ui/icons";
 
-import flag from "/assets/bg/flag.jpg";
 import MapIcon from "../icon/MapIcon";
 import InstaIcon from "../icon/InstaIcon";
 import TwitterIcon from "../icon/TwitterIcon";
