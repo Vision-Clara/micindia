@@ -133,12 +133,15 @@ const Footer = () => {
           <Box as="li">
             <Link href="/feedback">Feedback</Link>
           </Box>
+          <Box as="li">
+            <Link href="/feedback">Contact</Link>
+          </Box>
         </Box>
       </Box>
 
       <Box as="section">
         <Heading as="h2" size={["sm", "sm", "md"]} marginBottom="10px">
-          Contact Us
+          Office Address
         </Heading>
         <Box as="p">
           MIC 354 Ring Road, Piplya Rao Indore, <br /> +91 8104744738, +91

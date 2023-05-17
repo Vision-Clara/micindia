@@ -1,12 +1,13 @@
-import { Box, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, Heading, SimpleGrid, Stack } from "@chakra-ui/react";
 import Head from "next/head";
-import { Link } from "@chakra-ui/next-js";
+import { Link, Image } from "@chakra-ui/next-js";
 
 import flag from "/assets/bg/flag.jpg";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
+import { useEffect, useState } from "react";
 
 const features = [
   {
@@ -112,7 +113,31 @@ const testimonials = [
   },
 ];
 
+const collabs = [
+  {
+    id: 1,
+    logo: flag,
+    url: "/",
+  },
+  {
+    id: 2,
+    logo: flag,
+    url: "/",
+  },
+];
+
 export default function Home() {
+  const [position, setPosition] = useState(200);
+
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      setPosition((position - 200) % 2400);
+      console.log(position);
+    }, 2000);
+
+    return () => clearTimeout(interval);
+  }, [position]);
+
   return (
     <>
       <Head>
@@ -159,6 +184,37 @@ export default function Home() {
             textAlign="center"
             my={["10px", "20px", "30px"]}
           >
+            Our Numbers Tell the Story
+          </Heading>
+          <Flex
+            direction={{ base: "column", sm: "row" }}
+            justify="space-around"
+            flexWrap="wrap"
+            gap={["20px", "30px", "40px"]}
+          >
+            {stats.map((item) => {
+              return (
+                <StatCard
+                  key={item.id}
+                  count={item.count}
+                  heading={item.heading}
+                />
+              );
+            })}
+          </Flex>
+        </Box>
+
+        <Box
+          as="section"
+          my={["20px", "30px", "40px"]}
+          mx={["20px", "30px", "40px"]}
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            my={["10px", "20px", "30px"]}
+          >
             Recent Events
           </Heading>
           <SimpleGrid
@@ -191,55 +247,6 @@ export default function Home() {
             textAlign="center"
             my={["10px", "20px", "30px"]}
           >
-            Our Numbers Tell the Story
-          </Heading>
-          <Flex
-            direction={{ base: "column", sm: "row" }}
-            justify="space-around"
-            flexWrap="wrap"
-            gap={["20px", "30px", "40px"]}
-          >
-            {stats.map((item) => {
-              return (
-                <StatCard
-                  key={item.id}
-                  count={item.count}
-                  heading={item.heading}
-                />
-              );
-            })}
-          </Flex>
-        </Box>
-
-        <Flex
-          as="section"
-          direction="column"
-          justify="center"
-          align="center"
-          p="30px"
-          gap={["20px", "30px", "40px"]}
-          my={["20px", "30px", "40px"]}
-          bgColor="gray.100"
-        >
-          <Heading as="h2" size={["md", "lg", "xl"]} textAlign="center">
-            Join Our Hands, and lets develop this nation together.
-          </Heading>
-          <Box layerStyle="base" p="10px" borderRadius="5px">
-            <Link href="/join">JoinUs</Link>
-          </Box>
-        </Flex>
-
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-            my={["10px", "20px", "30px"]}
-          >
             Testimonials
           </Heading>
           <SimpleGrid
@@ -259,6 +266,55 @@ export default function Home() {
             })}
           </SimpleGrid>
         </Box>
+
+        <Box
+          as="section"
+          my={["20px", "30px", "40px"]}
+          mx={["20px", "30px", "40px"]}
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            my={["10px", "20px", "30px"]}
+          >
+            Collaborators
+          </Heading>
+          <Box>
+            <Stack direction="row" gap={["40px", "60px", "80px"]}>
+              {collabs.map((item) => {
+                return (
+                  <Box key={item.id} w="100px" flex="none">
+                    <Image
+                      w="full"
+                      src={item.logo}
+                      alt="collab"
+                      borderRadius="10px"
+                    ></Image>
+                  </Box>
+                );
+              })}
+            </Stack>
+          </Box>
+        </Box>
+
+        <Flex
+          as="section"
+          direction="column"
+          justify="center"
+          align="center"
+          p="30px"
+          gap={["20px", "30px", "40px"]}
+          my={["20px", "30px", "40px"]}
+          bgColor="gray.100"
+        >
+          <Heading as="h2" size={["md", "lg", "xl"]} textAlign="center">
+            Join Our Hands, and lets develop this nation together.
+          </Heading>
+          <Box layerStyle="base" p="10px" borderRadius="5px">
+            <Link href="/join">JoinUs</Link>
+          </Box>
+        </Flex>
       </Box>
     </>
   );

@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import LeftQuoteIcon from "../icon/LeftQuoteIcon";
 import RightQuoteIcon from "../icon/RightQuoteIcon";
+import { useEffect, useState } from "react";
 
 const TestimonialCard = ({
   profilePhoto,
@@ -40,14 +41,14 @@ const TestimonialCard = ({
 
             <Box p="20px" position="relative">
               <LeftQuoteIcon
-                color="gray"
+                color="blue.500"
                 position="absolute"
                 left="0px"
                 top="0px"
               />
               <Text fontSize={["sm", "md", "md"]}>{message}</Text>
               <RightQuoteIcon
-                color="gray"
+                color="blue.500"
                 position="absolute"
                 right="0px"
                 bottom="0px"
