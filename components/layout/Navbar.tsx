@@ -44,18 +44,7 @@ const Navbar = () => {
             >
               <Link href="/">Home</Link>
             </Box>
-            <Box
-              as="li"
-              sx={{
-                transition: "all 100ms ease-in-out",
-                ":hover": {
-                  paddingBottom: "10px",
-                  color: "blue.500",
-                },
-              }}
-            >
-              <Link href="/about">About Us</Link>
-            </Box>
+
             <Box
               as="li"
               sx={{
@@ -79,6 +68,18 @@ const Navbar = () => {
               }}
             >
               <Link href="/join">Join Us</Link>
+            </Box>
+            <Box
+              as="li"
+              sx={{
+                transition: "all 100ms ease-in-out",
+                ":hover": {
+                  paddingBottom: "10px",
+                  color: "blue.500",
+                },
+              }}
+            >
+              <Link href="/contact">Contact Us</Link>
             </Box>
           </Flex>
         </Box>

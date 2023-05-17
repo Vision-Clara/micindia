@@ -125,16 +125,13 @@ const Footer = () => {
             <Link href="/">Home</Link>
           </Box>
           <Box as="li">
-            <Link href="/about">About</Link>
-          </Box>
-          <Box as="li">
             <Link href="/join">Join Us</Link>
           </Box>
           <Box as="li">
             <Link href="/feedback">Feedback</Link>
           </Box>
           <Box as="li">
-            <Link href="/feedback">Contact</Link>
+            <Link href="/feedback">Contact Us</Link>
           </Box>
         </Box>
       </Box>
