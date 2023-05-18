@@ -24,10 +24,6 @@ const Feedback = () => {
       </Heading>
       <Box as="form">
         <FormControl my="20px">
-          <FormLabel>Contact Email</FormLabel>
-          <Input type="email" placeholder="Enter your email address" />
-        </FormControl>
-        <FormControl my="20px">
           <FormLabel>Full Name</FormLabel>
           <Input type="text" placeholder="Enter you full name" />
         </FormControl>
