@@ -1,4 +1,13 @@
-import { Box, Flex, Heading, SimpleGrid, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Stack,
+  Text,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
 import Head from "next/head";
 import { Link, Image } from "@chakra-ui/next-js";
 
@@ -6,10 +15,8 @@ import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
-import { useEffect, useState } from "react";
-
-import { features, events, stats, testimonials, collabs } from "@/sampleData";
 import Crousal from "@/components/crousal/Crousal";
+import { features, events, stats, testimonials, collabs } from "@/sampleData";
 
 export default function Home() {
   return (
@@ -21,61 +28,86 @@ export default function Home() {
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
       <Box as="main">
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "150px"]}
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            my={["10px", "20px", "30px"]}
-            textAlign="center"
-          >
-            Our Focus
-          </Heading>
-          {features.map((item, index) => {
-            return (
-              <FeatureCard
-                key={item.id}
-                heading={item.featureHeading}
-                description={item.featureDesc}
-                image={item.featureImage}
-                index={index}
-              />
-            );
-          })}
-        </Box>
-
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-            my={["10px", "20px", "30px"]}
-          >
-            Our Numbers Tell the Story
-          </Heading>
+        <Box as="section" my={["20px", "30px", "40px"]}>
           <Flex
-            direction={{ base: "column", sm: "row" }}
-            justify="space-around"
+            gap="10px"
             flexWrap="wrap"
-            gap={["20px", "30px", "40px"]}
+            justify="space-between"
+            p={["10px", "20px", "30px"]}
+            my={["20px", "30px", "40px"]}
+            bgColor="gray.100"
           >
-            {stats.map((item) => {
+            <Heading as="h1" size={["md", "lg", "xl"]}>
+              Our Focus
+            </Heading>
+            <Text maxW="300px">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
+              iste magni ab odio quam.
+            </Text>
+          </Flex>
+
+          <Stack gap="40px" mx={["20px", "30px", "150px"]}>
+            {features.map((item, index) => {
               return (
-                <StatCard
+                <FeatureCard
                   key={item.id}
-                  count={item.count}
-                  heading={item.heading}
+                  heading={item.featureHeading}
+                  description={item.featureDesc}
+                  image={item.featureImage}
+                  index={index}
                 />
               );
             })}
-          </Flex>
+          </Stack>
+        </Box>
+
+        <Box
+          as="section"
+          my={["20px", "30px", "40px"]}
+          py={["10px", "20px", "30px"]}
+          bg="blackAlpha.800"
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            mb={["20px", "30px", "40px"]}
+            color="white"
+          >
+            Numbers Tell More
+          </Heading>
+
+          <Grid
+            h="200px"
+            templateRows="repeat(2, 1fr)"
+            templateColumns="repeat(3, 1fr)"
+            gap={4}
+            mx={["20px", "30px", "40px"]}
+          >
+            <GridItem rowSpan={2} colSpan={1} bg="red.500" color="white">
+              <StatCard
+                count={100000}
+                heading="Lives Impacted"
+                countColor="white"
+              />
+            </GridItem>
+            <GridItem bg="white">
+              <StatCard
+                count={3000}
+                heading="Social Drives"
+                countColor="red.500"
+              />
+            </GridItem>
+            <GridItem bg="white">
+              <StatCard count={100} heading="Events" countColor="red.500" />
+            </GridItem>
+            <GridItem bg="white">
+              <StatCard count={300} heading="Volunteers" countColor="red.500" />
+            </GridItem>
+            <GridItem bg="white">
+              <StatCard count={50} heading="Blood Camps" countColor="red.500" />
+            </GridItem>
+          </Grid>
         </Box>
 
         <Box
@@ -87,7 +119,7 @@ export default function Home() {
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            my={["10px", "20px", "30px"]}
+            mb={["20px", "30px", "40px"]}
           >
             Recent Events
           </Heading>
@@ -113,19 +145,22 @@ export default function Home() {
         <Box
           as="section"
           my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
+          py={["10px", "20px", "30px"]}
+          bg="blackAlpha.800"
+          color="white"
         >
           <Heading
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            my={["10px", "20px", "30px"]}
+            mb={["20px", "30px", "40px"]}
           >
             Testimonials
           </Heading>
           <SimpleGrid
             spacing={4}
             templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            mx={["20px", "30px", "40px"]}
           >
             {testimonials.map((item) => {
               return (
@@ -146,9 +181,9 @@ export default function Home() {
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            my={["10px", "20px", "30px"]}
+            mb={["20px", "30px", "40px"]}
           >
-            Collaborators
+            Our Suppoters
           </Heading>
           <Box>
             <Crousal totalItems={11} itemWidth={100} gap={60}>
@@ -175,10 +210,15 @@ export default function Home() {
           align="center"
           p="30px"
           gap={["20px", "30px", "40px"]}
-          my={["20px", "30px", "40px"]}
+          mt={["20px", "30px", "40px"]}
           bgColor="gray.100"
         >
-          <Heading as="h2" size={["md", "lg", "xl"]} textAlign="center">
+          <Heading
+            as="h2"
+            p={["10px", "20px", "30px"]}
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+          >
             Join Our Hands, and lets develop this nation together.
           </Heading>
           <Box layerStyle="base" p="10px" borderRadius="5px">

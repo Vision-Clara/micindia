@@ -22,6 +22,13 @@ export const features = [
     featureDesc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
   },
+  {
+    id: 4,
+    featureHeading: "The heading",
+    featureImage: flag,
+    featureDesc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+  },
 ];
 
 export const events = [
