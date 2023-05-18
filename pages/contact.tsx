@@ -1,8 +1,6 @@
 import {
   Box,
   Heading,
-  Text,
-  Flex,
   FormControl,
   FormLabel,
   Input,

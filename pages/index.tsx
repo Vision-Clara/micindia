@@ -2,142 +2,16 @@ import { Box, Flex, Heading, SimpleGrid, Stack } from "@chakra-ui/react";
 import Head from "next/head";
 import { Link, Image } from "@chakra-ui/next-js";
 
-import flag from "/assets/bg/flag.jpg";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import { useEffect, useState } from "react";
 
-const features = [
-  {
-    id: 1,
-    featureHeading: "The heading",
-    featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
-  },
-  {
-    id: 2,
-    featureHeading: "The heading",
-    featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
-  },
-  {
-    id: 3,
-    featureHeading: "The heading",
-    featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
-  },
-];
-
-const events = [
-  {
-    id: 1,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-  {
-    id: 2,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-  {
-    id: 3,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-];
-
-const stats = [
-  {
-    id: 1,
-    count: 3000,
-    heading: "Social Drives",
-  },
-  {
-    id: 2,
-    count: 100,
-    heading: "Events",
-  },
-  {
-    id: 3,
-    count: 300,
-    heading: "Volunteers",
-  },
-  {
-    id: 4,
-    count: 50,
-    heading: "Blood Camps",
-  },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-  {
-    id: 2,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-  {
-    id: 3,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-];
-
-const collabs = [
-  {
-    id: 1,
-    logo: flag,
-    url: "/",
-  },
-  {
-    id: 2,
-    logo: flag,
-    url: "/",
-  },
-];
+import { features, events, stats, testimonials, collabs } from "@/sampleData";
+import Crousal from "@/components/crousal/Crousal";
 
 export default function Home() {
-  const [position, setPosition] = useState(200);
-
-  useEffect(() => {
-    const interval = setTimeout(() => {
-      setPosition((position - 200) % 2400);
-      console.log(position);
-    }, 2000);
-
-    return () => clearTimeout(interval);
-  }, [position]);
-
   return (
     <>
       <Head>
@@ -267,11 +141,7 @@ export default function Home() {
           </SimpleGrid>
         </Box>
 
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
+        <Box as="section" my={["20px", "30px", "40px"]}>
           <Heading
             as="h1"
             size={["md", "lg", "xl"]}
@@ -281,7 +151,7 @@ export default function Home() {
             Collaborators
           </Heading>
           <Box>
-            <Stack direction="row" gap={["40px", "60px", "80px"]}>
+            <Crousal totalItems={11} itemWidth={100} gap={60}>
               {collabs.map((item) => {
                 return (
                   <Box key={item.id} w="100px" flex="none">
@@ -294,7 +164,7 @@ export default function Home() {
                   </Box>
                 );
               })}
-            </Stack>
+            </Crousal>
           </Box>
         </Box>
 
