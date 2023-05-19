@@ -23,7 +23,7 @@ const FeatureCard = ({
       gap="10"
     >
       <Box>
-        <Image src={image} alt="Caffe Latte" />
+        <Image src={image} alt="Caffe Latte" borderRadius="15px" />
       </Box>
 
       <Box>

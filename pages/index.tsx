@@ -1,143 +1,24 @@
-import { Box, Flex, Heading, SimpleGrid, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Stack,
+  Text,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
 import Head from "next/head";
 import { Link, Image } from "@chakra-ui/next-js";
 
-import flag from "/assets/bg/flag.jpg";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
-import { useEffect, useState } from "react";
-
-const features = [
-  {
-    id: 1,
-    featureHeading: "The heading",
-    featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
-  },
-  {
-    id: 2,
-    featureHeading: "The heading",
-    featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
-  },
-  {
-    id: 3,
-    featureHeading: "The heading",
-    featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
-  },
-];
-
-const events = [
-  {
-    id: 1,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-  {
-    id: 2,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-  {
-    id: 3,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-];
-
-const stats = [
-  {
-    id: 1,
-    count: 3000,
-    heading: "Social Drives",
-  },
-  {
-    id: 2,
-    count: 100,
-    heading: "Events",
-  },
-  {
-    id: 3,
-    count: 300,
-    heading: "Volunteers",
-  },
-  {
-    id: 4,
-    count: 50,
-    heading: "Blood Camps",
-  },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-  {
-    id: 2,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-  {
-    id: 3,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-];
-
-const collabs = [
-  {
-    id: 1,
-    logo: flag,
-    url: "/",
-  },
-  {
-    id: 2,
-    logo: flag,
-    url: "/",
-  },
-];
+import Crousal from "@/components/crousal/Crousal";
+import { features, events, stats, testimonials, collabs } from "@/sampleData";
 
 export default function Home() {
-  const [position, setPosition] = useState(200);
-
-  useEffect(() => {
-    const interval = setTimeout(() => {
-      setPosition((position - 200) % 2400);
-      console.log(position);
-    }, 2000);
-
-    return () => clearTimeout(interval);
-  }, [position]);
-
   return (
     <>
       <Head>
@@ -147,61 +28,90 @@ export default function Home() {
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
       <Box as="main">
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "150px"]}
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            my={["10px", "20px", "30px"]}
-            textAlign="center"
-          >
-            Our Focus
-          </Heading>
-          {features.map((item, index) => {
-            return (
-              <FeatureCard
-                key={item.id}
-                heading={item.featureHeading}
-                description={item.featureDesc}
-                image={item.featureImage}
-                index={index}
-              />
-            );
-          })}
-        </Box>
-
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-            my={["10px", "20px", "30px"]}
-          >
-            Our Numbers Tell the Story
-          </Heading>
+        <Box as="section" my={["20px", "30px", "40px"]}>
           <Flex
-            direction={{ base: "column", sm: "row" }}
-            justify="space-around"
+            gap="10px"
             flexWrap="wrap"
-            gap={["20px", "30px", "40px"]}
+            justify="space-between"
+            mx={["20px", "30px", "40px"]}
+            my={["20px", "30px", "40px"]}
           >
-            {stats.map((item) => {
+            <Heading as="h1" size={["md", "lg", "xl"]}>
+              Our Focus
+            </Heading>
+            <Text maxW="300px">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
+              iste magni ab odio quam.
+            </Text>
+          </Flex>
+
+          <Stack gap="40px" mx={["20px", "30px", "150px"]}>
+            {features.map((item, index) => {
               return (
-                <StatCard
+                <FeatureCard
                   key={item.id}
-                  count={item.count}
-                  heading={item.heading}
+                  heading={item.featureHeading}
+                  description={item.featureDesc}
+                  image={item.featureImage}
+                  index={index}
                 />
               );
             })}
-          </Flex>
+          </Stack>
+        </Box>
+
+        <Box
+          as="section"
+          my={["20px", "30px", "40px"]}
+          py={["10px", "20px", "30px"]}
+          bg="blackAlpha.800"
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            mb={["20px", "30px", "40px"]}
+            color="white"
+          >
+            Numbers Tell More
+          </Heading>
+
+          <Grid
+            templateRows={["repeat(3, 1fr)", "repeat(2, 1fr)"]}
+            templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]}
+            gap={4}
+            mx={["20px", "30px", "40px"]}
+          >
+            <GridItem
+              rowSpan={[1, 2]}
+              colSpan={[2, 1]}
+              bg="red.500"
+              color="white"
+              p="20px"
+            >
+              <StatCard
+                count={100000}
+                heading="Lives Impacted"
+                countColor="white"
+              />
+            </GridItem>
+            <GridItem bg="white" p="20px">
+              <StatCard
+                count={3000}
+                heading="Social Drives"
+                countColor="red.500"
+              />
+            </GridItem>
+            <GridItem bg="white" p="20px">
+              <StatCard count={100} heading="Events" countColor="red.500" />
+            </GridItem>
+            <GridItem bg="white" p="20px">
+              <StatCard count={300} heading="Volunteers" countColor="red.500" />
+            </GridItem>
+            <GridItem bg="white" p="20px">
+              <StatCard count={50} heading="Blood Camps" countColor="red.500" />
+            </GridItem>
+          </Grid>
         </Box>
 
         <Box
@@ -213,7 +123,7 @@ export default function Home() {
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            my={["10px", "20px", "30px"]}
+            mb={["20px", "30px", "40px"]}
           >
             Recent Events
           </Heading>
@@ -239,19 +149,22 @@ export default function Home() {
         <Box
           as="section"
           my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
+          py={["10px", "20px", "30px"]}
+          bg="blackAlpha.800"
+          color="white"
         >
           <Heading
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            my={["10px", "20px", "30px"]}
+            mb={["20px", "30px", "40px"]}
           >
             Testimonials
           </Heading>
           <SimpleGrid
             spacing={4}
             templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            mx={["20px", "30px", "40px"]}
           >
             {testimonials.map((item) => {
               return (
@@ -267,21 +180,17 @@ export default function Home() {
           </SimpleGrid>
         </Box>
 
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
+        <Box as="section" my={["20px", "30px", "40px"]}>
           <Heading
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            my={["10px", "20px", "30px"]}
+            mb={["20px", "30px", "40px"]}
           >
-            Collaborators
+            Our Suppoters
           </Heading>
           <Box>
-            <Stack direction="row" gap={["40px", "60px", "80px"]}>
+            <Crousal totalItems={11} itemWidth={100} gap={60}>
               {collabs.map((item) => {
                 return (
                   <Box key={item.id} w="100px" flex="none">
@@ -294,7 +203,7 @@ export default function Home() {
                   </Box>
                 );
               })}
-            </Stack>
+            </Crousal>
           </Box>
         </Box>
 
@@ -305,10 +214,15 @@ export default function Home() {
           align="center"
           p="30px"
           gap={["20px", "30px", "40px"]}
-          my={["20px", "30px", "40px"]}
+          mt={["20px", "30px", "40px"]}
           bgColor="gray.100"
         >
-          <Heading as="h2" size={["md", "lg", "xl"]} textAlign="center">
+          <Heading
+            as="h2"
+            p={["10px", "20px", "30px"]}
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+          >
             Join Our Hands, and lets develop this nation together.
           </Heading>
           <Box layerStyle="base" p="10px" borderRadius="5px">

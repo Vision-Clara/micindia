@@ -1,13 +1,26 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { AppProps } from "next/app";
 
-const StatCard = ({ count, heading }: { count: number; heading: string }) => {
+const StatCard = ({
+  count,
+  heading,
+  countColor,
+}: {
+  count: number;
+  heading: string;
+  countColor: string;
+}) => {
   return (
-    <Box textAlign="center">
-      <Text fontSize="lg">+{count}</Text>
-      <Heading as="h3" size={["sm", "md", "lg"]}>
-        {heading}
-      </Heading>
-    </Box>
+    <Flex h="full" justify="center" align="center">
+      <Box textAlign="center">
+        <Text fontSize="2xl" color={countColor}>
+          +{count}
+        </Text>
+        <Heading as="h4" size={["sm", "md", "md"]}>
+          {heading}
+        </Heading>
+      </Box>
+    </Flex>
   );
 };
 

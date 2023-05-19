@@ -12,8 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import { CalendarIcon } from "@chakra-ui/icons";
-
-import MapIcon from "../icon/MapIcon";
+import LocationIcon from "../icon/LocationIcon";
 import InstaIcon from "../icon/InstaIcon";
 import TwitterIcon from "../icon/TwitterIcon";
 import { StaticImageData } from "next/image";
@@ -71,7 +70,7 @@ const EventCard = ({
               backgroundColor="blue.500"
               color="white"
             >
-              <MapIcon color="yellow" />
+              <LocationIcon color="yellow" />
               <Text fontWeight="bold" fontSize="sm">
                 {eventLocation}
               </Text>
