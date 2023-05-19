@@ -33,9 +33,8 @@ export default function Home() {
             gap="10px"
             flexWrap="wrap"
             justify="space-between"
-            p={["10px", "20px", "30px"]}
+            mx={["20px", "30px", "40px"]}
             my={["20px", "30px", "40px"]}
-            bgColor="gray.100"
           >
             <Heading as="h1" size={["md", "lg", "xl"]}>
               Our Focus
@@ -78,33 +77,38 @@ export default function Home() {
           </Heading>
 
           <Grid
-            h="200px"
-            templateRows="repeat(2, 1fr)"
-            templateColumns="repeat(3, 1fr)"
+            templateRows={["repeat(3, 1fr)", "repeat(2, 1fr)"]}
+            templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]}
             gap={4}
             mx={["20px", "30px", "40px"]}
           >
-            <GridItem rowSpan={2} colSpan={1} bg="red.500" color="white">
+            <GridItem
+              rowSpan={[1, 2]}
+              colSpan={[2, 1]}
+              bg="red.500"
+              color="white"
+              p="20px"
+            >
               <StatCard
                 count={100000}
                 heading="Lives Impacted"
                 countColor="white"
               />
             </GridItem>
-            <GridItem bg="white">
+            <GridItem bg="white" p="20px">
               <StatCard
                 count={3000}
                 heading="Social Drives"
                 countColor="red.500"
               />
             </GridItem>
-            <GridItem bg="white">
+            <GridItem bg="white" p="20px">
               <StatCard count={100} heading="Events" countColor="red.500" />
             </GridItem>
-            <GridItem bg="white">
+            <GridItem bg="white" p="20px">
               <StatCard count={300} heading="Volunteers" countColor="red.500" />
             </GridItem>
-            <GridItem bg="white">
+            <GridItem bg="white" p="20px">
               <StatCard count={50} heading="Blood Camps" countColor="red.500" />
             </GridItem>
           </Grid>
