@@ -88,8 +88,8 @@ const Feedback = () => {
       try {
         //send feedback
         const res = await axios.post(`${API_URL}/feedback`, {
-          feedbackUser: formData.values.name,
-          feedbackType: "Website",
+          name: formData.values.name,
+          type: "Website",
           message: formData.values.message,
         });
 
