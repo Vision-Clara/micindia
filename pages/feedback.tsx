@@ -8,8 +8,9 @@ import {
   Button,
   FormErrorMessage,
   useToast,
+  Select,
 } from "@chakra-ui/react";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, ReactEventHandler, useState } from "react";
 import axios from "axios";
 
 import SuccessToast from "@/components/toast/SuccessToast";
@@ -24,17 +25,21 @@ const Feedback = () => {
   const [formData, setFormData] = useState({
     values: {
       name: "",
+      type: "",
       message: "",
     },
     errors: {
       name: "",
+      type: "",
       message: "",
     },
   });
 
   // handles input changes
   const onChangeHandler = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormData({
       values: {
@@ -56,6 +61,18 @@ const Feedback = () => {
         errors: {
           ...formData.errors,
           name: "Name is required",
+        },
+      });
+
+      return false;
+    }
+
+    if (!formData.values.type) {
+      setFormData({
+        ...formData,
+        errors: {
+          ...formData.errors,
+          type: "Please choose one",
         },
       });
 
@@ -89,7 +106,7 @@ const Feedback = () => {
         //send feedback
         const res = await axios.post(`${API_URL}/feedback`, {
           name: formData.values.name,
-          type: "Website",
+          type: formData.values.type,
           message: formData.values.message,
         });
 
@@ -115,10 +132,12 @@ const Feedback = () => {
       setFormData({
         values: {
           name: "",
+          type: "",
           message: "",
         },
         errors: {
           name: "",
+          type: "",
           message: "",
         },
       });
@@ -127,6 +146,7 @@ const Feedback = () => {
     setIsSubmitting(false);
   };
 
+  console.log(formData);
   return (
     <Box
       w={["90%", "450px", "450px"]}
@@ -152,10 +172,24 @@ const Feedback = () => {
           />
           <FormErrorMessage>{formData.errors.name}</FormErrorMessage>
         </FormControl>
+
+        <FormControl my="20px" isInvalid={formData.errors.type !== ""}>
+          <FormLabel>It's Regarding?</FormLabel>
+          <Select
+            name="type"
+            onChange={onChangeHandler}
+            placeholder="Choose One"
+          >
+            <option value="Website">Website</option>
+            <option value="MIC Organisation">MIC Organisation</option>
+          </Select>
+          <FormErrorMessage>{formData.errors.type}</FormErrorMessage>
+        </FormControl>
+
         <FormControl my="20px" isInvalid={formData.errors.message !== ""}>
-          <FormLabel>Feedback</FormLabel>
+          <FormLabel>Your Messages</FormLabel>
           <Textarea
-            placeholder="Your Feedback Please"
+            placeholder="Type you message here"
             height="200px"
             onChange={onChangeHandler}
             name="message"
@@ -163,6 +197,7 @@ const Feedback = () => {
           />
           <FormErrorMessage>{formData.errors.message}</FormErrorMessage>
         </FormControl>
+
         <Button
           type="submit"
           isLoading={isSubmitting}
