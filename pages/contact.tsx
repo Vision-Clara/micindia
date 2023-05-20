@@ -131,8 +131,6 @@ const Contact = () => {
     setIsSubmitting(false);
   };
 
-  console.log(formData);
-
   return (
     <Box as="main" my={["20px", "30px", "40px"]} mx={["20px", "30px", "100px"]}>
       <Stack spacing="50px" direction={["column", "row"]}>

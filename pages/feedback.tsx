@@ -146,7 +146,6 @@ const Feedback = () => {
     setIsSubmitting(false);
   };
 
-  console.log(formData);
   return (
     <Box
       w={["90%", "450px", "450px"]}
