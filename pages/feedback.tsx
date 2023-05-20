@@ -9,12 +9,11 @@ import {
   FormErrorMessage,
   useToast,
 } from "@chakra-ui/react";
-import SuccessToast from "@/components/toast/SuccessToast";
-import ErrorToast from "@/components/toast/ErrorToast";
 import { ChangeEvent, FormEvent, useState } from "react";
-
 import axios from "axios";
 
+import SuccessToast from "@/components/toast/SuccessToast";
+import ErrorToast from "@/components/toast/ErrorToast";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const Feedback = () => {
@@ -37,45 +36,39 @@ const Feedback = () => {
   const onChangeHandler = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData(() => {
-      return {
-        values: {
-          ...formData.values,
-          [event.target.name]: event.target.value,
-        },
-        errors: {
-          ...formData.errors,
-          [event.target.name]: "",
-        },
-      };
+    setFormData({
+      values: {
+        ...formData.values,
+        [event.target.name]: event.target.value,
+      },
+      errors: {
+        ...formData.errors,
+        [event.target.name]: "",
+      },
     });
   };
 
   // validates input values
   const validate = () => {
     if (!formData.values.name) {
-      setFormData(() => {
-        return {
-          ...formData,
-          errors: {
-            ...formData.errors,
-            name: "Name is required",
-          },
-        };
+      setFormData({
+        ...formData,
+        errors: {
+          ...formData.errors,
+          name: "Name is required",
+        },
       });
 
       return false;
     }
 
     if (!formData.values.message) {
-      setFormData(() => {
-        return {
-          ...formData,
-          errors: {
-            ...formData.errors,
-            message: "Feedback message is required",
-          },
-        };
+      setFormData({
+        ...formData,
+        errors: {
+          ...formData.errors,
+          message: "Feedback message is required",
+        },
       });
 
       return false;
@@ -101,8 +94,6 @@ const Feedback = () => {
         });
 
         toast({
-          title: res.data.message,
-          description: "Thanks for your feedback",
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -112,8 +103,6 @@ const Feedback = () => {
       } catch (error: any) {
         //show error
         toast({
-          title: error.message,
-          description: "Something went wrong",
           status: "error",
           duration: 5000,
           isClosable: true,
@@ -123,19 +112,18 @@ const Feedback = () => {
       }
 
       //reset form state
-      setFormData(() => {
-        return {
-          values: {
-            name: "",
-            message: "",
-          },
-          errors: {
-            name: "",
-            message: "",
-          },
-        };
+      setFormData({
+        values: {
+          name: "",
+          message: "",
+        },
+        errors: {
+          name: "",
+          message: "",
+        },
       });
     }
+
     setIsSubmitting(false);
   };
 

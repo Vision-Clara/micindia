@@ -8,12 +8,131 @@ import {
   Button,
   Stack,
   AspectRatio,
+  useToast,
+  FormErrorMessage,
 } from "@chakra-ui/react";
-
 import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
+import { ChangeEvent, FormEvent, useState } from "react";
+import axios from "axios";
+
 import MapIcon from "@/components/icon/MapIcon";
+import ErrorToast from "@/components/toast/ErrorToast";
+import SuccessToast from "@/components/toast/SuccessToast";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const Contact = () => {
+  const toast = useToast();
+
+  //form states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    values: {
+      name: "",
+      email: "",
+      message: "",
+    },
+    errors: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  //handles input changes
+  const onChangeHandler = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      values: {
+        ...formData.values,
+        [event.target.name]: event.target.value,
+      },
+      errors: {
+        ...formData.errors,
+        [event.target.name]: "",
+      },
+    });
+  };
+
+  //validates form data
+  const validate = () => {
+    if (!formData.values.name) {
+      setFormData({
+        ...formData,
+        errors: {
+          ...formData.errors,
+          name: "Name is required",
+        },
+      });
+
+      return false;
+    }
+
+    if (!formData.values.email) {
+      setFormData({
+        ...formData,
+        errors: {
+          ...formData.errors,
+          email: "Email is required",
+        },
+      });
+
+      return false;
+    }
+
+    if (!formData.values.message) {
+      setFormData({
+        ...formData,
+        errors: {
+          ...formData.errors,
+          message: "Message is required",
+        },
+      });
+
+      return false;
+    }
+
+    return true;
+  };
+
+  //handles form submit
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    setIsSubmitting(true);
+
+    event.preventDefault();
+    //if form data is valid
+    if (validate()) {
+      try {
+        //send message
+        const res = await axios.post(`${API_URL}/contact`, {
+          name: formData.values.name,
+          email: formData.values.email,
+          message: formData.values.message,
+        });
+
+        toast({
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+          render: () => <SuccessToast message={res.data.message} />,
+        });
+      } catch (error: any) {
+        //show error
+        toast({
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+          render: () => <ErrorToast message={error.message} />,
+        });
+      }
+    }
+    setIsSubmitting(false);
+  };
+
+  console.log(formData);
+
   return (
     <Box as="main" my={["20px", "30px", "40px"]} mx={["20px", "30px", "100px"]}>
       <Stack spacing="50px" direction={["column", "row"]}>
@@ -27,21 +146,46 @@ const Contact = () => {
           <Heading as="h2" size={["lg", "lg", "xl"]}>
             Contact Form
           </Heading>
-          <Box as="form">
-            <FormControl my="20px">
-              <FormLabel>Contact Email</FormLabel>
-              <Input type="email" placeholder="Enter your email address" />
-            </FormControl>
-            <FormControl my="20px">
+          <Box as="form" onSubmit={handleSubmit}>
+            <FormControl my="20px" isInvalid={formData.errors.name !== ""}>
               <FormLabel>Full Name</FormLabel>
-              <Input type="text" placeholder="Enter you full name" />
+              <Input
+                type="text"
+                name="name"
+                placeholder="Enter you full name"
+                value={formData.values.name}
+                onChange={onChangeHandler}
+              />
+              <FormErrorMessage>{formData.errors.name}</FormErrorMessage>
             </FormControl>
-            <FormControl my="20px">
+
+            <FormControl my="20px" isInvalid={formData.errors.email !== ""}>
+              <FormLabel>Contact Email</FormLabel>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Enter your email address"
+                value={formData.values.email}
+                onChange={onChangeHandler}
+              />
+              <FormErrorMessage>{formData.errors.email}</FormErrorMessage>
+            </FormControl>
+
+            <FormControl my="20px" isInvalid={formData.errors.message !== ""}>
               <FormLabel>Message</FormLabel>
-              <Textarea placeholder="Your Message Please" height="200px" />
+              <Textarea
+                name="message"
+                placeholder="Your Message Please"
+                height="200px"
+                value={formData.values.message}
+                onChange={onChangeHandler}
+              />
+              <FormErrorMessage>{formData.errors.message}</FormErrorMessage>
             </FormControl>
+
             <Button
-              isLoading={false}
+              type="submit"
+              isLoading={isSubmitting}
               loadingText="Submitting"
               bg="blue.500"
               color="white"
@@ -63,7 +207,7 @@ const Contact = () => {
             <Heading as="h2" my="10px" size={["lg", "lg", "xl"]}>
               Visit Our Office
             </Heading>
-            <Box>
+            <Box fontSize={["sm", "md", "md"]}>
               <Box my="2">
                 <MapIcon /> MIC 354 Ring Road, Piplya Rao Indore (M.P.)
               </Box>
