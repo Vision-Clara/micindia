@@ -174,7 +174,7 @@ const Feedback = () => {
         </FormControl>
 
         <FormControl my="20px" isInvalid={formData.errors.type !== ""}>
-          <FormLabel>It's Regarding?</FormLabel>
+          <FormLabel>It&apos;s Regarding?</FormLabel>
           <Select
             name="type"
             onChange={onChangeHandler}
