@@ -20,7 +20,6 @@ import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import { features, stats, testimonials, collabs } from "@/sampleData";
 import { Event } from "@/types";
-import banner from "@/assets/images/banner.jpg";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
