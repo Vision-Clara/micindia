@@ -1,4 +1,16 @@
 import flag from "/assets/bg/flag.jpg";
+import collab1 from "/assets/collab/aashraya.jpeg";
+import collab2 from "/assets/collab/adhikar.jpeg";
+import collab3 from "/assets/collab/gravity.jpeg";
+import collab4 from "/assets/collab/harda.jpeg";
+import collab5 from "/assets/collab/mig.jpeg";
+import collab6 from "/assets/collab/mommade.jpeg";
+import collab7 from "/assets/collab/parmarthi.jpeg";
+import collab8 from "/assets/collab/robin.png";
+import collab9 from "/assets/collab/rotract.jpeg";
+import collab10 from "/assets/collab/seg.jpeg";
+import collab11 from "/assets/collab/treasure.jpg";
+import collab12 from "/assets/collab/women.png";
 
 export const features = [
   {
@@ -114,57 +126,57 @@ export const testimonials = [
 export const collabs = [
   {
     id: 1,
-    logo: flag,
+    logo: collab1,
     url: "/",
   },
   {
     id: 2,
-    logo: flag,
+    logo: collab2,
     url: "/",
   },
   {
     id: 3,
-    logo: flag,
+    logo: collab3,
     url: "/",
   },
   {
     id: 4,
-    logo: flag,
+    logo: collab4,
     url: "/",
   },
   {
     id: 5,
-    logo: flag,
+    logo: collab5,
     url: "/",
   },
   {
     id: 6,
-    logo: flag,
+    logo: collab6,
     url: "/",
   },
   {
     id: 7,
-    logo: flag,
+    logo: collab7,
     url: "/",
   },
   {
     id: 8,
-    logo: flag,
+    logo: collab8,
     url: "/",
   },
   {
     id: 9,
-    logo: flag,
+    logo: collab9,
     url: "/",
   },
   {
     id: 10,
-    logo: flag,
+    logo: collab10,
     url: "/",
   },
   {
     id: 11,
-    logo: flag,
+    logo: collab11,
     url: "/",
   },
 ];

@@ -10,14 +10,9 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import logo from "../../assets/logo/mic_logo.jpeg";
-const REG_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSe1gnvqUkXquADmOM2uxPTxAGXxNpVIt9I7nPQkwPNeJC3_5w/formResponse?embedded=true";
-const BLOOD_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeBF5EnpXQWVHKW2KNbiVLKjp68CCrClL3HSDNzVbKRgeNngg/formResponse?embedded=true";
 
 const Navbar = () => {
   return (
@@ -59,7 +54,7 @@ const Navbar = () => {
                 },
               }}
             >
-              <Link href={BLOOD_URL}>Be a Hero</Link>
+              <Link href="/blood">Be a Hero</Link>
             </Box>
             <Box
               as="li"
@@ -71,7 +66,7 @@ const Navbar = () => {
                 },
               }}
             >
-              <Link href={REG_URL}>Join Us</Link>
+              <Link href="/join">Join Us</Link>
             </Box>
             <Box
               as="li"
@@ -107,12 +102,12 @@ const Navbar = () => {
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link href={BLOOD_URL} w="100%">
+                <Link href="/blood" w="100%">
                   Be a Hero
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link href={REG_URL} w="100%">
+                <Link href="/join" w="100%">
                   Join Us
                 </Link>
               </MenuItem>
