@@ -16,9 +16,32 @@ import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
-import { features, events, stats, testimonials, collabs } from "@/sampleData";
+import { features, stats, testimonials, collabs } from "@/sampleData";
+import { Event } from "@/types";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import axios from "axios";
 
-export default function Home() {
+export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export const getStaticProps: GetStaticProps<{
+  events: Event[];
+}> = async () => {
+  let events = [];
+
+  try {
+    const res = await axios.get(`${API_URL}/event`);
+    events = res.data.events;
+    console.log(events);
+    return { props: { events } };
+  } catch (error: any) {
+    console.log(error);
+    return { props: { events } };
+  }
+};
+
+export default function Home({
+  events,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -135,9 +158,9 @@ export default function Home() {
               return (
                 <EventCard
                   key={item.id}
-                  eventHeading={item.eventHeading}
+                  eventName={item.eventName}
                   eventDesc={item.eventDesc}
-                  eventImage={item.eventImage}
+                  eventPoster={item.eventPoster}
                   eventDate={item.eventDate}
                   eventLocation={item.eventLocation}
                 />
@@ -193,14 +216,16 @@ export default function Home() {
             <Crousal totalItems={11} itemWidth={100} gap={60}>
               {collabs.map((item) => {
                 return (
-                  <Box key={item.id} w="100px" flex="none">
-                    <Image
-                      w="full"
-                      src={item.logo}
-                      alt="collab"
-                      borderRadius="10px"
-                    ></Image>
-                  </Box>
+                  <Flex key={item.id} w="100px" flex="none" alignItems="center">
+                    <Box>
+                      <Image
+                        w="full"
+                        src={item.logo}
+                        alt="collab"
+                        borderRadius="10px"
+                      />
+                    </Box>
+                  </Flex>
                 );
               })}
             </Crousal>
@@ -223,7 +248,7 @@ export default function Home() {
             size={["md", "lg", "xl"]}
             textAlign="center"
           >
-            Join Our Hands, and lets develop this nation together.
+            Join Our Hands, and Lets Make a Change Together.
           </Heading>
           <Box layerStyle="base" p="10px" borderRadius="5px">
             <Link href="/join">JoinUs</Link>

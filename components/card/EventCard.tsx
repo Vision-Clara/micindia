@@ -15,32 +15,37 @@ import { CalendarIcon } from "@chakra-ui/icons";
 import LocationIcon from "../icon/LocationIcon";
 import InstaIcon from "../icon/InstaIcon";
 import TwitterIcon from "../icon/TwitterIcon";
-import { StaticImageData } from "next/image";
 
 const EventCard = ({
-  eventHeading,
-  eventImage,
+  eventName,
+  eventPoster,
   eventDesc,
   eventDate,
   eventLocation,
 }: {
-  eventHeading: string;
-  eventImage: StaticImageData;
+  eventName: string;
+  eventPoster: string;
   eventDesc: string;
   eventDate: string;
   eventLocation: string;
 }) => {
+  const formatedDate = new Date(eventDate).toDateString();
+
   return (
     <Card maxW="sm">
       <CardBody>
-        <Image
-          src={eventImage}
-          alt="Green double couch with wooden legs"
-          borderRadius="lg"
-        />
+        <Box position="relative" h="200">
+          <Image
+            src={eventPoster}
+            alt="mic event poster"
+            borderRadius="lg"
+            fill={true}
+          />
+        </Box>
+
         <Stack mt="6" spacing="3">
           <Heading as="h3" size={["sm", "md", "lg"]}>
-            {eventHeading}
+            {eventName}
           </Heading>
           <Text fontSize={["sm", "md", "md"]}>{eventDesc}</Text>
           <Flex gap="3">
@@ -54,9 +59,9 @@ const EventCard = ({
               backgroundColor="blue.500"
               color="white"
             >
-              <CalendarIcon boxSize={4} color="yellow" />
+              <CalendarIcon color="yellow" />
               <Text fontWeight="bold" fontSize="sm">
-                {eventDate}
+                {formatedDate}
               </Text>
             </Flex>
 
