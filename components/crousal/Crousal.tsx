@@ -26,7 +26,7 @@ const Crousal = ({
           ? (coursalRef.current.scrollLeft += effectiveItemWidth)
           : (coursalRef.current.scrollLeft = 0);
       }
-    }, 1000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
