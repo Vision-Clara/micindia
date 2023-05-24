@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { Link, Image } from "@chakra-ui/next-js";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import axios from "axios";
 
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
@@ -18,8 +20,7 @@ import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import { features, stats, testimonials, collabs } from "@/sampleData";
 import { Event } from "@/types";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import axios from "axios";
+import banner from "@/assets/images/banner.jpg";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -51,6 +52,48 @@ export default function Home({
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
       <Box as="main">
+        <Box
+          as="section"
+          position="relative"
+          h={["50vh", "80vh", "100vh"]}
+          bgImage={"url('./banner.jpg')"}
+          bgSize="cover"
+          bgPos="center"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            backgroundColor="orange.300"
+            w="90vw"
+            py={["5px", "8px", "10px"]}
+            px={["2px", "3px", "5px"]}
+            textAlign="center"
+            background="blackAlpha.600"
+            color="white"
+          >
+            Empowering Communities, <br /> Building a Better Society
+          </Heading>
+          <Heading
+            position="absolute"
+            bottom="20px"
+            left="0px"
+            as="h3"
+            size={["sm", "md", "lg"]}
+            backgroundColor="orange.300"
+            w="fit"
+            p={["10px", "12px", "15px"]}
+            textAlign="center"
+            background="blue.500"
+            color="white"
+            borderEndEndRadius="10px"
+          >
+            <i> We Rise By Lifting Others</i>
+          </Heading>
+        </Box>
+
         <Box as="section" my={["20px", "30px", "40px"]}>
           <Flex
             gap="10px"
@@ -137,37 +180,39 @@ export default function Home({
           </Grid>
         </Box>
 
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-            mb={["20px", "30px", "40px"]}
+        {events.length && (
+          <Box
+            as="section"
+            my={["20px", "30px", "40px"]}
+            mx={["20px", "30px", "40px"]}
           >
-            Recent Events
-          </Heading>
-          <SimpleGrid
-            spacing={4}
-            templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-          >
-            {events.map((item) => {
-              return (
-                <EventCard
-                  key={item.id}
-                  eventName={item.eventName}
-                  eventDesc={item.eventDesc}
-                  eventPoster={item.eventPoster}
-                  eventDate={item.eventDate}
-                  eventLocation={item.eventLocation}
-                />
-              );
-            })}
-          </SimpleGrid>
-        </Box>
+            <Heading
+              as="h1"
+              size={["md", "lg", "xl"]}
+              textAlign="center"
+              mb={["20px", "30px", "40px"]}
+            >
+              Recent Events
+            </Heading>
+            <SimpleGrid
+              spacing={4}
+              templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            >
+              {events.map((item) => {
+                return (
+                  <EventCard
+                    key={item._id}
+                    eventName={item.eventName}
+                    eventDesc={item.eventDesc}
+                    eventPoster={item.eventPoster}
+                    eventDate={item.eventDate}
+                    eventLocation={item.eventLocation}
+                  />
+                );
+              })}
+            </SimpleGrid>
+          </Box>
+        )}
 
         <Box
           as="section"

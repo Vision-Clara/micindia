@@ -1,5 +1,5 @@
 export type Event = {
-  id: string;
+  _id: string;
   eventName: string;
   eventDesc: string;
   eventPoster: string;
