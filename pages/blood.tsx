@@ -1,13 +1,13 @@
 import { AspectRatio } from "@chakra-ui/react";
 
-const REG_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSe1gnvqUkXquADmOM2uxPTxAGXxNpVIt9I7nPQkwPNeJC3_5w/formResponse?embedded=true";
+const BLOOD_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeBF5EnpXQWVHKW2KNbiVLKjp68CCrClL3HSDNzVbKRgeNngg/formResponse?embedded=true";
 
-const Join = () => {
+const Blood = () => {
   return (
     <AspectRatio ratio={10 / 10}>
       <iframe
-        src={REG_URL}
+        src={BLOOD_URL}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
@@ -16,4 +16,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default Blood;

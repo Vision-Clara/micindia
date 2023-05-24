@@ -22,7 +22,6 @@ const MIC_WHATSAPP_URL =
   "https://wa.me/918104744738?text=Hello I want to connect with MIC.";
 const NITI_URL = "https://www.niti.gov.in/";
 const MP_URL = "http://mp.gov.in/";
-//const MAP_URL = "https://goo.gl/maps/CyFRvmAWAyDYpr4s8";
 
 const Footer = () => {
   return (

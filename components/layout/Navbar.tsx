@@ -10,7 +10,6 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import logo from "../../assets/logo/mic_logo.jpeg";
@@ -55,7 +54,7 @@ const Navbar = () => {
                 },
               }}
             >
-              <Link href="/blood-donate">Be a Hero</Link>
+              <Link href="/blood">Be a Hero</Link>
             </Box>
             <Box
               as="li"
@@ -103,18 +102,18 @@ const Navbar = () => {
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link href="/about" w="100%">
-                  About Us
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/blood-donate" w="100%">
+                <Link href="/blood" w="100%">
                   Be a Hero
                 </Link>
               </MenuItem>
               <MenuItem>
                 <Link href="/join" w="100%">
                   Join Us
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/contact" w="100%">
+                  Contact Us
                 </Link>
               </MenuItem>
             </MenuList>
