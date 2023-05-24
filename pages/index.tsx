@@ -55,7 +55,7 @@ export default function Home({
         <Box
           as="section"
           position="relative"
-          h={["50vh", "80vh", "100vh"]}
+          h={["50vh", "70vh", "90vh"]}
           bgImage={"url('./banner.jpg')"}
           bgSize="cover"
           bgPos="center"
@@ -67,9 +67,9 @@ export default function Home({
             as="h1"
             size={["md", "lg", "xl"]}
             backgroundColor="orange.300"
-            w="90vw"
-            py={["5px", "8px", "10px"]}
-            px={["2px", "3px", "5px"]}
+            w="fit"
+            px={["20px", "24px", "30px"]}
+            py={["10px", "12px", "15px"]}
             textAlign="center"
             background="blackAlpha.600"
             color="white"
@@ -78,7 +78,7 @@ export default function Home({
           </Heading>
           <Heading
             position="absolute"
-            bottom="20px"
+            bottom="5vh"
             left="0px"
             as="h3"
             size={["sm", "md", "lg"]}
