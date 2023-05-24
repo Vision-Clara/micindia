@@ -10,15 +10,38 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { Link, Image } from "@chakra-ui/next-js";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import axios from "axios";
 
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
-import { features, events, stats, testimonials, collabs } from "@/sampleData";
+import { features, stats, testimonials, collabs } from "@/sampleData";
+import { Event } from "@/types";
 
-export default function Home() {
+export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export const getStaticProps: GetStaticProps<{
+  events: Event[];
+}> = async () => {
+  let events = [];
+
+  try {
+    const res = await axios.get(`${API_URL}/event`);
+    events = res.data.events;
+    console.log(events);
+    return { props: { events } };
+  } catch (error: any) {
+    console.log(error);
+    return { props: { events } };
+  }
+};
+
+export default function Home({
+  events,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -28,6 +51,48 @@ export default function Home() {
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
       <Box as="main">
+        <Box
+          as="section"
+          position="relative"
+          h={["50vh", "70vh", "90vh"]}
+          bgImage={"url('./banner.jpg')"}
+          bgSize="cover"
+          bgPos="center"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            backgroundColor="orange.300"
+            w="fit"
+            px={["20px", "24px", "30px"]}
+            py={["10px", "12px", "15px"]}
+            textAlign="center"
+            background="blackAlpha.600"
+            color="white"
+          >
+            Empowering Communities, <br /> Building a Better Society
+          </Heading>
+          <Heading
+            position="absolute"
+            bottom="5vh"
+            left="0px"
+            as="h3"
+            size={["sm", "md", "lg"]}
+            backgroundColor="orange.300"
+            w="fit"
+            p={["10px", "12px", "15px"]}
+            textAlign="center"
+            background="blue.500"
+            color="white"
+            borderEndEndRadius="10px"
+          >
+            <i> We Rise By Lifting Others</i>
+          </Heading>
+        </Box>
+
         <Box as="section" my={["20px", "30px", "40px"]}>
           <Flex
             gap="10px"
@@ -114,37 +179,39 @@ export default function Home() {
           </Grid>
         </Box>
 
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          mx={["20px", "30px", "40px"]}
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-            mb={["20px", "30px", "40px"]}
+        {events.length && (
+          <Box
+            as="section"
+            my={["20px", "30px", "40px"]}
+            mx={["20px", "30px", "40px"]}
           >
-            Recent Events
-          </Heading>
-          <SimpleGrid
-            spacing={4}
-            templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-          >
-            {events.map((item) => {
-              return (
-                <EventCard
-                  key={item.id}
-                  eventHeading={item.eventHeading}
-                  eventDesc={item.eventDesc}
-                  eventImage={item.eventImage}
-                  eventDate={item.eventDate}
-                  eventLocation={item.eventLocation}
-                />
-              );
-            })}
-          </SimpleGrid>
-        </Box>
+            <Heading
+              as="h1"
+              size={["md", "lg", "xl"]}
+              textAlign="center"
+              mb={["20px", "30px", "40px"]}
+            >
+              Recent Events
+            </Heading>
+            <SimpleGrid
+              spacing={4}
+              templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            >
+              {events.map((item) => {
+                return (
+                  <EventCard
+                    key={item._id}
+                    eventName={item.eventName}
+                    eventDesc={item.eventDesc}
+                    eventPoster={item.eventPoster}
+                    eventDate={item.eventDate}
+                    eventLocation={item.eventLocation}
+                  />
+                );
+              })}
+            </SimpleGrid>
+          </Box>
+        )}
 
         <Box
           as="section"
