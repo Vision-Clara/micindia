@@ -20,6 +20,7 @@ import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import { features, stats, testimonials, collabs } from "@/sampleData";
 import { Event } from "@/types";
+import flag from "@/assets/bg/flag.jpg";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -110,19 +111,66 @@ export default function Home({
             </Text>
           </Flex>
 
-          <Stack gap="40px" mx={["20px", "30px", "150px"]}>
+          <Flex
+            direction="row"
+            flexWrap="wrap"
+            justifyContent="center"
+            gap={["10px", "20px", "30px"]}
+            mx={["20px", "30px", "40px"]}
+          >
             {features.map((item, index) => {
               return (
-                <FeatureCard
-                  key={item.id}
-                  heading={item.featureHeading}
-                  description={item.featureDesc}
-                  image={item.featureImage}
-                  index={index}
-                />
+                <Box
+                  w={["100%", "300px", "380px"]}
+                  position="relative"
+                  overflow="hidden"
+                >
+                  <Box>
+                    <Image src={flag} alt="feature image"></Image>
+                  </Box>
+                  <Flex
+                    alignItems="center"
+                    position="absolute"
+                    top="0px"
+                    left="-100%"
+                    w="200%"
+                    h="full"
+                    sx={{
+                      transition: "all 800ms ease-in-out",
+                      ":hover, :active": {
+                        left: "0px",
+                      },
+                    }}
+                  >
+                    <Text
+                      p="10px"
+                      w="50%"
+                      h="full"
+                      background="blackAlpha.600"
+                      color="white"
+                      fontWeight="bold"
+                      size={["xs", "sm", "md"]}
+                    >
+                      {item.featureDesc}
+                    </Text>
+                    <Flex justifyContent="center" w="50%" textAlign="center">
+                      <Heading
+                        as="h4"
+                        size={["xs", "sm", "md"]}
+                        backgroundColor="orange.500"
+                        color="white"
+                        w="90%"
+                        p="10px"
+                        borderRadius="3px"
+                      >
+                        {item.featureHeading}
+                      </Heading>
+                    </Flex>
+                  </Flex>
+                </Box>
               );
             })}
-          </Stack>
+          </Flex>
         </Box>
 
         <Box
