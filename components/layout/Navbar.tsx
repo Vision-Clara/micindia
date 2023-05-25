@@ -13,8 +13,13 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import logo from "../../assets/logo/mic_logo.jpeg";
+import CustomModal from "../modal/CustomModal";
 
 const Navbar = () => {
+  const modalHandler = (onOpen: Function) => {
+    onOpen();
+  };
+
   return (
     <Flex
       as="header"
@@ -80,6 +85,7 @@ const Navbar = () => {
             >
               <Link href="/contact">Contact Us</Link>
             </Box>
+            <CustomModal />
           </Flex>
         </Box>
       </Show>
