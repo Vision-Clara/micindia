@@ -15,31 +15,52 @@ import collab12 from "/assets/collab/women.png";
 export const features = [
   {
     id: 1,
-    featureHeading: "The heading",
+    featureHeading: "Education : Let Education Lead to Enlightenment",
     featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+    featureDesc: `
+    Education, a timeless practice accepted universally, hasn't reached every family, 
+    leaving many children untouched. We strive to fulfill this fundamental need by focusing 
+    on underprivileged children's education, skill development, women empowerment, self-defense, 
+    ethics, physical activities, self-improvement sessions, personal hygiene awareness, 
+    nutritious meals, and celebrating festivals.`,
   },
   {
     id: 2,
-    featureHeading: "The heading",
+    featureHeading: "Blood Donation | May all be Healthy",
     featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+    featureDesc: `We strive for everyone's well-being and believe that good health is crucial 
+    for productive work. Donating blood can save lives, so we ensure its availability for emergencies 
+    and thalassemic patients. Our young heroes from MIC organization provide round-the-clock support 
+    to families in need of blood.`,
   },
   {
     id: 3,
-    featureHeading: "The heading",
+    featureHeading: "Old-age Care | Respect For All",
     featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+    featureDesc: `The elderly are often neglected as we prioritize youth and personal pursuits. 
+    In India, seniors will constitute over 20% of the population by 2050. Our NGO addresses healthcare, 
+    abuse, and other challenges faced by seniors at societal, state, and national levels. Through 
+    collaboration with other associations, we provide holistic support for the elderly, fostering 
+    healthier and happier lives with dignity.`,
   },
   {
     id: 4,
-    featureHeading: "The heading",
+    featureHeading: "Women Empowerment | Eye of The Nation",
     featureImage: flag,
-    featureDesc:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, nulla? Perspiciatis qui consequuntur sint sunt at sequi tenetur assumenda fugiat earum nihil corporis quis voluptatem, quas similique placeat sapiente tempora.",
+    featureDesc: `Women are the backbone of the nation, shaping the future and managing both 
+    household and business responsibilities. We salute these resilient women who stand strong, ensuring 
+    family care and self-reliance. Our mission is to empower and support all women for a brighter future, 
+    as we unite them to thrive in society.`,
+  },
+  {
+    id: 5,
+    featureHeading: "LGBTQ | Raso is the Ultimate Love.",
+    featureImage: flag,
+    featureDesc: `Love holds immense significance in every relationship 
+    and without self-love, life would lose meaning. Recognizing the rise of LGBTQ+ 
+    community and their rights, we support diverse expressions of love. Respecting the 
+    Rainbow Ensign and LGBTQ, we believe in freedom and speech for all. Our NGO offers support, 
+    counseling, and guidance, advocating that love is a fundamental feeling.`,
   },
 ];
 
