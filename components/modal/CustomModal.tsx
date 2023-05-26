@@ -22,7 +22,6 @@ function CustomModal() {
   return (
     <>
       <Box
-        as="li"
         sx={{
           transition: "all 100ms ease-in-out",
           ":hover": {
@@ -42,7 +41,7 @@ function CustomModal() {
       >
         Donate
       </Box>
-      <Modal isOpen={isOpen} onClose={onClose} size={["sm", "md", "md"]}>
+      <Modal isOpen={isOpen} onClose={onClose} size={["xs", "md", "md"]}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader textAlign="center">Scan QR To Donate</ModalHeader>

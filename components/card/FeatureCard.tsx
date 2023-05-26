@@ -1,41 +1,66 @@
 import { Image } from "@chakra-ui/next-js";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
-
 import { StaticImageData } from "next/image";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
+
+import flag from "@/assets/bg/flag.jpg";
 
 const FeatureCard = ({
-  heading,
-  description,
-  image,
-  index,
+  featureHeading,
+  featureSlogan,
+  featureDesc,
+  featureImage,
 }: {
-  heading: string;
-  description: string;
-  image: StaticImageData;
-  index: number;
+  featureHeading: string;
+  featureSlogan: string;
+  featureDesc: string;
+  featureImage: StaticImageData;
 }) => {
-  const isReverse = index % 2 === 0;
-
   return (
-    <Flex
-      direction={{ base: "column", md: isReverse ? "row-reverse" : "row" }}
-      align="center"
-      gap="10"
-    >
-      <Box>
-        <Image src={image} alt="Caffe Latte" borderRadius="15px" />
+    <Box w={["100%", "300px", "380px"]}>
+      <Box h="200px" overflow="hidden">
+        <Image src={featureImage} alt="feature image"></Image>
       </Box>
 
-      <Box>
-        <Heading as="h2" size={["md", "lg", "xl"]}>
-          {heading}
-        </Heading>
+      <Accordion defaultIndex={[0]} allowMultiple>
+        <AccordionItem>
+          <h2>
+            <AccordionButton
+              bgColor="blue.400"
+              color="white"
+              sx={{
+                transition: "all 100ms ease-in-out",
+                ":hover": {
+                  bgColor: "blue.400",
+                  color: "white",
+                },
+              }}
+              fontSize="xl"
+            >
+              <Box as="span" flex="1" textAlign="left">
+                {featureHeading} <br /> {featureSlogan}
+              </Box>
 
-        <Text py="2" fontSize={["md", "lg", "xl"]}>
-          {description}
-        </Text>
-      </Box>
-    </Flex>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel
+            pb={4}
+            textAlign="left"
+            bgColor="blue.300"
+            color="white"
+          >
+            {featureDesc}
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    </Box>
   );
 };
 

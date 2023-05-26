@@ -20,7 +20,6 @@ import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import { features, stats, testimonials, collabs } from "@/sampleData";
 import { Event } from "@/types";
-import flag from "@/assets/bg/flag.jpg";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -95,22 +94,15 @@ export default function Home({
         </Box>
 
         <Box as="section" my={["20px", "30px", "40px"]}>
-          <Flex
-            gap="10px"
-            flexWrap="wrap"
-            justify="space-between"
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
             mx={["20px", "30px", "40px"]}
             my={["20px", "30px", "40px"]}
           >
-            <Heading as="h1" size={["md", "lg", "xl"]}>
-              Our Focus
-            </Heading>
-            <Text maxW="300px">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
-              iste magni ab odio quam.
-            </Text>
-          </Flex>
-
+            Our Focus
+          </Heading>
           <Flex
             direction="row"
             flexWrap="wrap"
@@ -120,54 +112,12 @@ export default function Home({
           >
             {features.map((item, index) => {
               return (
-                <Box
-                  w={["100%", "300px", "380px"]}
-                  position="relative"
-                  overflow="hidden"
-                >
-                  <Box>
-                    <Image src={flag} alt="feature image"></Image>
-                  </Box>
-                  <Flex
-                    alignItems="center"
-                    position="absolute"
-                    top="0px"
-                    left="-100%"
-                    w="200%"
-                    h="full"
-                    sx={{
-                      transition: "all 800ms ease-in-out",
-                      ":hover, :active": {
-                        left: "0px",
-                      },
-                    }}
-                  >
-                    <Text
-                      p="10px"
-                      w="50%"
-                      h="full"
-                      background="blackAlpha.600"
-                      color="white"
-                      fontWeight="bold"
-                      size={["xs", "sm", "md"]}
-                    >
-                      {item.featureDesc}
-                    </Text>
-                    <Flex justifyContent="center" w="50%" textAlign="center">
-                      <Heading
-                        as="h4"
-                        size={["xs", "sm", "md"]}
-                        backgroundColor="orange.500"
-                        color="white"
-                        w="90%"
-                        p="10px"
-                        borderRadius="3px"
-                      >
-                        {item.featureHeading}
-                      </Heading>
-                    </Flex>
-                  </Flex>
-                </Box>
+                <FeatureCard
+                  featureDesc={item.featureDesc}
+                  featureHeading={item.featureHeading}
+                  featureSlogan={item.featureSlogan}
+                  featureImage={item.featureImage}
+                />
               );
             })}
           </Flex>

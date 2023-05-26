@@ -9,27 +9,26 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  MenuOptionGroup,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
-import logo from "../../assets/logo/mic_logo.jpeg";
+import logo from "../../assets/logo/logo.jpeg";
 import CustomModal from "../modal/CustomModal";
+import { useState } from "react";
 
 const Navbar = () => {
-  const modalHandler = (onOpen: Function) => {
-    onOpen();
-  };
-
   return (
     <Flex
       as="header"
       justify="space-between"
       align="center"
       marginX={{ base: "10px", md: "20px" }}
+      h="80px"
     >
       <Box as="section">
         <Link href="/">
-          <Image w="120px" src={logo} alt="mic logo"></Image>
+          <Image w="65px" src={logo} alt="mic logo"></Image>
         </Link>
       </Box>
 
@@ -91,15 +90,11 @@ const Navbar = () => {
       </Show>
 
       <Hide above="md">
-        <Box as="nav">
-          <Menu>
-            <MenuButton
-              as={Button}
-              rightIcon={<ChevronDownIcon />}
-              bg="blue.500"
-              color="white"
-            >
+        <Flex as="nav" justifyContent="space-between">
+          <Menu placement="bottom">
+            <MenuButton color="blue.500">
               More
+              <ChevronDownIcon />
             </MenuButton>
             <MenuList>
               <MenuItem>
@@ -124,7 +119,11 @@ const Navbar = () => {
               </MenuItem>
             </MenuList>
           </Menu>
-        </Box>
+        </Flex>
+      </Hide>
+
+      <Hide above="md">
+        <CustomModal />
       </Hide>
     </Flex>
   );
