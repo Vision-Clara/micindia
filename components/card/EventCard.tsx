@@ -32,9 +32,9 @@ const EventCard = ({
   const formatedDate = new Date(eventDate).toDateString();
 
   return (
-    <Card maxW="sm">
+    <Card h="full">
       <CardBody>
-        <Box position="relative" h="200">
+        <Box position="relative">
           <Image
             src={eventPoster}
             alt="mic event poster"
@@ -47,7 +47,12 @@ const EventCard = ({
           <Heading as="h3" size={["sm", "md", "lg"]}>
             {eventName}
           </Heading>
-          <Text fontSize={["sm", "md", "md"]}>{eventDesc}</Text>
+          <Text fontSize={["sm", "md", "lg"]}>{eventDesc}</Text>
+        </Stack>
+      </CardBody>
+
+      <CardFooter>
+        <Stack>
           <Flex gap="3">
             <Flex
               alignItems="center"
@@ -60,7 +65,7 @@ const EventCard = ({
               color="white"
             >
               <CalendarIcon color="yellow" />
-              <Text fontWeight="bold" fontSize="sm">
+              <Text fontWeight="bold" fontSize="xs">
                 {formatedDate}
               </Text>
             </Flex>
@@ -76,28 +81,27 @@ const EventCard = ({
               color="white"
             >
               <LocationIcon color="yellow" />
-              <Text fontWeight="bold" fontSize="sm">
+              <Text fontWeight="bold" fontSize="xs">
                 {eventLocation}
               </Text>
             </Flex>
           </Flex>
+
+          <Divider />
+          <Flex gap="3" alignItems="center">
+            <Link href="/">
+              <Box>
+                <InstaIcon color="gray" />
+              </Box>
+            </Link>
+            <Link href="/">
+              <Box>
+                <TwitterIcon color="gray" />
+              </Box>
+            </Link>
+            <Text fontSize="sm">Like, Comment & Share</Text>
+          </Flex>
         </Stack>
-      </CardBody>
-      <Divider />
-      <CardFooter>
-        <Flex gap="3" alignItems="center">
-          <Link href="/">
-            <Box>
-              <InstaIcon color="gray" />
-            </Box>
-          </Link>
-          <Link href="/">
-            <Box>
-              <TwitterIcon color="gray" />
-            </Box>
-          </Link>
-          <Text fontSize="sm">Like, Comment & Share</Text>
-        </Flex>
       </CardFooter>
     </Card>
   );

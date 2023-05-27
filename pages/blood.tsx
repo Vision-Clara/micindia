@@ -5,7 +5,7 @@ const BLOOD_URL =
 
 const Blood = () => {
   return (
-    <AspectRatio ratio={10 / 10}>
+    <AspectRatio ratio={10 / 14}>
       <iframe
         src={BLOOD_URL}
         allowFullScreen

@@ -1,5 +1,5 @@
 import { Image } from "@chakra-ui/next-js";
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { AspectRatio, Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 import {
   Accordion,
@@ -23,12 +23,12 @@ const FeatureCard = ({
   featureImage: StaticImageData;
 }) => {
   return (
-    <Box w={["100%", "300px", "380px"]}>
-      <Box h={["200px", "220px", "250px"]} overflow="hidden">
+    <Box w={["100%", "350px"]}>
+      <AspectRatio ratio={10 / 6} overflow="hidden">
         <Image src={featureImage} alt="feature image" h="full"></Image>
-      </Box>
+      </AspectRatio>
 
-      <Accordion defaultIndex={[0]} allowToggle>
+      <Accordion allowToggle>
         <AccordionItem>
           <AccordionButton
             bgColor="blue.400"
@@ -40,7 +40,7 @@ const FeatureCard = ({
                 color: "white",
               },
             }}
-            fontSize="xl"
+            fontSize={["md", "lg", "xl"]}
           >
             <Box as="span" flex="1" textAlign="left">
               {featureHeading} <br /> {featureSlogan}
@@ -54,6 +54,7 @@ const FeatureCard = ({
             textAlign="left"
             bgColor="blue.300"
             color="white"
+            fontSize={["sm", "md", "lg"]}
           >
             {featureDesc}
           </AccordionPanel>
