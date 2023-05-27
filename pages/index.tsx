@@ -143,7 +143,8 @@ export default function Home({
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            mb={["20px", "30px", "40px"]}
+            mx={["20px", "30px", "40px"]}
+            my={["20px", "30px", "40px"]}
             color="white"
           >
             Achievements & Awards
@@ -174,7 +175,7 @@ export default function Home({
                       <Box borderStartRadius="5px">
                         <AwardIcon />
                       </Box>
-                      <Box fontSize={["xs", "sm", "md"]} borderEndRadius="5px">
+                      <Box fontSize={["sm", "md", "lg"]} borderEndRadius="5px">
                         <Text>{item.name}</Text>
                       </Box>
                     </Flex>
@@ -184,8 +185,16 @@ export default function Home({
           </Grid>
 
           <Grid
-            templateRows={["repeat(2, 1fr)", "repeat(1, 1fr)"]}
-            templateColumns={["repeat(2, 1fr)", "repeat(4, 1fr)"]}
+            templateRows={[
+              "repeat(2, 1fr)",
+              "repeat(2, 1fr)",
+              "repeat(1, 1fr)",
+            ]}
+            templateColumns={[
+              "repeat(2, 1fr)",
+              "repeat(2, 1fr)",
+              "repeat(4, 1fr)",
+            ]}
             gap={4}
             mx={["20px", "30px", "40px"]}
           >
@@ -256,23 +265,25 @@ export default function Home({
             >
               Testimonials
             </Heading>
-            <SimpleGrid
-              spacing={4}
-              templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            <Flex
+              justify="center"
+              flexWrap="wrap"
               mx={["20px", "30px", "40px"]}
+              gap={["10px", "20px", "30px"]}
             >
               {testimonials.map((item) => {
                 return (
-                  <TestimonialCard
-                    key={item.id}
-                    profilePhoto={item.profilePhoto}
-                    personName={item.personName}
-                    designation={item.designation}
-                    message={item.message}
-                  />
+                  <Box maxW={["100%", "300px", "350px"]}>
+                    <TestimonialCard
+                      profilePhoto={item.profilePhoto}
+                      personName={item.personName}
+                      designation={item.designation}
+                      message={item.message}
+                    />
+                  </Box>
                 );
               })}
-            </SimpleGrid>
+            </Flex>
           </Box>
         )}
 
