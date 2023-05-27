@@ -6,6 +6,7 @@ import {
   Text,
   Grid,
   GridItem,
+  Divider,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { Link, Image } from "@chakra-ui/next-js";
@@ -225,14 +226,14 @@ export default function Home({
               Recent Events
             </Heading>
             <Flex
-              justify="center"
+              justify="space-between"
               flexWrap="wrap"
               gap={["10px", "20px", "30px"]}
               mx={["20px", "30px", "40px"]}
             >
               {events.map((item) => {
                 return (
-                  <Box maxW={["100%", "300px", "350px"]}>
+                  <Box maxW={["100%", "350px", "380px"]}>
                     <EventCard
                       key={item._id}
                       eventName={item.eventName}
@@ -252,7 +253,7 @@ export default function Home({
         {testimonials.length !== 0 && (
           <Box
             as="section"
-            my={["20px", "30px", "40px"]}
+            mt={["20px", "30px", "40px"]}
             py={["10px", "20px", "30px"]}
             bg="blackAlpha.800"
             color="white"
@@ -261,12 +262,12 @@ export default function Home({
               as="h1"
               size={["md", "lg", "xl"]}
               textAlign="center"
-              mb={["20px", "30px", "40px"]}
+              my={["20px", "30px", "40px"]}
             >
               Testimonials
             </Heading>
             <Flex
-              justify="center"
+              justify="space-between"
               flexWrap="wrap"
               mx={["20px", "30px", "40px"]}
               gap={["10px", "20px", "30px"]}
@@ -286,6 +287,52 @@ export default function Home({
             </Flex>
           </Box>
         )}
+
+        {/* join section */}
+        <Box as="section" bg="blackAlpha.800">
+          <Flex
+            align="center"
+            justify="space-between"
+            gap="30px"
+            flexWrap="wrap"
+            mx={["20px", "30px", "40px"]}
+            py="30px"
+          >
+            <Text
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+              fontSize={["2xl", "4xl"]}
+              fontWeight="extrabold"
+            >
+              Together, We Can Change the World!
+            </Text>
+            <Box>
+              <Link
+                mx="auto"
+                w="150px"
+                px="20px"
+                py="15px"
+                border="1px"
+                borderColor="red.500"
+                bgColor="red.500"
+                color="white"
+                cursor="pointer"
+                mt="20px"
+                sx={{
+                  transition: "all 100ms ease-in-out",
+                  ":hover": {
+                    bgColor: "white",
+                    color: "red.500",
+                  },
+                }}
+                fontSize={["lg", "xl", "3xl"]}
+                href="/join"
+              >
+                Join Us
+              </Link>
+            </Box>
+          </Flex>
+        </Box>
 
         {/* supporters section */}
         <Box as="section" my={["20px", "30px", "40px"]}>
@@ -315,46 +362,6 @@ export default function Home({
               })}
             </Crousal>
           </Box>
-        </Box>
-
-        {/* join section */}
-        <Box
-          as="section"
-          p="30px"
-          mt={["20px", "30px", "40px"]}
-          bgColor="gray.300"
-          color="gray.800"
-        >
-          <Flex align="center" justify="center" gap="30px" flexWrap="wrap">
-            <Text fontSize={["lg", "xl", "3xl"]} textAlign="center">
-              Together, We Can Change the World!
-            </Text>
-            <Box>
-              <Link
-                mx="auto"
-                w="150px"
-                px="20px"
-                py="15px"
-                border="1px"
-                borderColor="blue.500"
-                bgColor="blue.500"
-                color="white"
-                cursor="pointer"
-                mt="20px"
-                sx={{
-                  transition: "all 100ms ease-in-out",
-                  ":hover": {
-                    bgColor: "white",
-                    color: "blue.500",
-                  },
-                }}
-                fontSize={["lg", "xl", "3xl"]}
-                href="/join"
-              >
-                Join Us
-              </Link>
-            </Box>
-          </Flex>
         </Box>
       </Box>
     </>

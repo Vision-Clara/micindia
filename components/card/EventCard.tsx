@@ -34,7 +34,7 @@ const EventCard = ({
   return (
     <Card h="full">
       <CardBody>
-        <Box position="relative" h="200">
+        <Box position="relative">
           <Image
             src={eventPoster}
             alt="mic event poster"
