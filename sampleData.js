@@ -88,6 +88,53 @@ export const features = [
   },
 ];
 
+export const achievements = [
+  {
+    id: 1,
+    name: "Social Hero 2019 Award for outstanding contribution to society.",
+  },
+  {
+    id: 2,
+    name: "MY FM Award in the field of best social welfare organisation.",
+  },
+  {
+    id: 3,
+    name: "Covid Warrior Award, Honoured by EK Kadam Sanstha ",
+  },
+  {
+    id: 4,
+    name: "Indore Award in the field of Social Work 2020",
+  },
+  {
+    id: 5,
+    name: "Aabhaar Award for frontline Hero Covid-19 help in Madhya Pradesh.",
+  },
+  {
+    id: 6,
+    name: "Honoured for managing G20 SUBMIT - Indore Traffic Mitra, by Mayor Indore Pushyamitra Bhargava",
+  },
+  {
+    id: 7,
+    name: "Honoured by Punyati Welfare society and Abhyas Mandal on the occasion of Women's day",
+  },
+  {
+    id: 8,
+    name: "Token of appreciation by CM MP Shivraj Sigh Chouhan for outstanding contribution during Covid",
+  },
+  {
+    id: 9,
+    name: "NGO Cricket League Participation Award",
+  },
+  {
+    id: 10,
+    name: "Honoured from the Morden Group of Institutions, 95 Sutras, and SGSITS Indore.",
+  },
+  {
+    id: 11,
+    name: " Chalo Mama Event, Guest of Honour",
+  },
+];
+
 export const events = [
   {
     id: 1,
