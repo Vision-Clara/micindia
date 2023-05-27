@@ -215,11 +215,7 @@ export default function Home({
 
         {/* events section */}
         {events.length !== 0 && (
-          <Box
-            as="section"
-            my={["20px", "30px", "40px"]}
-            mx={["20px", "30px", "40px"]}
-          >
+          <Box as="section" my={["20px", "30px", "40px"]}>
             <Heading
               as="h1"
               size={["md", "lg", "xl"]}
@@ -228,23 +224,27 @@ export default function Home({
             >
               Recent Events
             </Heading>
-            <SimpleGrid
-              spacing={4}
-              templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            <Flex
+              justify="center"
+              flexWrap="wrap"
+              gap={["10px", "20px", "30px"]}
+              mx={["20px", "30px", "40px"]}
             >
               {events.map((item) => {
                 return (
-                  <EventCard
-                    key={item._id}
-                    eventName={item.eventName}
-                    eventDesc={item.eventDesc}
-                    eventPoster={item.eventPoster}
-                    eventDate={item.eventDate}
-                    eventLocation={item.eventLocation}
-                  />
+                  <Box maxW={["100%", "300px", "350px"]}>
+                    <EventCard
+                      key={item._id}
+                      eventName={item.eventName}
+                      eventDesc={item.eventDesc}
+                      eventPoster={item.eventPoster}
+                      eventDate={item.eventDate}
+                      eventLocation={item.eventLocation}
+                    />
+                  </Box>
                 );
               })}
-            </SimpleGrid>
+            </Flex>
           </Box>
         )}
 
@@ -333,8 +333,8 @@ export default function Home({
               <Link
                 mx="auto"
                 w="150px"
-                px="30px"
-                py="20px"
+                px="20px"
+                py="15px"
                 border="1px"
                 borderColor="blue.500"
                 bgColor="blue.500"
