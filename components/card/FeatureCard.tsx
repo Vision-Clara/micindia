@@ -28,7 +28,7 @@ const FeatureCard = ({
         <Image src={featureImage} alt="feature image" h="full"></Image>
       </Box>
 
-      <Accordion defaultIndex={[0]} allowToggle>
+      <Accordion allowToggle>
         <AccordionItem>
           <AccordionButton
             bgColor="blue.400"
