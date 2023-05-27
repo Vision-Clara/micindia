@@ -1,32 +1,17 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  SimpleGrid,
-  Text,
-  Grid,
-  GridItem,
-  Divider,
-} from "@chakra-ui/react";
-import Head from "next/head";
+import { Box, Flex, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
 import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 import axios from "axios";
 
+import { features, testimonials, collabs, achievements } from "@/sampleData";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
-import {
-  features,
-  stats,
-  testimonials,
-  collabs,
-  achievements,
-} from "@/sampleData";
-import { Event } from "@/types";
 import AwardIcon from "@/components/icon/AwardIcon";
+import { Event } from "@/types";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -38,7 +23,7 @@ export const getStaticProps: GetStaticProps<{
   try {
     const res = await axios.get(`${API_URL}/event`);
     events = res.data.events;
-    console.log(events);
+
     return { props: { events } };
   } catch (error: any) {
     console.log(error);
@@ -167,6 +152,8 @@ export default function Home({
             columnGap="40px"
             rowGap={["10px", "10px", "20px"]}
             mb={["20px", "30px", "40px"]}
+            h={["250px", "300px", "500px"]}
+            overflow={["scroll", "scroll", "hidden"]}
           >
             {achievements &&
               achievements.map((item) => {
@@ -233,9 +220,8 @@ export default function Home({
             >
               {events.map((item) => {
                 return (
-                  <Box maxW={["100%", "350px", "380px"]}>
+                  <Box maxW={["100%", "350px", "380px"]} key={item._id}>
                     <EventCard
-                      key={item._id}
                       eventName={item.eventName}
                       eventDesc={item.eventDesc}
                       eventPoster={item.eventPoster}
@@ -274,7 +260,7 @@ export default function Home({
             >
               {testimonials.map((item) => {
                 return (
-                  <Box maxW={["100%", "300px", "350px"]}>
+                  <Box maxW={["100%", "300px", "350px"]} key={item.id}>
                     <TestimonialCard
                       profilePhoto={item.profilePhoto}
                       personName={item.personName}
