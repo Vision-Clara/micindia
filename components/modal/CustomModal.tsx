@@ -11,6 +11,7 @@ import {
   useDisclosure,
   Box,
   Text,
+  StyleProps,
 } from "@chakra-ui/react";
 
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";

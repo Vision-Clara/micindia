@@ -10,12 +10,13 @@ import {
   MenuList,
   MenuItem,
   MenuOptionGroup,
+  MenuGroup,
+  Divider,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import logo from "../../assets/logo/logo.jpeg";
 import CustomModal from "../modal/CustomModal";
-import { useState } from "react";
 
 const Navbar = () => {
   return (
@@ -93,9 +94,10 @@ const Navbar = () => {
         <Flex as="nav" justifyContent="space-between">
           <Menu>
             <MenuButton color="blue.500">
-              More
+              Menu
               <ChevronDownIcon />
             </MenuButton>
+
             <MenuList>
               <MenuItem>
                 <Link href="/" w="100%">
@@ -117,10 +119,9 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </MenuItem>
+              <Divider />
               <MenuItem>
-                <Link href="/donate" w="100%">
-                  Donate
-                </Link>
+                <CustomModal />
               </MenuItem>
             </MenuList>
           </Menu>
