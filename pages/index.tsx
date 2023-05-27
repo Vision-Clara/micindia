@@ -1,31 +1,17 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  SimpleGrid,
-  Text,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
-import Head from "next/head";
+import { Box, Flex, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
 import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 import axios from "axios";
 
+import { features, testimonials, collabs, achievements } from "@/sampleData";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
-import {
-  features,
-  stats,
-  testimonials,
-  collabs,
-  achievements,
-} from "@/sampleData";
-import { Event } from "@/types";
 import AwardIcon from "@/components/icon/AwardIcon";
+import { Event } from "@/types";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -37,7 +23,7 @@ export const getStaticProps: GetStaticProps<{
   try {
     const res = await axios.get(`${API_URL}/event`);
     events = res.data.events;
-    console.log(events);
+
     return { props: { events } };
   } catch (error: any) {
     console.log(error);
@@ -143,7 +129,8 @@ export default function Home({
             as="h1"
             size={["md", "lg", "xl"]}
             textAlign="center"
-            mb={["20px", "30px", "40px"]}
+            mx={["20px", "30px", "40px"]}
+            my={["20px", "30px", "40px"]}
             color="white"
           >
             Achievements & Awards
@@ -165,6 +152,8 @@ export default function Home({
             columnGap="40px"
             rowGap={["10px", "10px", "20px"]}
             mb={["20px", "30px", "40px"]}
+            h={["250px", "300px", "500px"]}
+            overflow={["scroll", "scroll", "hidden"]}
           >
             {achievements &&
               achievements.map((item) => {
@@ -174,7 +163,7 @@ export default function Home({
                       <Box borderStartRadius="5px">
                         <AwardIcon />
                       </Box>
-                      <Box fontSize={["xs", "sm", "md"]} borderEndRadius="5px">
+                      <Box fontSize={["sm", "md", "lg"]} borderEndRadius="5px">
                         <Text>{item.name}</Text>
                       </Box>
                     </Flex>
@@ -184,8 +173,16 @@ export default function Home({
           </Grid>
 
           <Grid
-            templateRows={["repeat(2, 1fr)", "repeat(1, 1fr)"]}
-            templateColumns={["repeat(2, 1fr)", "repeat(4, 1fr)"]}
+            templateRows={[
+              "repeat(2, 1fr)",
+              "repeat(2, 1fr)",
+              "repeat(1, 1fr)",
+            ]}
+            templateColumns={[
+              "repeat(2, 1fr)",
+              "repeat(2, 1fr)",
+              "repeat(4, 1fr)",
+            ]}
             gap={4}
             mx={["20px", "30px", "40px"]}
           >
@@ -206,11 +203,7 @@ export default function Home({
 
         {/* events section */}
         {events.length !== 0 && (
-          <Box
-            as="section"
-            my={["20px", "30px", "40px"]}
-            mx={["20px", "30px", "40px"]}
-          >
+          <Box as="section" my={["20px", "30px", "40px"]}>
             <Heading
               as="h1"
               size={["md", "lg", "xl"]}
@@ -219,23 +212,26 @@ export default function Home({
             >
               Recent Events
             </Heading>
-            <SimpleGrid
-              spacing={4}
-              templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            <Flex
+              justify="space-between"
+              flexWrap="wrap"
+              gap={["10px", "20px", "30px"]}
+              mx={["20px", "30px", "40px"]}
             >
               {events.map((item) => {
                 return (
-                  <EventCard
-                    key={item._id}
-                    eventName={item.eventName}
-                    eventDesc={item.eventDesc}
-                    eventPoster={item.eventPoster}
-                    eventDate={item.eventDate}
-                    eventLocation={item.eventLocation}
-                  />
+                  <Box maxW={["100%", "350px", "380px"]} key={item._id}>
+                    <EventCard
+                      eventName={item.eventName}
+                      eventDesc={item.eventDesc}
+                      eventPoster={item.eventPoster}
+                      eventDate={item.eventDate}
+                      eventLocation={item.eventLocation}
+                    />
+                  </Box>
                 );
               })}
-            </SimpleGrid>
+            </Flex>
           </Box>
         )}
 
@@ -243,7 +239,7 @@ export default function Home({
         {testimonials.length !== 0 && (
           <Box
             as="section"
-            my={["20px", "30px", "40px"]}
+            mt={["20px", "30px", "40px"]}
             py={["10px", "20px", "30px"]}
             bg="blackAlpha.800"
             color="white"
@@ -252,29 +248,77 @@ export default function Home({
               as="h1"
               size={["md", "lg", "xl"]}
               textAlign="center"
-              mb={["20px", "30px", "40px"]}
+              my={["20px", "30px", "40px"]}
             >
               Testimonials
             </Heading>
-            <SimpleGrid
-              spacing={4}
-              templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            <Flex
+              justify="space-between"
+              flexWrap="wrap"
               mx={["20px", "30px", "40px"]}
+              gap={["10px", "20px", "30px"]}
             >
               {testimonials.map((item) => {
                 return (
-                  <TestimonialCard
-                    key={item.id}
-                    profilePhoto={item.profilePhoto}
-                    personName={item.personName}
-                    designation={item.designation}
-                    message={item.message}
-                  />
+                  <Box maxW={["100%", "300px", "350px"]} key={item.id}>
+                    <TestimonialCard
+                      profilePhoto={item.profilePhoto}
+                      personName={item.personName}
+                      designation={item.designation}
+                      message={item.message}
+                    />
+                  </Box>
                 );
               })}
-            </SimpleGrid>
+            </Flex>
           </Box>
         )}
+
+        {/* join section */}
+        <Box as="section" bg="blackAlpha.800">
+          <Flex
+            align="center"
+            justify="space-between"
+            gap="30px"
+            flexWrap="wrap"
+            mx={["20px", "30px", "40px"]}
+            py="30px"
+          >
+            <Text
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+              fontSize={["2xl", "4xl"]}
+              fontWeight="extrabold"
+            >
+              Together, We Can Change the World!
+            </Text>
+            <Box>
+              <Link
+                mx="auto"
+                w="150px"
+                px="20px"
+                py="15px"
+                border="1px"
+                borderColor="red.500"
+                bgColor="red.500"
+                color="white"
+                cursor="pointer"
+                mt="20px"
+                sx={{
+                  transition: "all 100ms ease-in-out",
+                  ":hover": {
+                    bgColor: "white",
+                    color: "red.500",
+                  },
+                }}
+                fontSize={["lg", "xl", "3xl"]}
+                href="/join"
+              >
+                Join Us
+              </Link>
+            </Box>
+          </Flex>
+        </Box>
 
         {/* supporters section */}
         <Box as="section" my={["20px", "30px", "40px"]}>
@@ -304,46 +348,6 @@ export default function Home({
               })}
             </Crousal>
           </Box>
-        </Box>
-
-        {/* join section */}
-        <Box
-          as="section"
-          p="30px"
-          mt={["20px", "30px", "40px"]}
-          bgColor="gray.300"
-          color="gray.800"
-        >
-          <Flex align="center" justify="center" gap="30px" flexWrap="wrap">
-            <Text fontSize={["lg", "xl", "3xl"]} textAlign="center">
-              Together, We Can Change the World!
-            </Text>
-            <Box>
-              <Link
-                mx="auto"
-                w="150px"
-                px="30px"
-                py="20px"
-                border="1px"
-                borderColor="blue.500"
-                bgColor="blue.500"
-                color="white"
-                cursor="pointer"
-                mt="20px"
-                sx={{
-                  transition: "all 100ms ease-in-out",
-                  ":hover": {
-                    bgColor: "white",
-                    color: "blue.500",
-                  },
-                }}
-                fontSize={["lg", "xl", "3xl"]}
-                href="/join"
-              >
-                Join Us
-              </Link>
-            </Box>
-          </Flex>
         </Box>
       </Box>
     </>

@@ -24,7 +24,7 @@ const TestimonialCard = ({
   message: string;
 }) => {
   return (
-    <Card maxW="sm" boxShadow="md">
+    <Card boxShadow="md">
       <CardBody textAlign="center">
         <Stack mt="6" spacing="3">
           <Flex flexDir="column" gap="30px">

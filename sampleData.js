@@ -90,11 +90,11 @@ export const features = [
 export const achievements = [
   {
     id: 1,
-    name: "Social Hero 2019 Award for outstanding contribution to society.",
+    name: " Indore Award in the field of Social Work 2020 ",
   },
   {
     id: 2,
-    name: "MY FM Award in the field of best social welfare organisation.",
+    name: " Honoured for managing G20 SUMMIT Indore Traffic Mitra, by Mayor Pushyamitra Bhargava ",
   },
   {
     id: 3,
@@ -102,7 +102,7 @@ export const achievements = [
   },
   {
     id: 4,
-    name: "Indore Award in the field of Social Work 2020",
+    name: "Social Hero 2019 Award for outstanding contribution to society.",
   },
   {
     id: 5,
@@ -110,7 +110,7 @@ export const achievements = [
   },
   {
     id: 6,
-    name: "Honoured for managing G20 SUBMIT - Indore Traffic Mitra, by Mayor Indore Pushyamitra Bhargava",
+    name: "MY FM Award in the field of best social welfare organisation.",
   },
   {
     id: 7,
@@ -118,7 +118,7 @@ export const achievements = [
   },
   {
     id: 8,
-    name: "Token of appreciation by CM MP Shivraj Sigh Chouhan for outstanding contribution during Covid",
+    name: "Token of appreciation by M.P. CM Shivraj Singh for outstanding contribution during Covid",
   },
   {
     id: 9,

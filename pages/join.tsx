@@ -5,7 +5,7 @@ const REG_URL =
 
 const Join = () => {
   return (
-    <AspectRatio ratio={10 / 10}>
+    <AspectRatio ratio={10 / 14}>
       <iframe
         src={REG_URL}
         allowFullScreen
