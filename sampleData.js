@@ -79,12 +79,11 @@ export const features = [
     featureHeading: "Animal Care",
     featureSlogan: "जीवेषु करुणा चापि मैत्री तेषु विधियताम्!!",
     featureImage: animal,
-    featureDesc: `Everyone has compassion and friendship with living beings. 
-    As life is an integral part of our earth, you are alive only because of the contribution of other living beings. 
-    We are dependent on nature for our basic needs as bread, clothes, and a house, but when there are no living beings
-    then all these three will not be there.  No matter which religion you belong to, somewhere you will observe that 
-    there is a sense of compassion towards living beings. Therefore, repeating what our forefathers have said, make 
-    treaties for food and water as much as possible for the protection of living beings.`,
+    featureDesc: `Compassion and friendship towards living beings are inherent in all. 
+    Life's interconnectedness with Earth and our reliance on other beings for survival 
+    highlight the importance of protecting them. Across religions, compassion towards 
+    living beings is evident. Let's heed our ancestors' advice and prioritize food and 
+    water treaties for their preservation.`,
   },
 ];
 
