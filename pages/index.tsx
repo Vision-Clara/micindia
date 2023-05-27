@@ -3,7 +3,6 @@ import {
   Flex,
   Heading,
   SimpleGrid,
-  Stack,
   Text,
   Grid,
   GridItem,
@@ -18,9 +17,15 @@ import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
-import { features, stats, testimonials, collabs } from "@/sampleData";
+import {
+  features,
+  stats,
+  testimonials,
+  collabs,
+  achievements,
+} from "@/sampleData";
 import { Event } from "@/types";
-import flag from "@/assets/bg/flag.jpg";
+import AwardIcon from "@/components/icon/AwardIcon";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -52,6 +57,7 @@ export default function Home({
         <link href="/logo.jpg" rel="icon"></link>
       </Head>
       <Box as="main">
+        {/* hero section */}
         <Box
           as="section"
           position="relative"
@@ -94,23 +100,17 @@ export default function Home({
           </Heading>
         </Box>
 
+        {/* features section */}
         <Box as="section" my={["20px", "30px", "40px"]}>
-          <Flex
-            gap="10px"
-            flexWrap="wrap"
-            justify="space-between"
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
             mx={["20px", "30px", "40px"]}
             my={["20px", "30px", "40px"]}
           >
-            <Heading as="h1" size={["md", "lg", "xl"]}>
-              Our Focus
-            </Heading>
-            <Text maxW="300px">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
-              iste magni ab odio quam.
-            </Text>
-          </Flex>
-
+            Our Focus
+          </Heading>
           <Flex
             direction="row"
             flexWrap="wrap"
@@ -120,59 +120,19 @@ export default function Home({
           >
             {features.map((item, index) => {
               return (
-                <Box
-                  w={["100%", "300px", "380px"]}
-                  position="relative"
-                  overflow="hidden"
-                >
-                  <Box>
-                    <Image src={flag} alt="feature image"></Image>
-                  </Box>
-                  <Flex
-                    alignItems="center"
-                    position="absolute"
-                    top="0px"
-                    left="-100%"
-                    w="200%"
-                    h="full"
-                    sx={{
-                      transition: "all 800ms ease-in-out",
-                      ":hover, :active": {
-                        left: "0px",
-                      },
-                    }}
-                  >
-                    <Text
-                      p="10px"
-                      w="50%"
-                      h="full"
-                      background="blackAlpha.600"
-                      color="white"
-                      fontWeight="bold"
-                      size={["xs", "sm", "md"]}
-                    >
-                      {item.featureDesc}
-                    </Text>
-                    <Flex justifyContent="center" w="50%" textAlign="center">
-                      <Heading
-                        as="h4"
-                        size={["xs", "sm", "md"]}
-                        backgroundColor="orange.500"
-                        color="white"
-                        w="90%"
-                        p="10px"
-                        borderRadius="3px"
-                      >
-                        {item.featureHeading}
-                      </Heading>
-                    </Flex>
-                  </Flex>
-                </Box>
+                <FeatureCard
+                  key={item.id}
+                  featureDesc={item.featureDesc}
+                  featureHeading={item.featureHeading}
+                  featureSlogan={item.featureSlogan}
+                  featureImage={item.featureImage}
+                />
               );
             })}
           </Flex>
         </Box>
 
+        {/* achivements */}
         <Box
           as="section"
           my={["20px", "30px", "40px"]}
@@ -186,48 +146,66 @@ export default function Home({
             mb={["20px", "30px", "40px"]}
             color="white"
           >
-            Numbers Tell More
+            Achievements & Awards
           </Heading>
 
           <Grid
-            templateRows={["repeat(3, 1fr)", "repeat(2, 1fr)"]}
-            templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)"]}
+            templateRows={[
+              "repeat(11, 1fr)",
+              "repeat(11, 1fr)",
+              "repeat(6, 1fr)",
+            ]}
+            templateColumns={[
+              "repeat(1, 1fr)",
+              "repeat(1, 1fr)",
+              "repeat(2, 1fr)",
+            ]}
+            mx={["20px", "30px", "40px"]}
+            color="white"
+            columnGap="40px"
+            rowGap={["10px", "10px", "20px"]}
+            mb={["20px", "30px", "40px"]}
+          >
+            {achievements &&
+              achievements.map((item) => {
+                return (
+                  <GridItem key={item.id}>
+                    <Flex color="white" gap="10px">
+                      <Box borderStartRadius="5px">
+                        <AwardIcon />
+                      </Box>
+                      <Box fontSize={["xs", "sm", "md"]} borderEndRadius="5px">
+                        <Text>{item.name}</Text>
+                      </Box>
+                    </Flex>
+                  </GridItem>
+                );
+              })}
+          </Grid>
+
+          <Grid
+            templateRows={["repeat(2, 1fr)", "repeat(1, 1fr)"]}
+            templateColumns={["repeat(2, 1fr)", "repeat(4, 1fr)"]}
             gap={4}
             mx={["20px", "30px", "40px"]}
           >
-            <GridItem
-              rowSpan={[1, 2]}
-              colSpan={[2, 1]}
-              bg="red.500"
-              color="white"
-              p="20px"
-            >
-              <StatCard
-                count={100000}
-                heading="Lives Impacted"
-                countColor="white"
-              />
+            <GridItem p="20px" bgColor="white">
+              <StatCard count={3000} heading="Drives" countColor="red.500" />
             </GridItem>
-            <GridItem bg="white" p="20px">
-              <StatCard
-                count={3000}
-                heading="Social Drives"
-                countColor="red.500"
-              />
-            </GridItem>
-            <GridItem bg="white" p="20px">
+            <GridItem bgColor="white" p="20px">
               <StatCard count={100} heading="Events" countColor="red.500" />
             </GridItem>
-            <GridItem bg="white" p="20px">
+            <GridItem bgColor="white" p="20px">
               <StatCard count={300} heading="Volunteers" countColor="red.500" />
             </GridItem>
-            <GridItem bg="white" p="20px">
+            <GridItem bgColor="white" p="20px">
               <StatCard count={50} heading="Blood Camps" countColor="red.500" />
             </GridItem>
           </Grid>
         </Box>
 
-        {events.length && (
+        {/* events section */}
+        {events.length !== 0 && (
           <Box
             as="section"
             my={["20px", "30px", "40px"]}
@@ -261,40 +239,44 @@ export default function Home({
           </Box>
         )}
 
-        <Box
-          as="section"
-          my={["20px", "30px", "40px"]}
-          py={["10px", "20px", "30px"]}
-          bg="blackAlpha.800"
-          color="white"
-        >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-            mb={["20px", "30px", "40px"]}
+        {/* testimonials section */}
+        {testimonials.length !== 0 && (
+          <Box
+            as="section"
+            my={["20px", "30px", "40px"]}
+            py={["10px", "20px", "30px"]}
+            bg="blackAlpha.800"
+            color="white"
           >
-            Testimonials
-          </Heading>
-          <SimpleGrid
-            spacing={4}
-            templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-            mx={["20px", "30px", "40px"]}
-          >
-            {testimonials.map((item) => {
-              return (
-                <TestimonialCard
-                  key={item.id}
-                  profilePhoto={item.profilePhoto}
-                  personName={item.personName}
-                  designation={item.designation}
-                  message={item.message}
-                />
-              );
-            })}
-          </SimpleGrid>
-        </Box>
+            <Heading
+              as="h1"
+              size={["md", "lg", "xl"]}
+              textAlign="center"
+              mb={["20px", "30px", "40px"]}
+            >
+              Testimonials
+            </Heading>
+            <SimpleGrid
+              spacing={4}
+              templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+              mx={["20px", "30px", "40px"]}
+            >
+              {testimonials.map((item) => {
+                return (
+                  <TestimonialCard
+                    key={item.id}
+                    profilePhoto={item.profilePhoto}
+                    personName={item.personName}
+                    designation={item.designation}
+                    message={item.message}
+                  />
+                );
+              })}
+            </SimpleGrid>
+          </Box>
+        )}
 
+        {/* supporters section */}
         <Box as="section" my={["20px", "30px", "40px"]}>
           <Heading
             as="h1"
@@ -324,28 +306,45 @@ export default function Home({
           </Box>
         </Box>
 
-        <Flex
+        {/* join section */}
+        <Box
           as="section"
-          direction="column"
-          justify="center"
-          align="center"
           p="30px"
-          gap={["20px", "30px", "40px"]}
           mt={["20px", "30px", "40px"]}
-          bgColor="gray.100"
+          bgColor="gray.300"
+          color="gray.800"
         >
-          <Heading
-            as="h2"
-            p={["10px", "20px", "30px"]}
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-          >
-            Join Our Hands, and Lets Make a Change Together.
-          </Heading>
-          <Box layerStyle="base" p="10px" borderRadius="5px">
-            <Link href="/join">JoinUs</Link>
-          </Box>
-        </Flex>
+          <Flex align="center" justify="center" gap="30px" flexWrap="wrap">
+            <Text fontSize={["lg", "xl", "3xl"]} textAlign="center">
+              Together, We Can Change the World!
+            </Text>
+            <Box>
+              <Link
+                mx="auto"
+                w="150px"
+                px="30px"
+                py="20px"
+                border="1px"
+                borderColor="blue.500"
+                bgColor="blue.500"
+                color="white"
+                cursor="pointer"
+                mt="20px"
+                sx={{
+                  transition: "all 100ms ease-in-out",
+                  ":hover": {
+                    bgColor: "white",
+                    color: "blue.500",
+                  },
+                }}
+                fontSize={["lg", "xl", "3xl"]}
+                href="/join"
+              >
+                Join Us
+              </Link>
+            </Box>
+          </Flex>
+        </Box>
       </Box>
     </>
   );
