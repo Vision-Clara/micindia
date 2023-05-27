@@ -3,7 +3,6 @@ import {
   Flex,
   Heading,
   SimpleGrid,
-  Stack,
   Text,
   Grid,
   GridItem,
@@ -113,6 +112,7 @@ export default function Home({
             {features.map((item, index) => {
               return (
                 <FeatureCard
+                  key={item.id}
                   featureDesc={item.featureDesc}
                   featureHeading={item.featureHeading}
                   featureSlogan={item.featureSlogan}
@@ -274,28 +274,44 @@ export default function Home({
           </Box>
         </Box>
 
-        <Flex
+        <Box
           as="section"
-          direction="column"
-          justify="center"
-          align="center"
           p="30px"
-          gap={["20px", "30px", "40px"]}
           mt={["20px", "30px", "40px"]}
-          bgColor="gray.100"
+          bgColor="gray.300"
+          color="gray.800"
         >
-          <Heading
-            as="h2"
-            p={["10px", "20px", "30px"]}
-            size={["md", "lg", "xl"]}
-            textAlign="center"
-          >
-            Join Our Hands, and Lets Make a Change Together.
-          </Heading>
-          <Box layerStyle="base" p="10px" borderRadius="5px">
-            <Link href="/join">JoinUs</Link>
-          </Box>
-        </Flex>
+          <Flex align="center" justify="center" gap="30px" flexWrap="wrap">
+            <Text fontSize={["lg", "xl", "3xl"]} textAlign="center">
+              Together, We Can Change the World!
+            </Text>
+            <Box>
+              <Link
+                mx="auto"
+                w="150px"
+                px="30px"
+                py="20px"
+                border="1px"
+                borderColor="blue.500"
+                bgColor="blue.500"
+                color="white"
+                cursor="pointer"
+                mt="20px"
+                sx={{
+                  transition: "all 100ms ease-in-out",
+                  ":hover": {
+                    bgColor: "white",
+                    color: "blue.500",
+                  },
+                }}
+                fontSize={["lg", "xl", "3xl"]}
+                href="/join"
+              >
+                Join Us
+              </Link>
+            </Box>
+          </Flex>
+        </Box>
       </Box>
     </>
   );

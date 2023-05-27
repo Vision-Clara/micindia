@@ -24,32 +24,31 @@ const FeatureCard = ({
 }) => {
   return (
     <Box w={["100%", "300px", "380px"]}>
-      <Box h="200px" overflow="hidden">
-        <Image src={featureImage} alt="feature image"></Image>
+      <Box h={["200px", "220px", "250px"]} overflow="hidden">
+        <Image src={featureImage} alt="feature image" h="full"></Image>
       </Box>
 
-      <Accordion defaultIndex={[0]} allowMultiple>
+      <Accordion defaultIndex={[0]} allowToggle>
         <AccordionItem>
-          <h2>
-            <AccordionButton
-              bgColor="blue.400"
-              color="white"
-              sx={{
-                transition: "all 100ms ease-in-out",
-                ":hover": {
-                  bgColor: "blue.400",
-                  color: "white",
-                },
-              }}
-              fontSize="xl"
-            >
-              <Box as="span" flex="1" textAlign="left">
-                {featureHeading} <br /> {featureSlogan}
-              </Box>
+          <AccordionButton
+            bgColor="blue.400"
+            color="white"
+            sx={{
+              transition: "all 100ms ease-in-out",
+              ":hover": {
+                bgColor: "blue.400",
+                color: "white",
+              },
+            }}
+            fontSize="xl"
+          >
+            <Box as="span" flex="1" textAlign="left">
+              {featureHeading} <br /> {featureSlogan}
+            </Box>
 
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
+            <AccordionIcon />
+          </AccordionButton>
+
           <AccordionPanel
             pb={4}
             textAlign="left"
