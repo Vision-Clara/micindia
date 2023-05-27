@@ -40,7 +40,7 @@ const FeatureCard = ({
                 color: "white",
               },
             }}
-            fontSize="xl"
+            fontSize={["md", "lg", "xl"]}
           >
             <Box as="span" flex="1" textAlign="left">
               {featureHeading} <br /> {featureSlogan}
@@ -54,6 +54,7 @@ const FeatureCard = ({
             textAlign="left"
             bgColor="blue.300"
             color="white"
+            fontSize={["md", "lg", "xl"]}
           >
             {featureDesc}
           </AccordionPanel>

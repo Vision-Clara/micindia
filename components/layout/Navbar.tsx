@@ -91,7 +91,7 @@ const Navbar = () => {
 
       <Hide above="md">
         <Flex as="nav" justifyContent="space-between">
-          <Menu placement="bottom">
+          <Menu>
             <MenuButton color="blue.500">
               More
               <ChevronDownIcon />
@@ -117,13 +117,14 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </MenuItem>
+              <MenuItem>
+                <Link href="/donate" w="100%">
+                  Donate
+                </Link>
+              </MenuItem>
             </MenuList>
           </Menu>
         </Flex>
-      </Hide>
-
-      <Hide above="md">
-        <CustomModal />
       </Hide>
     </Flex>
   );
