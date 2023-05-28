@@ -9,6 +9,7 @@ import {
   Divider,
   Box,
   Flex,
+  AspectRatio,
 } from "@chakra-ui/react";
 
 import { CalendarIcon } from "@chakra-ui/icons";
@@ -34,14 +35,14 @@ const EventCard = ({
   return (
     <Card h="full">
       <CardBody>
-        <Box position="relative">
+        <AspectRatio ratio={10 / 6}>
           <Image
             src={eventPoster}
             alt="mic event poster"
             borderRadius="lg"
             fill={true}
           />
-        </Box>
+        </AspectRatio>
 
         <Stack mt="6" spacing="3">
           <Heading as="h3" size={["sm", "md", "lg"]}>
