@@ -16,6 +16,7 @@ import { CalendarIcon } from "@chakra-ui/icons";
 import LocationIcon from "../icon/LocationIcon";
 import InstaIcon from "../icon/InstaIcon";
 import TwitterIcon from "../icon/TwitterIcon";
+import { useState } from "react";
 
 const EventCard = ({
   eventName,
@@ -30,7 +31,12 @@ const EventCard = ({
   eventDate: string;
   eventLocation: string;
 }) => {
+  const [isRead, setIsRead] = useState(false);
   const formatedDate = new Date(eventDate).toDateString();
+
+  const readHandler = () => {
+    setIsRead(!isRead);
+  };
 
   return (
     <Card h="full">
@@ -48,7 +54,15 @@ const EventCard = ({
           <Heading as="h3" size={["sm", "md", "lg"]}>
             {eventName}
           </Heading>
-          <Text fontSize={["sm", "md", "lg"]}>{eventDesc}</Text>
+          <Text fontSize={["sm", "md", "lg"]}>
+            {eventDesc.slice(0, 120)}
+            {isRead ? eventDesc.slice(120) : " "}
+            {!isRead && (
+              <Box as="button" color="blue.500" onClick={readHandler}>
+                Read More...
+              </Box>
+            )}
+          </Text>
         </Stack>
       </CardBody>
 
