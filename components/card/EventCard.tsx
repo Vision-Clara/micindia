@@ -57,11 +57,9 @@ const EventCard = ({
           <Text fontSize={["sm", "md", "lg"]}>
             {eventDesc.slice(0, 120)}
             {isRead ? eventDesc.slice(120) : " "}
-            {!isRead && (
-              <Box as="button" color="blue.500" onClick={readHandler}>
-                Read More...
-              </Box>
-            )}
+            <Box as="button" color="blue.500" onClick={readHandler}>
+              {!isRead ? "Read More..." : "Read Less"}
+            </Box>
           </Text>
         </Stack>
       </CardBody>
