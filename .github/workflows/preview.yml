@@ -7,8 +7,10 @@ env:
 on:
   pull_request:
     branches:
-      - develop
+      - main
     types: [opened, reopened, synchronize]
+
+  workflow_dispatch:
 
 jobs:
   Deploy-Preview:

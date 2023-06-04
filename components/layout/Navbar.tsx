@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
-import logo from "../../assets/logo/logo.jpeg";
+import logo from "../../public/logo.png";
 import CustomModal from "../modal/CustomModal";
 
 const Navbar = () => {

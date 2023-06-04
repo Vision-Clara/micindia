@@ -13,8 +13,10 @@ import Heading from "./components/Heading";
 const overrides = {
   layerStyles: {
     base: {
-      bg: "blue.500",
+      bgColor: "blue.500",
       color: "white",
+      border: "1px solid",
+      borderColor: "gray.500",
     },
   },
   fonts,
