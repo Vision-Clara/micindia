@@ -41,14 +41,14 @@ const StatCard = ({
           <Box
             as="span"
             ref={couterRef}
-            fontSize="2xl"
+            fontSize="xl"
             color={countColor}
             data-to={count}
             data-speed={countSpeed}
           >
             0
           </Box>
-          <Box as="span" fontSize={"2xl"}>
+          <Box as="span" fontSize={"xl"}>
             +
           </Box>
         </Box>

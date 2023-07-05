@@ -175,13 +175,13 @@ export default function Home({
           <Grid
             templateRows={[
               "repeat(2, 1fr)",
-              "repeat(2, 1fr)",
+              "repeat(3, 1fr)",
               "repeat(1, 1fr)",
             ]}
             templateColumns={[
               "repeat(2, 1fr)",
-              "repeat(2, 1fr)",
-              "repeat(4, 1fr)",
+              "repeat(3, 1fr)",
+              "repeat(6, 1fr)",
             ]}
             gap={4}
             mx={["20px", "30px", "40px"]}
@@ -214,6 +214,22 @@ export default function Home({
               <StatCard
                 count={50}
                 heading="Blood Camps"
+                countSpeed={50}
+                countColor="red.500"
+              />
+            </GridItem>
+            <GridItem bgColor="white" p="20px">
+              <StatCard
+                count={8}
+                heading="Cities"
+                countSpeed={50}
+                countColor="red.500"
+              />
+            </GridItem>
+            <GridItem bgColor="white" p="20px">
+              <StatCard
+                count={8}
+                heading="Years"
                 countSpeed={50}
                 countColor="red.500"
               />
