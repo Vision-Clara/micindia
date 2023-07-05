@@ -187,16 +187,36 @@ export default function Home({
             mx={["20px", "30px", "40px"]}
           >
             <GridItem p="20px" bgColor="white">
-              <StatCard count={3000} heading="Drives" countColor="red.500" />
+              <StatCard
+                count={3000}
+                countSpeed={5}
+                heading="Drives"
+                countColor="red.500"
+              />
             </GridItem>
             <GridItem bgColor="white" p="20px">
-              <StatCard count={100} heading="Events" countColor="red.500" />
+              <StatCard
+                count={100}
+                heading="Events"
+                countSpeed={50}
+                countColor="red.500"
+              />
             </GridItem>
             <GridItem bgColor="white" p="20px">
-              <StatCard count={300} heading="Volunteers" countColor="red.500" />
+              <StatCard
+                count={300}
+                heading="Volunteers"
+                countSpeed={50}
+                countColor="red.500"
+              />
             </GridItem>
             <GridItem bgColor="white" p="20px">
-              <StatCard count={50} heading="Blood Camps" countColor="red.500" />
+              <StatCard
+                count={50}
+                heading="Blood Camps"
+                countSpeed={50}
+                countColor="red.500"
+              />
             </GridItem>
           </Grid>
         </Box>
