@@ -79,6 +79,7 @@ const Navbar = () => {
                   as={Button}
                   rightIcon={<ChevronDownIcon />}
                   variant={"unstyled"}
+                  fontWeight={"normal"}
                 >
                   Our Pillers
                 </MenuButton>
@@ -166,7 +167,7 @@ const Navbar = () => {
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link href="/blood" w="100%">
+                <Link href="/about" w="100%">
                   About Us
                 </Link>
               </MenuItem>
