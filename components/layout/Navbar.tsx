@@ -28,8 +28,9 @@ const Navbar = () => {
       as="header"
       justify="space-between"
       align="center"
-      marginX={{ base: "10px", md: "20px" }}
+      paddingX={{ base: "10px", md: "20px" }}
       h="80px"
+      shadow={"md"}
     >
       <Box as="section">
         <Link href="/">

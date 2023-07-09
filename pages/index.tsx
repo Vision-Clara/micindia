@@ -11,6 +11,10 @@ import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 import { features, testimonials, collabs, achievements } from "@/sampleData";
 import FeatureCard from "@/components/card/FeatureCard";
@@ -52,47 +56,104 @@ export default function Home({
       </Head>
       <Box as="main">
         {/* hero section */}
-        <Box
-          as="section"
-          position="relative"
-          h={["50vh", "70vh", "90vh"]}
-          bgImage={"url('./banner.jpg')"}
-          bgSize="cover"
-          bgPos="center"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
+        <Swiper
+          slidesPerView={1}
+          pagination={{
+            dynamicBullets: true,
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 2500,
+          }}
+          modules={[Autoplay, Pagination]}
         >
-          <Heading
-            as="h1"
-            size={["md", "lg", "xl"]}
-            backgroundColor="orange.300"
-            w="fit"
-            px={["20px", "24px", "30px"]}
-            py={["10px", "12px", "15px"]}
-            textAlign="center"
-            background="blackAlpha.600"
-            color="white"
-          >
-            Empowering Communities, <br /> Building a Better Society
-          </Heading>
-          <Heading
-            position="absolute"
-            bottom="5vh"
-            left="0px"
-            as="h3"
-            size={["sm", "md", "lg"]}
-            backgroundColor="orange.300"
-            w="fit"
-            p={["10px", "12px", "15px"]}
-            textAlign="center"
-            background="blue.500"
-            color="white"
-            borderEndEndRadius="10px"
-          >
-            <i> We Rise By Lifting Others</i>
-          </Heading>
-        </Box>
+          <SwiperSlide>
+            <Box
+              as="section"
+              position="relative"
+              h={["50vh", "70vh", "90vh"]}
+              bgImage={"url('./banner.jpg')"}
+              bgSize="cover"
+              bgPos="center"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Heading
+                as="h1"
+                size={["md", "lg", "xl"]}
+                backgroundColor="orange.300"
+                w="fit"
+                px={["20px", "24px", "30px"]}
+                py={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blackAlpha.600"
+                color="white"
+              >
+                Empowering Communities, <br /> Building a Better Society
+              </Heading>
+              <Heading
+                position="absolute"
+                bottom="5vh"
+                left="0px"
+                as="h3"
+                size={["sm", "md", "lg"]}
+                backgroundColor="orange.300"
+                w="fit"
+                p={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blue.500"
+                color="white"
+                borderEndEndRadius="10px"
+              >
+                <i> We Rise By Lifting Others</i>
+              </Heading>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box
+              as="section"
+              position="relative"
+              h={["50vh", "70vh", "90vh"]}
+              bgImage={"url('./banner.jpg')"}
+              bgSize="cover"
+              bgPos="center"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Heading
+                as="h1"
+                size={["md", "lg", "xl"]}
+                backgroundColor="orange.300"
+                w="fit"
+                px={["20px", "24px", "30px"]}
+                py={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blackAlpha.600"
+                color="white"
+              >
+                Empowering Communities, <br /> Building a Better Society
+              </Heading>
+              <Heading
+                position="absolute"
+                bottom="5vh"
+                left="0px"
+                as="h3"
+                size={["sm", "md", "lg"]}
+                backgroundColor="orange.300"
+                w="fit"
+                p={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blue.500"
+                color="white"
+                borderEndEndRadius="10px"
+              >
+                <i> We Rise By Lifting Others</i>
+              </Heading>
+            </Box>
+          </SwiperSlide>
+        </Swiper>
 
         {/* features section */}
         <Box as="section" my={["20px", "30px", "40px"]}>
