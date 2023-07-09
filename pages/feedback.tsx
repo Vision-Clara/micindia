@@ -17,23 +17,25 @@ import SuccessToast from "@/components/toast/SuccessToast";
 import ErrorToast from "@/components/toast/ErrorToast";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+const initialFormData = {
+  values: {
+    name: "",
+    type: "",
+    message: "",
+  },
+  errors: {
+    name: "",
+    type: "",
+    message: "",
+  },
+};
+
 const Feedback = () => {
   const toast = useToast();
 
   // form states
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    values: {
-      name: "",
-      type: "",
-      message: "",
-    },
-    errors: {
-      name: "",
-      type: "",
-      message: "",
-    },
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   // handles input changes
   const onChangeHandler = (
@@ -117,6 +119,8 @@ const Feedback = () => {
           position: "top",
           render: () => <SuccessToast message={res.data.message} />,
         });
+
+        setFormData(initialFormData);
       } catch (error: any) {
         //show error
         toast({

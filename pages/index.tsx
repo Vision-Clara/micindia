@@ -1,12 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Grid,
-  GridItem,
-  HStack,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
 import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";

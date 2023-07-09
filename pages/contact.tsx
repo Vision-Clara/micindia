@@ -22,23 +22,25 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const MAP_URL =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7767585.955997126!2d73.21198140491195!3d18.08235747816146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xade6bce9e5b05c7d%3A0xadcf1a39be239e81!2sMIC%20Organisation%20India!5e0!3m2!1sen!2sin!4v1684344366065!5m2!1sen!2sin";
 
+const initialFormData = {
+  values: {
+    name: "",
+    email: "",
+    message: "",
+  },
+  errors: {
+    name: "",
+    email: "",
+    message: "",
+  },
+};
+
 const Contact = () => {
   const toast = useToast();
 
   //form states
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    values: {
-      name: "",
-      email: "",
-      message: "",
-    },
-    errors: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   //handles input changes
   const onChangeHandler = (
@@ -119,6 +121,8 @@ const Contact = () => {
           position: "top",
           render: () => <SuccessToast message={res.data.message} />,
         });
+
+        setFormData(initialFormData);
       } catch (error: any) {
         //show error
         toast({
