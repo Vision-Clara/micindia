@@ -29,7 +29,7 @@ const Navbar = () => {
     >
       <Box as="section">
         <Link href="/">
-          <Image w="65px" src={logo} alt="mic logo"></Image>
+          <Image w="65px" src={logo} alt="mic logo" priority></Image>
         </Link>
       </Box>
 
