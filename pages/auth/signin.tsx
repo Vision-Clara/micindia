@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Heading } from "@chakra-ui/layout";
+import { Link } from "@chakra-ui/next-js";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -172,6 +173,12 @@ const SignIn = () => {
         >
           Submit
         </Button>
+      </Box>
+
+      <Box py="5">
+        <Link color="blue.500" href="/auth/forgetpassword">
+          Forget your password?
+        </Link>
       </Box>
     </Box>
   );
