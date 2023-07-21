@@ -1,8 +1,8 @@
 import { Box, Flex, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
 import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { ReactElement } from "react";
 import Head from "next/head";
-import axios from "axios";
 
 import { features, testimonials, collabs, achievements } from "@/sampleData";
 import FeatureCard from "@/components/card/FeatureCard";
@@ -11,25 +11,20 @@ import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import AwardIcon from "@/components/icon/AwardIcon";
-import { Event } from "@/types";
 import Layout from "@/components/layout/user/Layout";
-import { ReactElement } from "react";
-
-export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import axiosInstance from "@/utils/axiosInstance";
+import { Event } from "@/types";
 
 export const getStaticProps: GetStaticProps<{
   events: Event[];
 }> = async () => {
-  let events = [];
-
   try {
-    const res = await axios.get(`${API_URL}/event`);
-    events = res.data.events;
+    const res = await axiosInstance.get("/event");
+    const events = res.data.events;
 
     return { props: { events } };
   } catch (error: any) {
-    console.log(error);
-    return { props: { events } };
+    return { props: { events: [] } };
   }
 };
 

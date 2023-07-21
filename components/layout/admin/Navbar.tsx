@@ -18,7 +18,7 @@ import { Image, Link } from "@chakra-ui/next-js";
 const Navbar = ({ children }: any) => {
   return (
     <>
-      <Hide above="md">
+      <Hide above="sm">
         <Flex
           as="nav"
           align="center"
@@ -48,8 +48,8 @@ const Navbar = ({ children }: any) => {
         <main>{children}</main>
       </Hide>
 
-      <Show above="md">
-        <HStack>
+      <Show above="sm">
+        <Flex>
           <Box as="nav" height="100vh" width="200px" shadow="lg">
             <Box paddingY="10px" paddingX="20px">
               <Link href="/">
@@ -105,8 +105,10 @@ const Navbar = ({ children }: any) => {
               </Box>
             </Box>
           </Box>
-          <main>{children}</main>
-        </HStack>
+          <Box as="main" flex="1">
+            <main>{children}</main>
+          </Box>
+        </Flex>
       </Show>
     </>
   );

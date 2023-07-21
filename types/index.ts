@@ -11,6 +11,16 @@ export type Event = {
   eventLocation: string;
 };
 
+export type User = {
+  _id: string;
+  name: string;
+  email: string;
+  branch: string;
+  status: string;
+  isActive: string;
+  role: string;
+};
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
