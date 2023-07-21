@@ -9,14 +9,12 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuOptionGroup,
-  MenuGroup,
   Divider,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
-import logo from "../../public/logo.png";
-import CustomModal from "../modal/CustomModal";
+import logo from "../../../public/logo.png";
+import CustomModal from "../../modal/CustomModal";
 
 const Navbar = () => {
   return (

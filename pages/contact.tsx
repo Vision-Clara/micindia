@@ -12,12 +12,13 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import axios from "axios";
 
 import MapIcon from "@/components/icon/MapIcon";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
+import Layout from "@/components/layout/user/Layout";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const MAP_URL =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7767585.955997126!2d73.21198140491195!3d18.08235747816146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xade6bce9e5b05c7d%3A0xadcf1a39be239e81!2sMIC%20Organisation%20India!5e0!3m2!1sen!2sin!4v1684344366065!5m2!1sen!2sin";
@@ -134,7 +135,7 @@ const Contact = () => {
   };
 
   return (
-    <Box as="main" my={["20px", "30px", "40px"]} mx={["20px", "30px", "100px"]}>
+    <Box my={["20px", "30px", "40px"]} mx={["20px", "30px", "100px"]}>
       <Stack spacing="50px" direction={["column", "row"]}>
         <Box
           border="1px"
@@ -241,6 +242,10 @@ const Contact = () => {
       </Stack>
     </Box>
   );
+};
+
+Contact.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Contact;

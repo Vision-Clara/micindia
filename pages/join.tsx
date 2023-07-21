@@ -1,4 +1,6 @@
+import Layout from "@/components/layout/user/Layout";
 import { AspectRatio } from "@chakra-ui/react";
+import { ReactElement } from "react";
 
 const REG_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSe1gnvqUkXquADmOM2uxPTxAGXxNpVIt9I7nPQkwPNeJC3_5w/formResponse?embedded=true";
@@ -14,6 +16,10 @@ const Join = () => {
       ></iframe>
     </AspectRatio>
   );
+};
+
+Join.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Join;

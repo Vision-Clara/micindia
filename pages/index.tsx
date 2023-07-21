@@ -12,6 +12,8 @@ import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import AwardIcon from "@/components/icon/AwardIcon";
 import { Event } from "@/types";
+import Layout from "@/components/layout/user/Layout";
+import { ReactElement } from "react";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -31,9 +33,7 @@ export const getStaticProps: GetStaticProps<{
   }
 };
 
-export default function Home({
-  events,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
@@ -42,7 +42,7 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/favicon.ico" rel="icon"></link>
       </Head>
-      <Box as="main">
+      <Box>
         {/* hero section */}
         <Box
           as="section"
@@ -352,4 +352,10 @@ export default function Home({
       </Box>
     </>
   );
-}
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default Home;

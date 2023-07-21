@@ -1,15 +1,15 @@
-import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
-import Layout from "@/components/layout/Layout";
 import "@fontsource/montserrat";
 import customTheme from "@/theme/index";
+import { AppPropsWithLayout } from "@/types";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <ChakraProvider theme={customTheme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {getLayout(<Component {...pageProps} />)}
     </ChakraProvider>
   );
 }

@@ -1,16 +1,16 @@
 // import logos and social icons
-import niti from "../../assets/logo/nitiayog-logo.png";
-import mp from "../../assets/logo/mp_logo.png";
-import insta from "../../assets/social/instagram.png";
-import twitter from "../../assets/social/twitter.png";
-import facebook from "../../assets/social/facebook.png";
-import linkedin from "../../assets/social/linkedin.png";
-import whatsapp from "../../assets/social/whatsapp.png";
+import niti from "../../../assets/logo/nitiayog-logo.png";
+import mp from "../../../assets/logo/mp_logo.png";
+import insta from "../../../assets/social/instagram.png";
+import twitter from "../../../assets/social/twitter.png";
+import facebook from "../../../assets/social/facebook.png";
+import linkedin from "../../../assets/social/linkedin.png";
+import whatsapp from "../../../assets/social/whatsapp.png";
 
 //import next components
 import { Link, Image } from "@chakra-ui/next-js";
-import { Box, Flex, Button, Heading } from "@chakra-ui/react";
-import VerifiedIcon from "../icon/VerifiedIcon";
+import { Box, Flex, Heading } from "@chakra-ui/react";
+import VerifiedIcon from "../../icon/VerifiedIcon";
 
 //Declare constants
 const MIC_INSTA_URL = "https://www.instagram.com/mic_organisation_india/";

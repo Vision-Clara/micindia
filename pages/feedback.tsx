@@ -10,11 +10,18 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
-import { ChangeEvent, FormEvent, ReactEventHandler, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  ReactElement,
+  ReactEventHandler,
+  useState,
+} from "react";
 import axios from "axios";
 
 import SuccessToast from "@/components/toast/SuccessToast";
 import ErrorToast from "@/components/toast/ErrorToast";
+import Layout from "@/components/layout/user/Layout";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const Feedback = () => {
@@ -217,6 +224,10 @@ const Feedback = () => {
       </Box>
     </Box>
   );
+};
+
+Feedback.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Feedback;
