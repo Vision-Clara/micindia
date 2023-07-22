@@ -12,15 +12,14 @@ import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import AwardIcon from "@/components/icon/AwardIcon";
 import Layout from "@/components/layout/user/Layout";
-import axiosInstance from "@/utils/axiosInstance";
 import { Event } from "@/types";
+import { getAllEvents } from "@/api/event";
 
 export const getStaticProps: GetStaticProps<{
   events: Event[];
 }> = async () => {
   try {
-    const res = await axiosInstance.get("/event");
-    const events = res.data.events;
+    const events = await getAllEvents();
 
     return { props: { events } };
   } catch (error: any) {

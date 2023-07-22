@@ -1,6 +1,7 @@
 import PasswordInput from "@/components/input/PasswordInput";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
+import axiosInstance from "@/utils/axiosInstance";
 import { Button } from "@chakra-ui/button";
 import {
   FormControl,
@@ -11,7 +12,6 @@ import { Input } from "@chakra-ui/input";
 import { Box, Heading } from "@chakra-ui/layout";
 import { Link } from "@chakra-ui/next-js";
 import { useToast } from "@chakra-ui/toast";
-import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -88,7 +88,7 @@ const SignIn = () => {
     if (validate()) {
       try {
         //send feedback
-        const res = await axios.post(`${API_URL}/auth/signin`, {
+        const res = await axiosInstance.post("/auth/signin", {
           email: formData.values.email,
           password: formData.values.password,
         });

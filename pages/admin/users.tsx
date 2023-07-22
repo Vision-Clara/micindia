@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Heading,
   Table,
   TableCaption,
   TableContainer,
@@ -14,16 +13,15 @@ import {
 import { ReactElement } from "react";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Navbar from "@/components/layout/admin/Navbar";
-import axiosInstance from "@/utils/axiosInstance";
 import { User } from "@/types";
+import { getAllUsers } from "@/api/user";
 
-// fetch all users
+// get static props
 export const getStaticProps: GetStaticProps<{
   users: User[];
 }> = async () => {
   try {
-    const res = await axiosInstance.get("/user");
-    const users = res.data.users;
+    const users = await getAllUsers();
 
     return { props: { users } };
   } catch (error: any) {
@@ -31,13 +29,14 @@ export const getStaticProps: GetStaticProps<{
   }
 };
 
+// manage users page
 const ManageUsers = ({
   users,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Box paddingX="20px" paddingY="10px">
-      <Heading>Users</Heading>
-      <Flex justify="center" paddingTop="50px">
+    <Box paddingX="20px" paddingTop="50px">
+      {/* users data table */}
+      <Flex justify="center">
         <TableContainer>
           <Table variant="simple">
             <TableCaption>Users Data</TableCaption>
@@ -46,21 +45,21 @@ const ManageUsers = ({
                 <Th color="white">Sr. No.</Th>
                 <Th color="white">Name</Th>
                 <Th color="white">Email</Th>
-                <Th color="white">Contact</Th>
                 <Th color="white">City</Th>
                 <Th color="white">Status</Th>
                 <Th color="white">isActive</Th>
+                <Th color="white">Role</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {users.map((user) => (
+              {users.map((user, index) => (
                 <Tr>
-                  <Td>{user._id}</Td>
-                  <Td>{user.email}</Td>
+                  <Td>{index + 1}</Td>
                   <Td>{user.name}</Td>
+                  <Td>{user.email}</Td>
                   <Td>{user.branch}</Td>
                   <Td>{user.status}</Td>
-                  <Td>{user.isActive}</Td>
+                  <Td>{user.isActive ? "Active" : "In Active"}</Td>
                   <Td>{user.role}</Td>
                 </Tr>
               ))}
