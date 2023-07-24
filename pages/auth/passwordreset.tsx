@@ -12,9 +12,10 @@ import { Input } from "@chakra-ui/input";
 import { Box, Heading } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
+import Layout from "@/components/layout/user/Layout";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -192,6 +193,10 @@ const PasswordReset = () => {
       </Box>
     </Box>
   );
+};
+
+PasswordReset.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default PasswordReset;
