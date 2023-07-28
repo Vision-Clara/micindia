@@ -21,7 +21,7 @@ function useForm<T>({
 
       //validate form data
       const result = validator(formData.values);
-      if (result) {
+      if (!result.success) {
         setFormData({
           ...formData,
           errors: {
@@ -29,6 +29,9 @@ function useForm<T>({
             [result.field]: result.message,
           },
         });
+
+        setIsSubmitting(false);
+        return;
       }
 
       //execute f

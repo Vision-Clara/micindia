@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 
+// Data types
 export interface Event {
   _id: string;
   eventName: string;
@@ -21,12 +22,14 @@ export interface IUser {
   role: string;
 }
 
+// API Res/Req Types
 export interface IResponseUser {
   success: boolean;
   message: string;
   user: IUser;
 }
 
+// Layout Types
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -35,6 +38,7 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
+// Form Types
 export interface IFormState<T> {
   values: T;
   errors: T;
@@ -50,6 +54,9 @@ export type TChangeEvent = ChangeEvent<
 >;
 
 export type TFormEvent = FormEvent<HTMLFormElement>;
+
+// Validation Types
+export type TValidator<T> = (formValues: T) => IValidateResult;
 
 export interface IUseFormProps<T> {
   initialFormData: IFormState<T>;
@@ -68,5 +75,3 @@ export interface IValidateResult {
   field: string;
   message: string;
 }
-
-export type TValidator<T> = (formValues: T) => IValidateResult;

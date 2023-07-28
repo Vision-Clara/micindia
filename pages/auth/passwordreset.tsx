@@ -150,7 +150,7 @@ const PasswordReset = () => {
       </Heading>
       <Box as="form" onSubmit={handleSubmit}>
         <FormControl my="20px" isInvalid={formData.errors.password !== ""}>
-          <FormLabel>Password</FormLabel>
+          <FormLabel>New Password</FormLabel>
           <PasswordInput
             onChange={onChangeHandler}
             value={formData.values.password}
@@ -162,10 +162,10 @@ const PasswordReset = () => {
           my="20px"
           isInvalid={formData.errors.confirmPassword !== ""}
         >
-          <FormLabel>Email</FormLabel>
+          <FormLabel>Confirm Password</FormLabel>
           <Input
             type="text"
-            placeholder="Enter your password again"
+            placeholder="Enter new password again"
             name="confirmPassword"
             onChange={onChangeHandler}
             value={formData.values.confirmPassword}

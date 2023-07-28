@@ -1,3 +1,4 @@
+import Layout from "@/components/layout/user/Layout";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
 import { Button } from "@chakra-ui/button";
@@ -8,10 +9,9 @@ import {
 } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Heading } from "@chakra-ui/layout";
-import { Link } from "@chakra-ui/next-js";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const initialFormData = {
@@ -151,6 +151,10 @@ const ForgetPassword = () => {
       </Box>
     </Box>
   );
+};
+
+ForgetPassword.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default ForgetPassword;

@@ -16,6 +16,7 @@ import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
 import useForm from "@/hooks/useForm";
 import { ISignUpFormData } from "@/types";
+import { isFilled } from "@/utils/validators";
 
 const initialFormData = {
   values: {
@@ -67,7 +68,7 @@ const SignIn = () => {
   };
 
   function validator(formValues: ISignUpFormData) {
-    if (!formValues.email) {
+    if (isFilled(formValues.email)) {
       return {
         success: false,
         field: "email",
@@ -75,7 +76,7 @@ const SignIn = () => {
       };
     }
 
-    if (!formValues.password) {
+    if (isFilled(formValues.password)) {
       return {
         success: false,
         field: "password",
