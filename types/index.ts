@@ -49,6 +49,15 @@ export interface ISignUpFormData {
   password: string;
 }
 
+export interface IForgetPassFormData {
+  email: string;
+}
+
+export interface IResetPassFormData {
+  password: string;
+  confirmPassword: string;
+}
+
 export type TChangeEvent = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 >;

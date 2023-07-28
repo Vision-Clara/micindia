@@ -16,8 +16,10 @@ import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import Layout from "@/components/layout/user/Layout";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { IResetPassFormData } from "@/types";
+import { isFilled } from "@/utils/validators";
+import useForm from "@/hooks/useForm";
+import { resetPassword } from "@/api/auth";
 
 const initialFormData = {
   values: {
@@ -32,106 +34,77 @@ const initialFormData = {
 
 const PasswordReset = () => {
   const toast = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, isSubmitting, onChangeHandler, handleSubmit] =
+    useForm<IResetPassFormData>({ initialFormData, validator });
+
   const router = useRouter();
   const querry = useSearchParams();
   const id = querry.get("id");
   const token = querry.get("token");
 
-  // handles input changes
-  const onChangeHandler = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      values: {
-        ...formData.values,
-        [event.target.name]: event.target.value,
-      },
-      errors: {
-        ...formData.errors,
-        [event.target.name]: "",
-      },
-    });
-  };
-
   // validates input values
-  const validate = () => {
-    if (!formData.values.password) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          password: "Password is required",
-        },
-      });
-
-      return false;
+  function validator(formValues: IResetPassFormData) {
+    if (isFilled(formValues.password)) {
+      return {
+        success: false,
+        field: "password",
+        message: "Password is required",
+      };
     }
 
-    if (!formData.values.confirmPassword) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          confirmPassword: "confirmPassword is required",
-        },
-      });
-
-      return false;
+    if (isFilled(formValues.confirmPassword)) {
+      return {
+        success: false,
+        field: "confirmPassword",
+        message: "confirmPassword is required",
+      };
     }
 
-    return true;
-  };
+    return {
+      success: true,
+      field: "",
+      message: "",
+    };
+  }
 
   // handles form submission
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    setIsSubmitting(true);
+  const onSubmit = async () => {
+    try {
+      //send feedback
+      const payload = {
+        password: formData.values.password,
+        confirmPassword: formData.values.confirmPassword,
+      };
 
-    event.preventDefault();
+      const params = {
+        id,
+        token,
+      };
 
-    //if form data is valid
-    if (validate()) {
-      try {
-        //send feedback
-        const res = await axios.post(
-          `${API_URL}/auth/reset-password/${id}/${token}`,
-          {
-            password: formData.values.password,
-            confirmPassword: formData.values.confirmPassword,
-          }
-        );
+      await resetPassword(payload, params);
 
-        toast({
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <SuccessToast message={res.data.message} />,
-        });
+      toast({
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => <SuccessToast message="Password Reset Successfully" />,
+      });
 
-        //reset form state
-        setFormData(initialFormData);
+      //navigate to login
+      router.push("/auth/signin");
+    } catch (error: any) {
+      console.log(error);
 
-        //navigate to login
-        router.push("/auth/signin");
-      } catch (error: any) {
-        console.log(error);
-
-        //show error
-        toast({
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <ErrorToast message={error.response.data.message} />,
-        });
-      }
+      //show error
+      toast({
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => <ErrorToast message={error.response.data.message} />,
+      });
     }
-
-    setIsSubmitting(false);
   };
 
   return (
@@ -148,7 +121,7 @@ const PasswordReset = () => {
       <Heading as="h2" size={["lg", "lg", "xl"]}>
         Reset Password
       </Heading>
-      <Box as="form" onSubmit={handleSubmit}>
+      <Box as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormControl my="20px" isInvalid={formData.errors.password !== ""}>
           <FormLabel>New Password</FormLabel>
           <PasswordInput

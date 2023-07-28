@@ -1,6 +1,10 @@
+import { forgetPassword } from "@/api/auth";
 import Layout from "@/components/layout/user/Layout";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
+import useForm from "@/hooks/useForm";
+import { IForgetPassFormData } from "@/types";
+import { isFilled } from "@/utils/validators";
 import { Button } from "@chakra-ui/button";
 import {
   FormControl,
@@ -10,9 +14,7 @@ import {
 import { Input } from "@chakra-ui/input";
 import { Box, Heading } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
-import axios from "axios";
-import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { ReactElement } from "react";
 
 const initialFormData = {
   values: {
@@ -25,83 +27,57 @@ const initialFormData = {
 
 const ForgetPassword = () => {
   const toast = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState(initialFormData);
-
-  // handles input changes
-  const onChangeHandler = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      values: {
-        ...formData.values,
-        [event.target.name]: event.target.value,
-      },
-      errors: {
-        ...formData.errors,
-        [event.target.name]: "",
-      },
-    });
-  };
+  const [formData, isSubmitting, onChangeHandler, handleSubmit] =
+    useForm<IForgetPassFormData>({ initialFormData, validator });
 
   // validates input values
-  const validate = () => {
-    if (!formData.values.email) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          email: "Email is required",
-        },
-      });
-
-      return false;
+  function validator(formValues: IForgetPassFormData) {
+    if (isFilled(formValues.email)) {
+      return {
+        success: false,
+        field: "email",
+        message: "Email is required",
+      };
     }
 
-    return true;
-  };
+    return {
+      success: true,
+      field: "",
+      message: "",
+    };
+  }
 
   // handles form submission
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    setIsSubmitting(true);
+  const onSubmit = async () => {
+    try {
+      //send feedback
+      const payload = {
+        email: formData.values.email,
+      };
 
-    event.preventDefault();
+      await forgetPassword(payload);
 
-    //if form data is valid
-    if (validate()) {
-      try {
-        //send feedback
-        const res = await axios.post(`${API_URL}/auth/forget-password`, {
-          email: formData.values.email,
-        });
+      toast({
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => (
+          <SuccessToast message="Password reset link has been sent to your email address" />
+        ),
+      });
+    } catch (error: any) {
+      console.log(error);
 
-        toast({
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <SuccessToast message={res.data.message} />,
-        });
-
-        //reset form state
-        setFormData(initialFormData);
-      } catch (error: any) {
-        console.log(error);
-
-        //show error
-        toast({
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <ErrorToast message={error.response.data.message} />,
-        });
-      }
+      //show error
+      toast({
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => <ErrorToast message={error.response.data.message} />,
+      });
     }
-
-    setIsSubmitting(false);
   };
 
   return (
@@ -118,7 +94,7 @@ const ForgetPassword = () => {
       <Heading as="h2" size={["lg", "lg", "xl"]}>
         Forget Password
       </Heading>
-      <Box as="form" onSubmit={handleSubmit}>
+      <Box as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormControl my="20px" isInvalid={formData.errors.email !== ""}>
           <FormLabel>Email</FormLabel>
           <Input
