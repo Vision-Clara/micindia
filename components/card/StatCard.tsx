@@ -34,13 +34,10 @@ const StatCard = ({
 
         // const progress = Math.min((timestamp - startTimestamp) / 5000, 1);
 
-        console.log(progress);
-
         countDiv.innerText = `${Math.floor(progress * count)}`;
 
         if (progress < 1) {
           window.requestAnimationFrame(step);
-          console.log("end");
         }
       };
       window.requestAnimationFrame(step);
@@ -48,17 +45,10 @@ const StatCard = ({
   });
 
   return (
-    <Flex h="full" justify="centesr" align="center">
+    <Flex h="full" justify="center" align="center">
       <Box textAlign="center">
         <Box>
-          <Box
-            as="span"
-            ref={couterRef}
-            fontSize="xl"
-            color={countColor}
-            data-to={count}
-            data-speed={countSpeed}
-          >
+          <Box as="span" ref={couterRef} fontSize="xl" color={countColor}>
             0
           </Box>
           {!isExact && (

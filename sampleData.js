@@ -157,30 +157,30 @@ export const stats = [
 ];
 
 export const testimonials = [
-  {
-    id: 1,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-  {
-    id: 2,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
-  {
-    id: 3,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  },
+  // {
+  //   id: 1,
+  //   profilePhoto: "https://bit.ly/sage-adebayo",
+  //   personName: "Segun Adebayo",
+  //   designation: "Creator, Chakra UI",
+  //   message:
+  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+  // },
+  // {
+  //   id: 2,
+  //   profilePhoto: "https://bit.ly/sage-adebayo",
+  //   personName: "Segun Adebayo",
+  //   designation: "Creator, Chakra UI",
+  //   message:
+  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+  // },
+  // {
+  //   id: 3,
+  //   profilePhoto: "https://bit.ly/sage-adebayo",
+  //   personName: "Segun Adebayo",
+  //   designation: "Creator, Chakra UI",
+  //   message:
+  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+  // },
 ];
 
 export const collabs = [
