@@ -1,4 +1,6 @@
+import Layout from "@/components/layout/user/Layout";
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
+import { ReactElement } from "react";
 
 const About = () => {
   return (
@@ -57,6 +59,10 @@ const About = () => {
       </VStack>
     </Box>
   );
+};
+
+About.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default About;
