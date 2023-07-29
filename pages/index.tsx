@@ -12,11 +12,11 @@ import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import AwardIcon from "@/components/icon/AwardIcon";
 import Layout from "@/components/layout/user/Layout";
-import { Event } from "@/types";
+import { IEvent } from "@/types";
 import { getAllEvents } from "@/api/event";
 
 export const getStaticProps: GetStaticProps<{
-  events: Event[];
+  events: IEvent[];
 }> = async () => {
   try {
     const events = await getAllEvents();

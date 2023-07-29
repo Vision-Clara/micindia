@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import { AppProps } from "next/app";
 
 // Data types
-export interface Event {
+export interface IEvent {
   _id: string;
   eventName: string;
   eventDesc: string;

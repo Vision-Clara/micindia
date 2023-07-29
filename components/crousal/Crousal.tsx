@@ -29,7 +29,7 @@ const Crousal = ({
     }, 1500);
 
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return (
     <Stack

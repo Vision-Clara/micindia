@@ -11,8 +11,7 @@ import {
 import { Input } from "@chakra-ui/input";
 import { Box, Heading } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
-import axios from "axios";
-import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import Layout from "@/components/layout/user/Layout";
