@@ -10,14 +10,7 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
-import {
-  ChangeEvent,
-  FormEvent,
-  ReactElement,
-  ReactEventHandler,
-  useState,
-} from "react";
-import axios from "axios";
+import { ReactElement } from "react";
 
 import SuccessToast from "@/components/toast/SuccessToast";
 import ErrorToast from "@/components/toast/ErrorToast";
@@ -26,7 +19,6 @@ import useForm from "@/hooks/useForm";
 import { IFeedbackFormData } from "@/types";
 import { isFilled } from "@/utils/validators";
 import { sendFeedback } from "@/api/feedback";
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const initialFormData = {
   values: {

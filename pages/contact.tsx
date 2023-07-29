@@ -12,9 +12,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
-import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
-import axios from "axios";
-
+import { ReactElement } from "react";
 import MapIcon from "@/components/icon/MapIcon";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
@@ -24,7 +22,6 @@ import { IContactFormData } from "@/types";
 import useForm from "@/hooks/useForm";
 import { isFilled, isValidEmail } from "@/utils/validators";
 import { sendMessage } from "@/api/contact";
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const initialFormData = {
   values: {
