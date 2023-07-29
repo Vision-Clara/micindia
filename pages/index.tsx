@@ -244,7 +244,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
           >
             <GridItem p="20px" bgColor="white">
               <StatCard
-                count={3000}
+                count={2000}
                 countSpeed={5}
                 heading="Drives"
                 countColor="red.500"
@@ -252,7 +252,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </GridItem>
             <GridItem bgColor="white" p="20px">
               <StatCard
-                count={100}
+                count={250}
                 heading="Events"
                 countSpeed={50}
                 countColor="red.500"
@@ -260,7 +260,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </GridItem>
             <GridItem bgColor="white" p="20px">
               <StatCard
-                count={300}
+                count={800}
                 heading="Volunteers"
                 countSpeed={50}
                 countColor="red.500"
@@ -280,6 +280,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 heading="Cities"
                 countSpeed={50}
                 countColor="red.500"
+                isExact={true}
               />
             </GridItem>
             <GridItem bgColor="white" p="20px">
@@ -288,6 +289,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 heading="Years"
                 countSpeed={50}
                 countColor="red.500"
+                isExact={true}
               />
             </GridItem>
           </Grid>

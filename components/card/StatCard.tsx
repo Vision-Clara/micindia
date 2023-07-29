@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 
 const StatCard = ({
@@ -6,36 +6,49 @@ const StatCard = ({
   countSpeed,
   heading,
   countColor,
+  isExact,
 }: {
   count: number;
   countSpeed: number;
   heading: string;
   countColor: string;
+  isExact?: boolean;
 }) => {
   const couterRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (couterRef.current != null) {
-      const countTo = Number(couterRef.current.getAttribute("data-to"));
-      const countSpeed = Number(couterRef.current.getAttribute("data-speed"));
-
-      const interval = setInterval(() => {
-        if (couterRef.current != null) {
-          const currentCount = Number(couterRef.current?.innerText);
-          if (currentCount >= countTo - 1) {
-            clearInterval(interval);
-          }
-
-          couterRef.current.innerText = String(currentCount + 1);
+    const countDiv = couterRef.current;
+    if (countDiv != null) {
+      let startTimestamp: number | null = null;
+      const step = (timestamp: number) => {
+        if (!startTimestamp) {
+          startTimestamp = timestamp;
         }
-      }, countSpeed);
 
-      return () => clearInterval(interval);
+        const progress = Math.min(
+          Math.sin(
+            Math.min((timestamp - startTimestamp) / 5000, 1) * (Math.PI / 2)
+          ),
+          1
+        );
+
+        // const progress = Math.min((timestamp - startTimestamp) / 5000, 1);
+
+        console.log(progress);
+
+        countDiv.innerText = `${Math.floor(progress * count)}`;
+
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+          console.log("end");
+        }
+      };
+      window.requestAnimationFrame(step);
     }
-  }, []);
+  });
 
   return (
-    <Flex h="full" justify="center" align="center">
+    <Flex h="full" justify="centesr" align="center">
       <Box textAlign="center">
         <Box>
           <Box
@@ -48,9 +61,11 @@ const StatCard = ({
           >
             0
           </Box>
-          <Box as="span" fontSize={"xl"}>
-            +
-          </Box>
+          {!isExact && (
+            <Box as="span" fontSize={"xl"} color={countColor}>
+              +
+            </Box>
+          )}
         </Box>
 
         <Heading as="h4" size={["sm", "md", "md"]}>
