@@ -26,25 +26,36 @@ const TestimonialCard = ({
   return (
     <Card boxShadow="md">
       <CardBody textAlign="center">
-        <Stack mt="6" spacing="3">
+        <Stack spacing="3">
           <Flex flexDir="column" gap="30px">
-            <Flex justifyContent="center">
-              <Avatar size="xl" name={personName} src={profilePhoto} />
+            <Flex
+              direction={["row", "column"]}
+              alignItems={["center"]}
+              gap="20px"
+            >
+              <Flex justifyContent="center">
+                <Avatar
+                  size={["md", "xl"]}
+                  name={personName}
+                  src={profilePhoto}
+                />
+              </Flex>
+
+              <Box fontSize={["sm", "md", "md"]}>
+                <Heading as="h3" size={["sm", "md", "lg"]}>
+                  {personName}
+                </Heading>
+                <Text>{designation}</Text>
+              </Box>
             </Flex>
 
-            <Box fontSize={["sm", "md", "md"]}>
-              <Heading as="h3" size={["sm", "md", "lg"]}>
-                {personName}
-              </Heading>
-              <Text>{designation}</Text>
-            </Box>
-
-            <Box p="20px" position="relative">
+            <Box p={["10px", "20px"]} position="relative">
               <LeftQuoteIcon
                 color="blue.500"
                 position="absolute"
                 left="0px"
                 top="0px"
+                boxSize={["15px", " 20px"]}
               />
               <Text fontSize={["sm", "md", "md"]}>{message}</Text>
               <RightQuoteIcon
@@ -52,6 +63,7 @@ const TestimonialCard = ({
                 position="absolute"
                 right="0px"
                 bottom="0px"
+                boxSize={["15px", " 20px"]}
               />
             </Box>
           </Flex>
