@@ -62,7 +62,7 @@ const ManageUsers = ({
           </Thead>
           <Tbody>
             {users.map((user, index) => (
-              <Tr>
+              <Tr key={user._id}>
                 <Td>{index + 1}</Td>
                 <Td>{user.name}</Td>
                 <Td>{user.email}</Td>
