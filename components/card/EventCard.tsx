@@ -39,7 +39,7 @@ const EventCard = ({
   };
 
   return (
-    <Card h="full">
+    <Card h="full" size={["sm", "md", "lg"]}>
       <CardBody>
         <AspectRatio ratio={10 / 6}>
           <Image
@@ -51,10 +51,10 @@ const EventCard = ({
         </AspectRatio>
 
         <Stack mt="6" spacing="3">
-          <Heading as="h3" size={["sm", "md", "lg"]}>
+          <Heading as="h3" size={["sm", "sm", "md"]}>
             {eventName}
           </Heading>
-          <Text fontSize={["sm", "md", "lg"]}>
+          <Text fontSize={["sm", "sm", "md"]}>
             {eventDesc.slice(0, 120)}
             {isRead ? eventDesc.slice(120) : " "}
             <Box as="button" color="blue.500" onClick={readHandler}>

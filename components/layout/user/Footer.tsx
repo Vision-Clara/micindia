@@ -27,7 +27,8 @@ const Footer = () => {
   return (
     <Flex
       as="footer"
-      layerStyle={"base"}
+      bgColor="blue.500"
+      color="white"
       padding={{ base: "10px", md: "20px" }}
       flexDirection={{ base: "column", md: "row" }}
       justify="space-between"
