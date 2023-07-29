@@ -44,20 +44,6 @@ export interface IFormState<T> {
   errors: T;
 }
 
-export interface ISignUpFormData {
-  email: string;
-  password: string;
-}
-
-export interface IForgetPassFormData {
-  email: string;
-}
-
-export interface IResetPassFormData {
-  password: string;
-  confirmPassword: string;
-}
-
 export type TChangeEvent = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 >;
@@ -82,5 +68,32 @@ export type TUseFormReturn<T> = [
 export interface IValidateResult {
   success: boolean;
   field: string;
+  message: string;
+}
+
+//form data types
+export interface ISignUpFormData {
+  email: string;
+  password: string;
+}
+
+export interface IForgetPassFormData {
+  email: string;
+}
+
+export interface IResetPassFormData {
+  password: string;
+  confirmPassword: string;
+}
+
+export interface IContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface IFeedbackFormData {
+  name: string;
+  type: string;
   message: string;
 }

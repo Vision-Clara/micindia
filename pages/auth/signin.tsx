@@ -68,7 +68,7 @@ const SignIn = () => {
   };
 
   function validator(formValues: ISignUpFormData) {
-    if (isFilled(formValues.email)) {
+    if (!isFilled(formValues.email)) {
       return {
         success: false,
         field: "email",
@@ -76,7 +76,7 @@ const SignIn = () => {
       };
     }
 
-    if (isFilled(formValues.password)) {
+    if (!isFilled(formValues.password)) {
       return {
         success: false,
         field: "password",

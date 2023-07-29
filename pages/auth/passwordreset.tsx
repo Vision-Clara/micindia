@@ -44,7 +44,7 @@ const PasswordReset = () => {
 
   // validates input values
   function validator(formValues: IResetPassFormData) {
-    if (isFilled(formValues.password)) {
+    if (!isFilled(formValues.password)) {
       return {
         success: false,
         field: "password",
@@ -52,7 +52,7 @@ const PasswordReset = () => {
       };
     }
 
-    if (isFilled(formValues.confirmPassword)) {
+    if (!isFilled(formValues.confirmPassword)) {
       return {
         success: false,
         field: "confirmPassword",

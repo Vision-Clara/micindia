@@ -1,3 +1,11 @@
 export const isFilled = (data: string) => {
-  return data ? false : true;
+  return data ? true : false;
 };
+
+export function isValidEmail(data: string) {
+  // Regular expression pattern for email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Test the email against the pattern and return the result
+  return emailPattern.test(data);
+}

@@ -32,7 +32,7 @@ const ForgetPassword = () => {
 
   // validates input values
   function validator(formValues: IForgetPassFormData) {
-    if (isFilled(formValues.email)) {
+    if (!isFilled(formValues.email)) {
       return {
         success: false,
         field: "email",
