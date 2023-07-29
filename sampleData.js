@@ -239,4 +239,9 @@ export const collabs = [
     logo: collab11,
     url: "/",
   },
+  {
+    id: 11,
+    logo: collab12,
+    url: "/",
+  },
 ];

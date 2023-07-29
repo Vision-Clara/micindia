@@ -102,7 +102,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               as="section"
               position="relative"
               h={["50vh", "70vh", "90vh"]}
-              bgImage={"url('./banner.jpg')"}
+              bgImage={"url('./banner2.jpg')"}
               bgSize="cover"
               bgPos="center"
               display="flex"
