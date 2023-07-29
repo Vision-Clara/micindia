@@ -1,4 +1,3 @@
-import flag from "/assets/bg/flag.jpg";
 import collab1 from "/assets/collab/aashraya.jpeg";
 import collab2 from "/assets/collab/adhikar.jpeg";
 import collab3 from "/assets/collab/gravity.jpeg";
@@ -131,36 +130,6 @@ export const achievements = [
   {
     id: 11,
     name: " Chalo Mama Event, Guest of Honour",
-  },
-];
-
-export const events = [
-  {
-    id: 1,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-  {
-    id: 2,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
-  },
-  {
-    id: 3,
-    eventHeading: "Event Heading",
-    eventImage: flag,
-    eventDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, deleniti autem necessitatibus, dicta laboriosam omnis, officia perferendis odit ut soluta deserunt tenetur in quibusdam repellat aperiam porro illum quod itaque?",
-    eventDate: "10-03-23",
-    eventLocation: "Indore",
   },
 ];
 
