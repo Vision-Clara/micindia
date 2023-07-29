@@ -14,13 +14,13 @@ import {
 import { ReactElement } from "react";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Navbar from "@/components/layout/admin/Navbar";
-import { User } from "@/types";
+import { IUser } from "@/types";
 import { getAllUsers } from "@/api/user";
 import { AddIcon } from "@chakra-ui/icons";
 
 // get static props
 export const getStaticProps: GetStaticProps<{
-  users: User[];
+  users: IUser[];
 }> = async () => {
   try {
     const users = await getAllUsers();
@@ -62,7 +62,7 @@ const ManageUsers = ({
           </Thead>
           <Tbody>
             {users.map((user, index) => (
-              <Tr>
+              <Tr key={user._id}>
                 <Td>{index + 1}</Td>
                 <Td>{user.name}</Td>
                 <Td>{user.email}</Td>
