@@ -3,7 +3,7 @@ import axiosInstance from "@/utils/axiosInstance";
 export const sendFeedback = async (payload: {
   name: string;
   type: string;
-  messsage: string;
+  message: string;
 }) => {
   const response = await axiosInstance.post("/feedback", payload);
 
