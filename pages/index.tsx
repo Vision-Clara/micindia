@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
 import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { ReactElement } from "react";
 import Head from "next/head";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,29 +16,23 @@ import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import AwardIcon from "@/components/icon/AwardIcon";
-import { Event } from "@/types";
-
-export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import Layout from "@/components/layout/user/Layout";
+import { IEvent } from "@/types";
+import { getAllEvents } from "@/api/event";
 
 export const getStaticProps: GetStaticProps<{
-  events: Event[];
+  events: IEvent[];
 }> = async () => {
-  let events = [];
-
   try {
-    const res = await axios.get(`${API_URL}/event`);
-    events = res.data.events;
+    const events = await getAllEvents();
 
     return { props: { events } };
   } catch (error: any) {
-    console.log(error);
-    return { props: { events } };
+    return { props: { events: [] } };
   }
 };
 
-export default function Home({
-  events,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
@@ -46,7 +41,7 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/favicon.ico" rel="icon"></link>
       </Head>
-      <Box as="main">
+      <Box>
         {/* hero section */}
         <Swiper
           slidesPerView={1}
@@ -449,4 +444,10 @@ export default function Home({
       </Box>
     </>
   );
-}
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default Home;

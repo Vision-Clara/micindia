@@ -2,5 +2,6 @@
   "github": {
     "enabled": false,
     "silent": true
-  }
+  },
+  "framework": "nextjs"
 }

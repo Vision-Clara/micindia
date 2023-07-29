@@ -10,12 +10,15 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
-import { ChangeEvent, FormEvent, ReactEventHandler, useState } from "react";
-import axios from "axios";
+import { ReactElement } from "react";
 
 import SuccessToast from "@/components/toast/SuccessToast";
 import ErrorToast from "@/components/toast/ErrorToast";
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import Layout from "@/components/layout/user/Layout";
+import useForm from "@/hooks/useForm";
+import { IFeedbackFormData } from "@/types";
+import { isFilled } from "@/utils/validators";
+import { sendFeedback } from "@/api/feedback";
 
 const initialFormData = {
   values: {
@@ -32,122 +35,73 @@ const initialFormData = {
 
 const Feedback = () => {
   const toast = useToast();
-
-  // form states
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState(initialFormData);
-
-  // handles input changes
-  const onChangeHandler = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      values: {
-        ...formData.values,
-        [event.target.name]: event.target.value,
-      },
-      errors: {
-        ...formData.errors,
-        [event.target.name]: "",
-      },
+  const [formData, isSubmitting, onChangeHandler, handleSubmit] =
+    useForm<IFeedbackFormData>({
+      initialFormData,
+      validator,
     });
-  };
 
   // validates input values
-  const validate = () => {
-    if (!formData.values.name) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          name: "Name is required",
-        },
-      });
-
-      return false;
+  function validator(formValues: IFeedbackFormData) {
+    if (!isFilled(formValues.name)) {
+      return {
+        success: false,
+        field: "name",
+        message: "Name is required",
+      };
     }
 
-    if (!formData.values.type) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          type: "Please choose one",
-        },
-      });
-
-      return false;
+    if (!isFilled(formValues.type)) {
+      return {
+        success: false,
+        field: "type",
+        message: "Feedback type is required",
+      };
     }
 
-    if (!formData.values.message) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          message: "Feedback message is required",
-        },
-      });
-
-      return false;
+    if (!isFilled(formValues.message)) {
+      return {
+        success: false,
+        field: "message",
+        message: "Message is required",
+      };
     }
 
-    return true;
-  };
+    return {
+      success: true,
+      field: "",
+      message: "",
+    };
+  }
 
   // handles form submission
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    setIsSubmitting(true);
+  const onSubmit = async () => {
+    try {
+      //send feedback
+      const payload = {
+        name: formData.values.name,
+        type: formData.values.type,
+        message: formData.values.message,
+      };
+      await sendFeedback(payload);
 
-    event.preventDefault();
-
-    //if form data is valid
-    if (validate()) {
-      try {
-        //send feedback
-        const res = await axios.post(`${API_URL}/feedback`, {
-          name: formData.values.name,
-          type: formData.values.type,
-          message: formData.values.message,
-        });
-
-        toast({
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <SuccessToast message={res.data.message} />,
-        });
-
-        setFormData(initialFormData);
-      } catch (error: any) {
-        //show error
-        toast({
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <ErrorToast message={error.message} />,
-        });
-      }
-
-      //reset form state
-      setFormData({
-        values: {
-          name: "",
-          type: "",
-          message: "",
-        },
-        errors: {
-          name: "",
-          type: "",
-          message: "",
-        },
+      toast({
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => <SuccessToast message="Feedback sent successfully" />,
+      });
+    } catch (error: any) {
+      //show error
+      toast({
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => <ErrorToast message={error.response.data.message} />,
       });
     }
-
-    setIsSubmitting(false);
   };
 
   return (
@@ -163,7 +117,7 @@ const Feedback = () => {
       <Heading as="h2" size={["lg", "lg", "xl"]}>
         Feedback Form
       </Heading>
-      <Box as="form" onSubmit={handleSubmit}>
+      <Box as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormControl my="20px" isInvalid={formData.errors.name !== ""}>
           <FormLabel>Full Name</FormLabel>
           <Input
@@ -182,6 +136,7 @@ const Feedback = () => {
             name="type"
             onChange={onChangeHandler}
             placeholder="Choose One"
+            value={formData.values.type}
           >
             <option value="Website">Website</option>
             <option value="MIC Organisation">MIC Organisation</option>
@@ -221,6 +176,10 @@ const Feedback = () => {
       </Box>
     </Box>
   );
+};
+
+Feedback.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Feedback;

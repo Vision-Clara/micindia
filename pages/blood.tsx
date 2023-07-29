@@ -1,4 +1,6 @@
+import Layout from "@/components/layout/user/Layout";
 import { AspectRatio } from "@chakra-ui/react";
+import { ReactElement } from "react";
 
 const BLOOD_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeBF5EnpXQWVHKW2KNbiVLKjp68CCrClL3HSDNzVbKRgeNngg/formResponse?embedded=true";
@@ -14,6 +16,10 @@ const Blood = () => {
       ></iframe>
     </AspectRatio>
   );
+};
+
+Blood.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Blood;

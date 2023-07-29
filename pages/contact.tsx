@@ -12,15 +12,16 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
-import { ChangeEvent, FormEvent, useState } from "react";
-import axios from "axios";
-
+import { ReactElement } from "react";
 import MapIcon from "@/components/icon/MapIcon";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-const MAP_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7767585.955997126!2d73.21198140491195!3d18.08235747816146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xade6bce9e5b05c7d%3A0xadcf1a39be239e81!2sMIC%20Organisation%20India!5e0!3m2!1sen!2sin!4v1684344366065!5m2!1sen!2sin";
+import Layout from "@/components/layout/user/Layout";
+import { MAP_URL } from "@/utils/constants";
+import { IContactFormData } from "@/types";
+import useForm from "@/hooks/useForm";
+import { isFilled, isValidEmail } from "@/utils/validators";
+import { sendMessage } from "@/api/contact";
 
 const initialFormData = {
   values: {
@@ -37,108 +38,85 @@ const initialFormData = {
 
 const Contact = () => {
   const toast = useToast();
-
-  //form states
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState(initialFormData);
-
-  //handles input changes
-  const onChangeHandler = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      values: {
-        ...formData.values,
-        [event.target.name]: event.target.value,
-      },
-      errors: {
-        ...formData.errors,
-        [event.target.name]: "",
-      },
+  const [formData, isSubmitting, onChangeHandler, handleSubmit] =
+    useForm<IContactFormData>({
+      initialFormData,
+      validator,
     });
-  };
 
   //validates form data
-  const validate = () => {
-    if (!formData.values.name) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          name: "Name is required",
-        },
-      });
-
-      return false;
+  function validator(formValues: IContactFormData) {
+    if (!isFilled(formValues.name)) {
+      return {
+        success: false,
+        field: "name",
+        message: "Name is required",
+      };
     }
 
-    if (!formData.values.email) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          email: "Email is required",
-        },
-      });
-
-      return false;
+    if (!isFilled(formValues.email)) {
+      return {
+        success: false,
+        field: "email",
+        message: "Email is required",
+      };
     }
 
-    if (!formData.values.message) {
-      setFormData({
-        ...formData,
-        errors: {
-          ...formData.errors,
-          message: "Message is required",
-        },
-      });
-
-      return false;
+    if (!isValidEmail(formValues.email)) {
+      return {
+        success: false,
+        field: "email",
+        message: "Invalid email",
+      };
     }
 
-    return true;
-  };
+    if (!isFilled(formValues.message)) {
+      return {
+        success: false,
+        field: "message",
+        message: "Message is required",
+      };
+    }
+
+    return {
+      success: true,
+      field: "",
+      message: "",
+    };
+  }
 
   //handles form submit
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    setIsSubmitting(true);
+  const onSubmit = async () => {
+    try {
+      //send message
+      const payload = {
+        name: formData.values.name,
+        email: formData.values.email,
+        message: formData.values.message,
+      };
+      await sendMessage(payload);
 
-    event.preventDefault();
-    //if form data is valid
-    if (validate()) {
-      try {
-        //send message
-        const res = await axios.post(`${API_URL}/contact`, {
-          name: formData.values.name,
-          email: formData.values.email,
-          message: formData.values.message,
-        });
-
-        toast({
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <SuccessToast message={res.data.message} />,
-        });
-
-        setFormData(initialFormData);
-      } catch (error: any) {
-        //show error
-        toast({
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "top",
-          render: () => <ErrorToast message={error.message} />,
-        });
-      }
+      toast({
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => <SuccessToast message="Thank you for contacting us." />,
+      });
+    } catch (error: any) {
+      //show error
+      toast({
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+        render: () => <ErrorToast message={error.response.data.message} />,
+      });
     }
-    setIsSubmitting(false);
   };
 
   return (
-    <Box as="main" my={["20px", "30px", "40px"]} mx={["20px", "30px", "100px"]}>
+    <Box my={["20px", "30px", "40px"]} mx={["20px", "30px", "100px"]}>
       <Stack spacing="50px" direction={["column", "row"]}>
         <Box
           border="1px"
@@ -150,7 +128,7 @@ const Contact = () => {
           <Heading as="h2" size={["lg", "lg", "xl"]}>
             Contact Form
           </Heading>
-          <Box as="form" onSubmit={handleSubmit}>
+          <Box as="form" onSubmit={handleSubmit(onSubmit)}>
             <FormControl my="20px" isInvalid={formData.errors.name !== ""}>
               <FormLabel>Full Name</FormLabel>
               <Input
@@ -166,7 +144,7 @@ const Contact = () => {
             <FormControl my="20px" isInvalid={formData.errors.email !== ""}>
               <FormLabel>Contact Email</FormLabel>
               <Input
-                type="email"
+                type="text"
                 name="email"
                 placeholder="Enter your email address"
                 value={formData.values.email}
@@ -245,6 +223,10 @@ const Contact = () => {
       </Stack>
     </Box>
   );
+};
+
+Contact.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Contact;

@@ -9,37 +9,35 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuOptionGroup,
-  MenuGroup,
   Divider,
-  MenuItemOption,
   MenuDivider,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
-import logo from "../../public/logo.png";
-import meri_logo from "../../assets/logo/meri_logo.png";
-import col_logo from "../../assets/logo/collective_logo.jpg";
-import CustomModal from "../modal/CustomModal";
+import logo from "../../../public/logo.png";
+import meri_logo from "../../../assets/logo/meri_logo.png";
+import col_logo from "../../../assets/logo/collective_logo.jpg";
+import CustomModal from "../../modal/CustomModal";
 
-const Navbar = () => {
+const Header = () => {
   return (
     <Flex
       as="header"
       justify="space-between"
       align="center"
       paddingX={{ base: "10px", md: "20px" }}
+      w="full"
       h="80px"
       shadow={"md"}
     >
       <Box as="section">
         <Link href="/">
-          <Image w="65px" src={logo} alt="mic logo"></Image>
+          <Image w="65px" src={logo} alt="mic logo" priority></Image>
         </Link>
       </Box>
 
       <Show above="md">
-        <Box as="nav">
+        <Box as="nav" zIndex={2}>
           <Flex as="ul" alignItems="center" gap="30px" listStyleType="none">
             <Box
               as="li"
@@ -154,7 +152,7 @@ const Navbar = () => {
       </Show>
 
       <Hide above="md">
-        <Flex as="nav" justifyContent="space-between">
+        <Flex as="nav" justifyContent="space-between" zIndex={2}>
           <Menu>
             <MenuButton color="blue.500">
               Menu
@@ -228,4 +226,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
