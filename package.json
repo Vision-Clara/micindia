@@ -31,6 +31,7 @@
     "react-icons": "^4.8.0",
     "slick-carousel": "^1.8.1",
     "swiper": "^10.0.4",
+    "swr": "^2.2.0",
     "typescript": "5.0.4"
   }
 }
