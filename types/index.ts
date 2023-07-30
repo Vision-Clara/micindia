@@ -22,11 +22,26 @@ export interface IUser {
   role: string;
 }
 
-// API Res/Req Types
+// API Types
 export interface IResponseUser {
   success: boolean;
   message: string;
   user: IUser;
+}
+
+export interface IResponseUserMany {
+  success: boolean;
+  message: string;
+  users: IUser[];
+}
+
+export interface IUserPayload {
+  name: string;
+  email: string;
+  branch: string;
+  status: string;
+  isActive: string;
+  role: string;
 }
 
 // Layout Types
@@ -96,4 +111,18 @@ export interface IFeedbackFormData {
   name: string;
   type: string;
   message: string;
+}
+
+export interface ICreateUserFormData {
+  name: string;
+  email: string;
+}
+
+export interface IUpdateUserFormData {
+  name: string;
+  email: string;
+  branch: string;
+  status: string;
+  isActive: string;
+  role: string;
 }

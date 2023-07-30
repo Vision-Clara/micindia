@@ -245,3 +245,22 @@ export const collabs = [
     url: "/",
   },
 ];
+
+export const cities = [
+  "INDORE",
+  "BHOPAL",
+  "JABALPUR",
+  "HARDA",
+  "JAIPUR",
+  "KHANDAWA",
+  "MHOW",
+  "OTHER",
+];
+
+export const roles = ["USER", "ADMIN"];
+
+export const status = [
+  "NEW_REGISTRATION",
+  "INTERVIEW_PENDING",
+  "CONFIRMED_VOLUNTEER",
+];
