@@ -165,8 +165,10 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   placeholder="Choose One"
                   value={formData.values.branch}
                 >
-                  {cities.map((item) => (
-                    <option value={item}>{item}</option>
+                  {cities.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
                   ))}
                 </Select>
                 <FormErrorMessage>{formData.errors.branch}</FormErrorMessage>
@@ -180,8 +182,10 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   placeholder="Choose One"
                   value={formData.values.status}
                 >
-                  {status.map((item) => (
-                    <option value={item}>{item}</option>
+                  {status.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
                   ))}
                 </Select>
                 <FormErrorMessage>{formData.errors.status}</FormErrorMessage>
@@ -210,8 +214,10 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   placeholder="Choose One"
                   value={formData.values.role}
                 >
-                  {roles.map((item) => (
-                    <option value={item}>{item}</option>
+                  {roles.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
                   ))}
                 </Select>
                 <FormErrorMessage>{formData.errors.role}</FormErrorMessage>
