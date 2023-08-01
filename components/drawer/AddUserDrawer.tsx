@@ -1,5 +1,5 @@
 import useForm from "@/hooks/useForm";
-import { ICreateUserFormData } from "@/types";
+import { ICreateUserFormData, IUser } from "@/types";
 import { AddIcon } from "@chakra-ui/icons";
 import {
   Drawer,
@@ -24,6 +24,7 @@ import ErrorToast from "../toast/ErrorToast";
 import { createUser } from "@/api/user";
 import { isFilled } from "@/utils/validators";
 import { useSWRConfig } from "swr";
+import useSWR from "swr";
 
 const initialFormData = {
   values: {
@@ -39,6 +40,7 @@ const initialFormData = {
 const AddUserDrawer = () => {
   const toast = useToast();
   const { mutate } = useSWRConfig();
+  const { data } = useSWR<IUser[]>("/user");
   const [formData, isSubmitting, onChangeHandler, handleSubmit] =
     useForm<ICreateUserFormData>({
       initialFormData,
@@ -47,12 +49,33 @@ const AddUserDrawer = () => {
 
   const onSubmit = async () => {
     try {
-      //signin
+      //add user
+      const newUser = {
+        email: formData.values.email,
+        name: formData.values.name,
+        branch: "OTHER",
+        status: "NEW_REGISTRATION",
+        isActive: false,
+        role: "USER",
+      };
+
+      const options = {
+        optimisticData: (users: IUser[]) => [...users, newUser],
+        rollbackOnError: true,
+      };
+
       const payload = {
         email: formData.values.email,
         name: formData.values.name,
       };
-      await createUser(payload);
+
+      const updateUsers = async () => {
+        const newUser = await createUser(payload);
+        return data ? [...data, newUser] : [];
+      };
+
+      mutate("/user", updateUsers, options);
+      onClose();
 
       //show success toast
       toast({
@@ -62,8 +85,6 @@ const AddUserDrawer = () => {
         position: "top",
         render: () => <SuccessToast message="User Created Successfully" />,
       });
-
-      mutate("/user");
     } catch (error: any) {
       //show error toast
       toast({

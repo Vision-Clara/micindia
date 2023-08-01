@@ -25,10 +25,13 @@ import ErrorToast from "../toast/ErrorToast";
 import { updateUserById } from "@/api/user";
 import { isFilled } from "@/utils/validators";
 import { cities, roles, status } from "@/sampleData";
-import { mutate } from "swr";
+import { MutatorOptions, mutate, useSWRConfig } from "swr";
+import useSWR from "swr";
 
 const ViewUserDrawer = ({ user }: { user: IUser }) => {
   const toast = useToast();
+  const { data } = useSWR<IUser[]>("/user");
+  const { mutate } = useSWRConfig();
 
   const [formData, isSubmitting, onChangeHandler, handleSubmit] =
     useForm<IUpdateUserFormData>({
@@ -58,7 +61,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
 
   const onSubmit = async () => {
     try {
-      //signin
+      //update user
       const payload = {
         email: formData.values.email,
         name: formData.values.name,
@@ -67,8 +70,34 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
         isActive: formData.values.isActive,
         role: formData.values.role,
       };
-      await updateUserById(user._id, payload);
-      mutate("/user");
+
+      const optimisticData = {
+        _id: user._id,
+        email: formData.values.email,
+        name: formData.values.name,
+        branch: formData.values.branch,
+        status: formData.values.status,
+        isActive: formData.values.isActive,
+        role: formData.values.role,
+      };
+
+      const options: MutatorOptions<IUser[]> = {
+        optimisticData: (currentData: IUser[] | undefined) =>
+          currentData?.map((item) =>
+            item._id === user._id ? optimisticData : item
+          ) ?? [],
+        rollbackOnError: true,
+      };
+
+      const updateUsers = async () => {
+        const updatedUser = await updateUserById(user._id, payload);
+        return (
+          data?.map((item) => (item._id === user._id ? updatedUser : item)) ??
+          []
+        );
+      };
+
+      mutate("/user", updateUsers, options);
       onClose();
 
       //show success toast
@@ -160,7 +189,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
               <FormControl my="20px" isInvalid={formData.errors.branch !== ""}>
                 <FormLabel>City</FormLabel>
                 <Select
-                  name="type"
+                  name="branch"
                   onChange={onChangeHandler}
                   placeholder="Choose One"
                   value={formData.values.branch}
@@ -177,7 +206,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
               <FormControl my="20px" isInvalid={formData.errors.status !== ""}>
                 <FormLabel>Status</FormLabel>
                 <Select
-                  name="type"
+                  name="status"
                   onChange={onChangeHandler}
                   placeholder="Choose One"
                   value={formData.values.status}
@@ -199,7 +228,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   isActive?
                 </FormLabel>
                 <Switch
-                  name="type"
+                  name="isActive"
                   onChange={onChangeHandler}
                   value={formData.values.isActive}
                 />
@@ -209,7 +238,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
               <FormControl my="20px" isInvalid={formData.errors.role !== ""}>
                 <FormLabel>Role</FormLabel>
                 <Select
-                  name="type"
+                  name="role"
                   onChange={onChangeHandler}
                   placeholder="Choose One"
                   value={formData.values.role}
