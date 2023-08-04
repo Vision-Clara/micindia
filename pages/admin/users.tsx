@@ -122,7 +122,7 @@ const ManageUsers = () => {
                   <Td>{user.isActive ? "Active" : "In Active"}</Td>
                   <Td>{user.role}</Td>
                   <Td>
-                    <ViewUserDrawer user={user} />
+                    <ViewUserDrawer userId={user._id} />
                   </Td>
                   <Td textAlign="center">
                     <Button

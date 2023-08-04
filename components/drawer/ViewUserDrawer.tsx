@@ -18,31 +18,36 @@ import {
   FormErrorMessage,
   Select,
   Switch,
+  Spinner,
 } from "@chakra-ui/react";
 import React from "react";
 import SuccessToast from "../toast/SuccessToast";
 import ErrorToast from "../toast/ErrorToast";
-import { updateUserById } from "@/api/user";
-import { isFilled } from "@/utils/validators";
+import { getUserById, updateUserById } from "@/api/user";
 import { cities, roles, status } from "@/sampleData";
-import { MutatorOptions, mutate, useSWRConfig } from "swr";
 import useSWR from "swr";
 
-const ViewUserDrawer = ({ user }: { user: IUser }) => {
+const ViewUserDrawer = ({ userId }: { userId: string }) => {
   const toast = useToast();
-  const { data } = useSWR<IUser[]>("/user");
-  const { mutate } = useSWRConfig();
+  const { data: allUsers, mutate: allUsersMutate } = useSWR<IUser[]>("/user");
+  const {
+    data: user,
+    error,
+    isLoading,
+    isValidating,
+    mutate: currentUserMutate,
+  } = useSWR<IUser>(["/user", userId], getUserById);
 
   const [formData, isSubmitting, onChangeHandler, handleSubmit] =
     useForm<IUpdateUserFormData>({
       initialFormData: {
         values: {
-          name: user.name,
-          email: user.email,
-          branch: user.branch,
-          status: user.status,
-          isActive: user.isActive,
-          role: user.role,
+          name: "",
+          email: "",
+          branch: "",
+          status: "",
+          isActive: "",
+          role: "",
         },
         errors: {
           name: "",
@@ -63,41 +68,24 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
     try {
       //update user
       const payload = {
-        email: formData.values.email,
-        name: formData.values.name,
-        branch: formData.values.branch,
-        status: formData.values.status,
-        isActive: formData.values.isActive,
-        role: formData.values.role,
+        email: formData.values.email || undefined,
+        name: formData.values.name || undefined,
+        branch: formData.values.branch || undefined,
+        status: formData.values.status || undefined,
+        isActive:
+          formData.values.isActive != ""
+            ? formData.values.isActive === "enabled"
+              ? true
+              : false
+            : undefined,
+        role: formData.values.role || undefined,
       };
 
-      const optimisticData = {
-        _id: user._id,
-        email: formData.values.email,
-        name: formData.values.name,
-        branch: formData.values.branch,
-        status: formData.values.status,
-        isActive: formData.values.isActive,
-        role: formData.values.role,
-      };
-
-      const options: MutatorOptions<IUser[]> = {
-        optimisticData: (currentData: IUser[] | undefined) =>
-          currentData?.map((item) =>
-            item._id === user._id ? optimisticData : item
-          ) ?? [],
-        rollbackOnError: true,
-      };
-
-      const updateUsers = async () => {
-        const updatedUser = await updateUserById(user._id, payload);
-        return (
-          data?.map((item) => (item._id === user._id ? updatedUser : item)) ??
-          []
-        );
-      };
-
-      mutate("/user", updateUsers, options);
+      const updatedUser = await updateUserById(userId, payload);
+      currentUserMutate(updatedUser);
+      allUsersMutate(
+        allUsers?.map((item) => (item._id === userId ? updatedUser : item))
+      );
       onClose();
 
       //show success toast
@@ -121,22 +109,6 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
   };
 
   function validator(formValues: IUpdateUserFormData) {
-    if (!isFilled(formValues.name)) {
-      return {
-        success: false,
-        field: "name",
-        message: "Name is required",
-      };
-    }
-
-    if (!isFilled(formValues.email)) {
-      return {
-        success: false,
-        field: "email",
-        message: "Email is required",
-      };
-    }
-
     return {
       success: true,
       field: "",
@@ -144,8 +116,18 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
     };
   }
 
-  return (
-    <>
+  return isLoading || isValidating ? (
+    <Box>
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="lg"
+      />
+    </Box>
+  ) : (
+    <Box>
       <Button ref={btnRef} colorScheme="blue" variant="solid" onClick={onOpen}>
         Open
       </Button>
@@ -169,7 +151,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   placeholder="Enter name"
                   name="name"
                   onChange={onChangeHandler}
-                  value={formData.values.name}
+                  value={(formData.values.name || user?.name) ?? ""}
                 />
                 <FormErrorMessage>{formData.errors.name}</FormErrorMessage>
               </FormControl>
@@ -181,7 +163,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   placeholder="Enter email"
                   name="email"
                   onChange={onChangeHandler}
-                  value={formData.values.email}
+                  value={(formData.values.email || user?.email) ?? ""}
                 />
                 <FormErrorMessage>{formData.errors.email}</FormErrorMessage>
               </FormControl>
@@ -192,7 +174,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   name="branch"
                   onChange={onChangeHandler}
                   placeholder="Choose One"
-                  value={formData.values.branch}
+                  value={(formData.values.branch || user?.branch) ?? ""}
                 >
                   {cities.map((item, index) => (
                     <option key={index} value={item}>
@@ -209,7 +191,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   name="status"
                   onChange={onChangeHandler}
                   placeholder="Choose One"
-                  value={formData.values.status}
+                  value={(formData.values.status || user?.status) ?? ""}
                 >
                   {status.map((item, index) => (
                     <option key={index} value={item}>
@@ -230,7 +212,22 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                 <Switch
                   name="isActive"
                   onChange={onChangeHandler}
-                  value={formData.values.isActive}
+                  isChecked={
+                    formData.values.isActive != ""
+                      ? formData.values.isActive === "enabled"
+                        ? true
+                        : false
+                      : user?.isActive ?? false
+                  }
+                  value={
+                    formData.values.isActive != ""
+                      ? formData.values.isActive === "enabled"
+                        ? "disabled"
+                        : "enabled"
+                      : user?.isActive
+                      ? "enabled"
+                      : "disabled"
+                  }
                 />
                 <FormErrorMessage>{formData.errors.isActive}</FormErrorMessage>
               </FormControl>
@@ -241,7 +238,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
                   name="role"
                   onChange={onChangeHandler}
                   placeholder="Choose One"
-                  value={formData.values.role}
+                  value={(formData.values.role || user?.role) ?? ""}
                 >
                   {roles.map((item, index) => (
                     <option key={index} value={item}>
@@ -278,7 +275,7 @@ const ViewUserDrawer = ({ user }: { user: IUser }) => {
           </DrawerContent>
         </Box>
       </Drawer>
-    </>
+    </Box>
   );
 };
 
