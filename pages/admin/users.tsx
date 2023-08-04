@@ -18,21 +18,36 @@ import Navbar from "@/components/layout/admin/Navbar";
 import { delUserById, getAllUsers } from "@/api/user";
 import AddUserDrawer from "@/components/drawer/AddUserDrawer";
 import ViewUserDrawer from "@/components/drawer/ViewUserDrawer";
-import useSWR from "swr";
+import useSWR, { MutatorCallback, MutatorOptions } from "swr";
 import Error from "@/components/error/Error";
 import { DeleteIcon } from "@chakra-ui/icons";
 import SuccessToast from "@/components/toast/SuccessToast";
 import ErrorToast from "@/components/toast/ErrorToast";
+import { IUser } from "@/types";
 
 // manage users page
 const ManageUsers = () => {
   const toast = useToast();
-  const { data, error, isLoading, mutate } = useSWR("/user", getAllUsers);
+  const { data, error, isLoading, isValidating, mutate } = useSWR(
+    "/user",
+    getAllUsers
+  );
 
   const handleDeleteUser = async (userId: string) => {
     try {
-      await delUserById(userId);
-      mutate();
+      const options: MutatorOptions<IUser[]> = {
+        optimisticData: (currentData: IUser[] | undefined) =>
+          currentData?.filter((item) => item._id !== userId) ?? [],
+        rollbackOnError: true,
+      };
+
+      const deleteUser = async () => {
+        await delUserById(userId);
+        const updatedData = data?.filter((item) => item._id !== userId) ?? [];
+        return updatedData;
+      };
+
+      mutate(deleteUser, options);
 
       //show success toast
       toast({
@@ -79,9 +94,9 @@ const ManageUsers = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {isLoading ? (
+            {isLoading || isValidating ? (
               <Tr>
-                <Td colSpan={7} textAlign="center">
+                <Td colSpan={8} textAlign="center">
                   <Spinner
                     thickness="4px"
                     speed="0.65s"
@@ -93,7 +108,7 @@ const ManageUsers = () => {
               </Tr>
             ) : error ? (
               <Tr>
-                <Td colSpan={7} textAlign="center">
+                <Td colSpan={8} textAlign="center">
                   <Error />
                 </Td>
               </Tr>
@@ -107,7 +122,7 @@ const ManageUsers = () => {
                   <Td>{user.isActive ? "Active" : "In Active"}</Td>
                   <Td>{user.role}</Td>
                   <Td>
-                    <ViewUserDrawer user={user} />
+                    <ViewUserDrawer userId={user._id} />
                   </Td>
                   <Td textAlign="center">
                     <Button

@@ -18,7 +18,7 @@ export interface IUser {
   email: string;
   branch: string;
   status: string;
-  isActive: string;
+  isActive: boolean;
   role: string;
 }
 
@@ -36,12 +36,12 @@ export interface IResponseUserMany {
 }
 
 export interface IUserPayload {
-  name: string;
-  email: string;
-  branch: string;
-  status: string;
-  isActive: string;
-  role: string;
+  name?: string;
+  email?: string;
+  branch?: string;
+  status?: string;
+  isActive?: boolean;
+  role?: string;
 }
 
 // Layout Types
