@@ -3,7 +3,6 @@ import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { ReactElement } from "react";
 import Head from "next/head";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -59,7 +58,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               as="section"
               position="relative"
               h={["50vh", "70vh", "90vh"]}
-              bgImage={"url('./banner.jpg')"}
+              bgImage={"url('./assets/banner1.jpg')"}
               bgSize="cover"
               bgPos="center"
               display="flex"
@@ -102,7 +101,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               as="section"
               position="relative"
               h={["50vh", "70vh", "90vh"]}
-              bgImage={"url('./banner2.jpg')"}
+              bgImage={"url('./assets/banner2.jpeg')"}
               bgSize="cover"
               bgPos="center"
               display="flex"
@@ -120,7 +119,93 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 background="blackAlpha.600"
                 color="white"
               >
-                Empowering Communities, <br /> Building a Better Society
+                Creating Hope, <br /> Transforming Futures
+              </Heading>
+              <Heading
+                position="absolute"
+                bottom="5vh"
+                left="0px"
+                as="h3"
+                size={["sm", "md", "lg"]}
+                backgroundColor="orange.300"
+                w="fit"
+                p={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blue.500"
+                color="white"
+                borderEndEndRadius="10px"
+              >
+                <i> We Rise By Lifting Others</i>
+              </Heading>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box
+              as="section"
+              position="relative"
+              h={["50vh", "70vh", "90vh"]}
+              bgImage={"url('./assets/banner3.jpeg')"}
+              bgSize="cover"
+              bgPos="center"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Heading
+                as="h1"
+                size={["md", "lg", "xl"]}
+                backgroundColor="orange.300"
+                w="fit"
+                px={["20px", "24px", "30px"]}
+                py={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blackAlpha.600"
+                color="white"
+              >
+                Serving with Love, <br /> Sowing Seeds of Change
+              </Heading>
+              <Heading
+                position="absolute"
+                bottom="5vh"
+                left="0px"
+                as="h3"
+                size={["sm", "md", "lg"]}
+                backgroundColor="orange.300"
+                w="fit"
+                p={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blue.500"
+                color="white"
+                borderEndEndRadius="10px"
+              >
+                <i> We Rise By Lifting Others</i>
+              </Heading>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box
+              as="section"
+              position="relative"
+              h={["50vh", "70vh", "90vh"]}
+              bgImage={"url('./assets/banner4.jpeg')"}
+              bgSize="cover"
+              bgPos="center"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Heading
+                as="h1"
+                size={["md", "lg", "xl"]}
+                backgroundColor="orange.300"
+                w="fit"
+                px={["20px", "24px", "30px"]}
+                py={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blackAlpha.600"
+                color="white"
+              >
+                Together We Can Make a Difference
               </Heading>
               <Heading
                 position="absolute"
@@ -167,7 +252,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   featureDesc={item.featureDesc}
                   featureHeading={item.featureHeading}
                   featureSlogan={item.featureSlogan}
-                  featureImage={item.featureImage}
+                  featureImages={[item.featureImage, item.featureImage]}
                 />
               );
             })}

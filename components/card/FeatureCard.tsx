@@ -8,25 +8,31 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
-
-import flag from "@/assets/bg/flag.jpg";
+import ACrousal from "../crousal/ACrousal";
+import ASlide from "../crousal/ASlide";
 
 const FeatureCard = ({
   featureHeading,
   featureSlogan,
   featureDesc,
-  featureImage,
+  featureImages,
 }: {
   featureHeading: string;
   featureSlogan: string;
   featureDesc: string;
-  featureImage: StaticImageData;
+  featureImages: StaticImageData[];
 }) => {
   return (
     <Box w={["100%", "350px"]}>
-      <AspectRatio ratio={10 / 6} overflow="hidden">
-        <Image src={featureImage} alt="feature image" h="full"></Image>
-      </AspectRatio>
+      <Box w={["100%", "350px"]} height={["200px", "210px"]}>
+        <ACrousal isNavigation>
+          {featureImages.map((image, index) => (
+            <ASlide key={index}>
+              <Image src={image} alt="feature image" h="full"></Image>
+            </ASlide>
+          ))}
+        </ACrousal>
+      </Box>
 
       <Accordion allowToggle>
         <AccordionItem>

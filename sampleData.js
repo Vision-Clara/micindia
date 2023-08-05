@@ -157,30 +157,32 @@ export const stats = [
 ];
 
 export const testimonials = [
-  // {
-  //   id: 1,
-  //   profilePhoto: "https://bit.ly/sage-adebayo",
-  //   personName: "Segun Adebayo",
-  //   designation: "Creator, Chakra UI",
-  //   message:
-  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  // },
-  // {
-  //   id: 2,
-  //   profilePhoto: "https://bit.ly/sage-adebayo",
-  //   personName: "Segun Adebayo",
-  //   designation: "Creator, Chakra UI",
-  //   message:
-  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  // },
-  // {
-  //   id: 3,
-  //   profilePhoto: "https://bit.ly/sage-adebayo",
-  //   personName: "Segun Adebayo",
-  //   designation: "Creator, Chakra UI",
-  //   message:
-  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  // },
+  {
+    id: 1,
+    profilePhoto: "https://bit.ly/sage-adebayo",
+    personName: "Segun Adebayo",
+    designation: "Creator, Chakra UI",
+    message: `I have been watching the MIC works continuously from 2018 till now. A positive and youth-driven 
+              organisation working selflessly for society. During the period of the pandemic, MIC served many lives and made a difference in their lives. 
+          Module based education was for underprivileged children, and continuous blood donation, medicine availability, 
+          and bed updates were provided by the team. I wish all the very best and all the luck to the MIC team in their future endeavors.`,
+  },
+  {
+    id: 2,
+    profilePhoto: "https://bit.ly/sage-adebayo",
+    personName: "Segun Adebayo",
+    designation: "Creator, Chakra UI",
+    message:
+      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+  },
+  {
+    id: 3,
+    profilePhoto: "https://bit.ly/sage-adebayo",
+    personName: "Segun Adebayo",
+    designation: "Creator, Chakra UI",
+    message:
+      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+  },
 ];
 
 export const collabs = [
