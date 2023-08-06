@@ -18,6 +18,11 @@ import lgbtq from "/assets/images/lgbtq.jpg";
 import blood from "/assets/images/blood.jpg";
 import animal from "/assets/images/animal.jpg";
 
+import testimonial1 from "/assets/testimonial/testimonial1.jpeg";
+import testimonial2 from "/assets/testimonial/testimonial2.jpeg";
+import testimonial3 from "/assets/testimonial/testimonial3.jpeg";
+import testimonial4 from "/assets/testimonial/testimonial4.jpeg";
+
 export const features = [
   {
     id: 1,
@@ -159,29 +164,86 @@ export const stats = [
 export const testimonials = [
   {
     id: 1,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message: `I have been watching the MIC works continuously from 2018 till now. A positive and youth-driven 
-              organisation working selflessly for society. During the period of the pandemic, MIC served many lives and made a difference in their lives. 
-          Module based education was for underprivileged children, and continuous blood donation, medicine availability, 
-          and bed updates were provided by the team. I wish all the very best and all the luck to the MIC team in their future endeavors.`,
+    profilePhoto: testimonial1,
+    personName: "Dr. Punit Kumar Dwivedi Sir",
+    designation:
+      "- Brand Ambassador Swachh Indore and Director, Morden Group of institutions",
+    message: (
+      <p>
+        MIC Organization, founded by Rupanshi Shrivastav, has emerged as a
+        significant force in serving society. With a dedicated team and a clear
+        vision, this organization has been tirelessly working towards making a
+        positive impact in multiple sectors. From healthcare and education to
+        environmental conservation and community development. Its initiatives
+        not only improve the lives of individuals but also contribute to broader
+        societal progress. In a changing world, the organization stays
+        up-to-date on emerging issues and devises innovative solutions
+        accordingly.As we look to the future, it is with great anticipation that
+        we watch MIC Organization continue to make a positive impact in
+        communities around the world.
+      </p>
+    ),
   },
   {
     id: 2,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+    profilePhoto: testimonial2,
+    personName: "DSP Umakant Choudhary",
+    designation: "- Cyber Crime Branch, Indore",
+    message: (
+      <p>
+        I have been watching the MIC works continuously from 2018 till now. A
+        positive and youth-driven organisation working selflessly for society.
+        During the period of the pandemic, MIC served many lives and made a
+        difference in their lives. Module-based education was for
+        underprivileged children, and continuous blood donation, medicine
+        availability, and bed updates were provided by the team. The tasks,
+        social awareness even and ts, and services handled in perfection by MIC
+        organisation India are consistently remarkable. I wish all the very best
+        and all the luck to the MIC team in their future endeavors.
+      </p>
+    ),
   },
+
   {
     id: 3,
-    profilePhoto: "https://bit.ly/sage-adebayo",
-    personName: "Segun Adebayo",
-    designation: "Creator, Chakra UI",
-    message:
-      "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
+    profilePhoto: testimonial3,
+    personName: "Mrs. Shubhi Jain ",
+    designation:
+      "- Social Influencer, and Yatayat Traffic Prabandhan Mitra Traffic Volunteer, Indore",
+    message: (
+      <p>
+        I have been watching the MIC works continuously from 2018 till now. A
+        positive and youth-driven organisation working selflessly for society.
+        During the period of the pandemic, MIC served many lives and made a
+        difference in their lives. Module-based education was for
+        underprivileged children, and continuous blood donation, medicine
+        availability, and bed updates were provided by the team. The tasks,
+        social awareness even and ts, and services handled in perfection by MIC
+        organisation India are consistently remarkable. I wish all the very best
+        and all the luck to the MIC team in their future endeavors.
+      </p>
+    ),
+  },
+
+  {
+    id: 4,
+    profilePhoto: testimonial4,
+    personName: "Dr. Ragini Makkhar",
+    designation:
+      "- International Kathak Dancer, Naadyog Institute of Khatak & Music",
+    message: (
+      <p>
+        I have been watching the MIC works continuously from 2018 till now. A
+        positive and youth-driven organisation working selflessly for society.
+        During the period of the pandemic, MIC served many lives and made a
+        difference in their lives. Module-based education was for
+        underprivileged children, and continuous blood donation, medicine
+        availability, and bed updates were provided by the team. The tasks,
+        social awareness even and ts, and services handled in perfection by MIC
+        organisation India are consistently remarkable. I wish all the very best
+        and all the luck to the MIC team in their future endeavors.
+      </p>
+    ),
   },
 ];
 

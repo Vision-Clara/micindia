@@ -1,5 +1,5 @@
 import {
-  Avatar,
+  AspectRatio,
   Box,
   Card,
   CardBody,
@@ -7,10 +7,11 @@ import {
   Heading,
   Stack,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import LeftQuoteIcon from "../icon/LeftQuoteIcon";
 import RightQuoteIcon from "../icon/RightQuoteIcon";
-import { useEffect, useState } from "react";
+import Image, { StaticImageData } from "next/image";
 
 const TestimonialCard = ({
   profilePhoto,
@@ -18,37 +19,31 @@ const TestimonialCard = ({
   designation,
   message,
 }: {
-  profilePhoto: string;
+  profilePhoto: StaticImageData;
   personName: string;
   designation: string;
-  message: string;
+  message: string | JSX.Element;
 }) => {
   return (
     <Card boxShadow="md">
       <CardBody textAlign="center">
-        <Stack spacing="3">
-          <Flex flexDir="column" gap="30px">
-            <Flex
-              direction={["row", "column"]}
-              alignItems={["center"]}
-              gap="20px"
-            >
-              <Flex justifyContent="center">
-                <Avatar
-                  size={["md", "xl"]}
-                  name={personName}
-                  src={profilePhoto}
-                />
-              </Flex>
+        <Flex gap={["10px", "20px", "30px"]}>
+          <Box rounded="2xl" overflow="hidden">
+            <Image src={profilePhoto} alt="testimonial-photo" height={450} />
+          </Box>
 
-              <Box fontSize={["sm", "md", "md"]}>
-                <Heading as="h3" size={["sm", "md", "lg"]}>
-                  {personName}
-                </Heading>
-                <Text>{designation}</Text>
-              </Box>
-            </Flex>
-
+          <VStack
+            justifyContent="center"
+            gap={["10px", "20px", "30px"]}
+            flex="10"
+            paddingX={["10px", "20px", "25px"]}
+          >
+            <Box fontSize={["sm", "md", "md"]}>
+              <Heading as="h3" size={["sm", "md", "lg"]}>
+                {personName}
+              </Heading>
+              <Text>{designation}</Text>
+            </Box>
             <Box p={["10px", "20px"]} position="relative">
               <LeftQuoteIcon
                 color="blue.500"
@@ -66,8 +61,8 @@ const TestimonialCard = ({
                 boxSize={["15px", " 20px"]}
               />
             </Box>
-          </Flex>
-        </Stack>
+          </VStack>
+        </Flex>
       </CardBody>
     </Card>
   );

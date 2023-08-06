@@ -114,7 +114,7 @@ const ACrousal = ({
             width="2rem"
             height="2rem"
             minWidth="2rem"
-            bgColor="gray.100"
+            bgColor="gray.200"
             sx={{
               transition: "all 100ms ease-in-out",
               ":hover": {
@@ -124,7 +124,7 @@ const ACrousal = ({
             }}
             cursor="pointer"
           >
-            <ChevronLeftIcon boxSize="1.5em" />
+            <ChevronLeftIcon boxSize="1.5em" color="black" />
           </Button>
           <Button
             onClick={() => paginate(1)}
@@ -139,7 +139,7 @@ const ACrousal = ({
             width="2rem"
             height="2rem"
             minWidth="2rem"
-            bgColor="gray.100"
+            bgColor="gray.200"
             sx={{
               transition: "all 100ms ease-in-out",
 
@@ -150,7 +150,7 @@ const ACrousal = ({
             }}
             cursor="pointer"
           >
-            <ChevronRightIcon boxSize="1.5em" />
+            <ChevronRightIcon boxSize="1.5em" color="black" />
           </Button>
         </>
       )}

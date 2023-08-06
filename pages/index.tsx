@@ -18,6 +18,8 @@ import AwardIcon from "@/components/icon/AwardIcon";
 import Layout from "@/components/layout/user/Layout";
 import { IEvent } from "@/types";
 import { getAllEvents } from "@/api/event";
+import ACrousal from "@/components/crousal/ACrousal";
+import ASlide from "@/components/crousal/ASlide";
 
 export const getStaticProps: GetStaticProps<{
   events: IEvent[];
@@ -431,25 +433,22 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             >
               Testimonials
             </Heading>
-            <Flex
-              justify="space-between"
-              flexWrap="wrap"
-              mx={["20px", "30px", "40px"]}
-              gap={["10px", "20px", "30px"]}
-            >
-              {testimonials.map((item) => {
-                return (
-                  <Box maxW={["100%", "300px", "350px"]} key={item.id}>
-                    <TestimonialCard
-                      profilePhoto={item.profilePhoto}
-                      personName={item.personName}
-                      designation={item.designation}
-                      message={item.message}
-                    />
-                  </Box>
-                );
-              })}
-            </Flex>
+            <Box height="500px" mx={["20px", "30px", "40px"]}>
+              <ACrousal isNavigation isPagination>
+                {testimonials.map((item) => {
+                  return (
+                    <ASlide key={item.id}>
+                      <TestimonialCard
+                        profilePhoto={item.profilePhoto}
+                        personName={item.personName}
+                        designation={item.designation}
+                        message={item.message}
+                      />
+                    </ASlide>
+                  );
+                })}
+              </ACrousal>
+            </Box>
           </Box>
         )}
 
