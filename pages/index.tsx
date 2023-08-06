@@ -434,8 +434,8 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             >
               Testimonials
             </Heading>
-            <Box height="500px" mx={["20px", "30px", "40px"]}>
-              <ACrousal isNavigation isPagination>
+            <Box mx={["20px", "30px", "40px"]}>
+              <ACrousal isNavigation isPagination height={["420px", "500px"]}>
                 {testimonials.map((item) => {
                   return (
                     <ASlide key={item.id}>

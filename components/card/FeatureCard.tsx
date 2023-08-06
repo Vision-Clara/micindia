@@ -1,5 +1,5 @@
 import { Image } from "@chakra-ui/next-js";
-import { AspectRatio, Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { AspectRatio, Box } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 import {
   Accordion,
@@ -24,11 +24,13 @@ const FeatureCard = ({
 }) => {
   return (
     <Box w={["100%", "350px"]}>
-      <Box height={["200px", "220px"]}>
-        <ACrousal isNavigation>
+      <Box>
+        <ACrousal isNavigation height="200px">
           {featureImages.map((image, index) => (
             <ASlide key={index}>
-              <Image src={image} alt="feature image" h="full"></Image>
+              <AspectRatio ratio={6 / 4} w="350px">
+                <Image src={image} alt="feature image" width={300}></Image>
+              </AspectRatio>
             </ASlide>
           ))}
         </ACrousal>

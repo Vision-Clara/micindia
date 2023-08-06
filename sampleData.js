@@ -42,7 +42,8 @@ import feature44 from "/assets/images/plant4.png";
 import feature51 from "/assets/images/lgbtq1.jpeg";
 
 import feature61 from "/assets/images/animal1.jpeg";
-import feature62 from "/assets/images/animal2.jpeg";
+import feature62 from "/assets/images/animal2.png";
+import feature63 from "/assets/images/animal3.png";
 
 import feature71 from "/assets/images/women1.png";
 import feature72 from "/assets/images/women2.png";
@@ -107,7 +108,7 @@ export const features = [
     id: 6,
     featureHeading: "Animal Care",
     featureSlogan: "जीवेषु करुणा चापि मैत्री तेषु विधियताम्!!",
-    featureImages: [feature61, feature62],
+    featureImages: [feature61, feature62, feature63],
     featureDesc: `Compassion and friendship towards living beings are inherent in all. 
     Life's interconnectedness with Earth and our reliance on other beings for survival 
     highlight the importance of protecting them. Across religions, compassion towards 
@@ -193,29 +194,25 @@ export const testimonials = [
     personName: "Dr. Punit Kumar Dwivedi Sir",
     designation:
       "- Brand Ambassador Swachh Indore and Director, Morden Group of institutions",
-    message: (
-      <>
+    message: `
         MIC Organization, founded by Rupanshi Shrivastav, has emerged as a
         significant force in serving society. With a dedicated team and a clear
         vision, this organization has been tirelessly working towards making a
         positive impact in multiple sectors. From healthcare and education to
-        environmental conservation and community development. Its initiatives
-        not only improve the lives of individuals but also contribute to broader
-        societal progress. In a changing world, the organization stays
+        environmental conservation and community development.
+        In a changing world, the organization stays
         up-to-date on emerging issues and devises innovative solutions
         accordingly.As we look to the future, it is with great anticipation that
         we watch MIC Organization continue to make a positive impact in
         communities around the world.
-      </>
-    ),
+      `,
   },
   {
     id: 2,
     profilePhoto: testimonial2,
     personName: "DSP Umakant Choudhary",
     designation: "- Cyber Crime Branch, Indore",
-    message: (
-      <>
+    message: `
         I have been watching the MIC works continuously from 2018 till now. A
         positive and youth-driven organisation working selflessly for society.
         During the period of the pandemic, MIC served many lives and made a
@@ -225,8 +222,7 @@ export const testimonials = [
         social awareness even and ts, and services handled in perfection by MIC
         organisation India are consistently remarkable. I wish all the very best
         and all the luck to the MIC team in their future endeavors.
-      </>
-    ),
+      `,
   },
 
   {
@@ -235,8 +231,7 @@ export const testimonials = [
     personName: "Mrs. Shubhi Jain ",
     designation:
       "- Social Influencer, and Yatayat Traffic Prabandhan Mitra Traffic Volunteer, Indore",
-    message: (
-      <>
+    message: `
         I have been watching the MIC works continuously from 2018 till now. A
         positive and youth-driven organisation working selflessly for society.
         During the period of the pandemic, MIC served many lives and made a
@@ -245,9 +240,7 @@ export const testimonials = [
         availability, and bed updates were provided by the team. The tasks,
         social awareness even and ts, and services handled in perfection by MIC
         organisation India are consistently remarkable. I wish all the very best
-        and all the luck to the MIC team in their future endeavors.
-      </>
-    ),
+        and all the luck to the MIC team in their future endeavors.`,
   },
 
   {
@@ -256,8 +249,7 @@ export const testimonials = [
     personName: "Dr. Ragini Makkhar",
     designation:
       "- International Kathak Dancer, Naadyog Institute of Khatak & Music",
-    message: (
-      <>
+    message: `      
         I have been watching the MIC works continuously from 2018 till now. A
         positive and youth-driven organisation working selflessly for society.
         During the period of the pandemic, MIC served many lives and made a
@@ -267,8 +259,7 @@ export const testimonials = [
         social awareness even and ts, and services handled in perfection by MIC
         organisation India are consistently remarkable. I wish all the very best
         and all the luck to the MIC team in their future endeavors.
-      </>
-    ),
+      `,
   },
 ];
 

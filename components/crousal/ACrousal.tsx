@@ -46,10 +46,12 @@ const ACrousal = ({
   children,
   isPagination,
   isNavigation,
+  height,
 }: {
   children: ReactNode[];
   isPagination?: boolean;
   isNavigation?: boolean;
+  height: string | string[];
 }) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const currentIndex = wrap(0, children.length, page);
@@ -59,16 +61,14 @@ const ACrousal = ({
   };
 
   return (
-    <Box width="100%" height="100%" overflow="hidden" position="relative">
+    <Box overflow="hidden" position="relative" height="fit-content">
       {/* slides */}
-      <HStack height="100%" width="100%" position="relative">
+      <HStack position="relative" height={height}>
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             style={{
-              width: "100%",
-              height: "100%",
-              position: "absolute",
               zIndex: 1,
+              position: "absolute",
             }}
             key={page}
             custom={direction}
