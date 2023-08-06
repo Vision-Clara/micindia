@@ -254,7 +254,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   featureDesc={item.featureDesc}
                   featureHeading={item.featureHeading}
                   featureSlogan={item.featureSlogan}
-                  featureImages={[item.featureImage, item.featureImage]}
+                  featureImages={item.featureImages}
                 />
               );
             })}
@@ -328,8 +328,9 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             ]}
             gap={4}
             mx={["20px", "30px", "40px"]}
+            mb={["20px", "30px", "40px"]}
           >
-            <GridItem p="20px" bgColor="white">
+            <GridItem bgColor="white" p="20px">
               <StatCard
                 count={2000}
                 countSpeed={5}
