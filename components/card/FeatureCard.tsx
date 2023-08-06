@@ -1,5 +1,5 @@
 import { Image } from "@chakra-ui/next-js";
-import { AspectRatio, Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { AspectRatio, Box } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 import {
   Accordion,
@@ -8,25 +8,33 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
-
-import flag from "@/assets/bg/flag.jpg";
+import ACrousal from "../crousal/ACrousal";
+import ASlide from "../crousal/ASlide";
 
 const FeatureCard = ({
   featureHeading,
   featureSlogan,
   featureDesc,
-  featureImage,
+  featureImages,
 }: {
   featureHeading: string;
   featureSlogan: string;
   featureDesc: string;
-  featureImage: StaticImageData;
+  featureImages: StaticImageData[];
 }) => {
   return (
     <Box w={["100%", "350px"]}>
-      <AspectRatio ratio={10 / 6} overflow="hidden">
-        <Image src={featureImage} alt="feature image" h="full"></Image>
-      </AspectRatio>
+      <Box>
+        <ACrousal isNavigation height="200px">
+          {featureImages.map((image, index) => (
+            <ASlide key={index}>
+              <AspectRatio ratio={6 / 4} w="350px">
+                <Image src={image} alt="feature image" width={300}></Image>
+              </AspectRatio>
+            </ASlide>
+          ))}
+        </ACrousal>
+      </Box>
 
       <Accordion allowToggle>
         <AccordionItem>

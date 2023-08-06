@@ -18,12 +18,43 @@ import lgbtq from "/assets/images/lgbtq.jpg";
 import blood from "/assets/images/blood.jpg";
 import animal from "/assets/images/animal.jpg";
 
+import testimonial1 from "/assets/testimonial/testimonial1.jpeg";
+import testimonial2 from "/assets/testimonial/testimonial2.jpeg";
+import testimonial3 from "/assets/testimonial/testimonial3.jpeg";
+import testimonial4 from "/assets/testimonial/testimonial4.jpeg";
+
+import feature11 from "/assets/images/education1.jpeg";
+import feature12 from "/assets/images/education2.jpeg";
+
+import feature21 from "/assets/images/blood1.jpeg";
+import feature22 from "/assets/images/blood2.jpeg";
+import feature23 from "/assets/images/blood3.jpeg";
+
+import feature31 from "/assets/images/oldage1.png";
+import feature32 from "/assets/images/oldage2.png";
+import feature33 from "/assets/images/oldage3.png";
+
+import feature41 from "/assets/images/plant1.png";
+import feature42 from "/assets/images/plant2.png";
+import feature43 from "/assets/images/plant3.png";
+import feature44 from "/assets/images/plant4.png";
+
+import feature51 from "/assets/images/lgbtq1.jpeg";
+
+import feature61 from "/assets/images/animal1.jpeg";
+import feature62 from "/assets/images/animal2.png";
+import feature63 from "/assets/images/animal3.png";
+
+import feature71 from "/assets/images/women1.png";
+import feature72 from "/assets/images/women2.png";
+import feature73 from "/assets/images/women3.png";
+
 export const features = [
   {
     id: 1,
     featureHeading: "Education",
     featureSlogan: "शिक्षा अभियान: शिक्ष् भवतु विद् भवतु ",
-    featureImage: education,
+    featureImages: [feature11, feature12],
     featureDesc: `
     Education, a timeless practice accepted universally, hasn't reached every family, 
     leaving many children untouched. We strive to fulfill this fundamental need by focusing 
@@ -35,7 +66,7 @@ export const features = [
     id: 2,
     featureHeading: "Blood Donation ",
     featureSlogan: "रक्तदान: सर्वे सन्तु निरामयाः",
-    featureImage: blood,
+    featureImages: [feature21, feature22, feature23],
     featureDesc: `We strive for everyone's well-being and believe that good health is crucial 
     for productive work. Donating blood can save lives, so we ensure its availability for emergencies 
     and thalassemic patients. Our young heroes from MIC organization provide round-the-clock support 
@@ -45,7 +76,7 @@ export const features = [
     id: 3,
     featureHeading: "Old-age Care ",
     featureSlogan: "सर्वेषां वृद्धानां आशीर्वाद",
-    featureImage: oldage,
+    featureImages: [feature33, feature31, feature32],
     featureDesc: `The elderly are often neglected as we prioritize youth and personal pursuits. 
     In India, seniors will constitute over 20% of the population by 2050. Our NGO addresses healthcare, 
     abuse, and other challenges faced by seniors at societal, state, and national levels. Through 
@@ -56,7 +87,7 @@ export const features = [
     id: 4,
     featureHeading: "Women Empowerment",
     featureSlogan: "नारी राष्ट्रस्य अक्शि अस्ति।",
-    featureImage: women,
+    featureImages: [feature71, feature72, feature73],
     featureDesc: `Women are the backbone of the nation, shaping the future and managing both 
     household and business responsibilities. We salute these resilient women who stand strong, ensuring 
     family care and self-reliance. Our mission is to empower and support all women for a brighter future, 
@@ -66,7 +97,7 @@ export const features = [
     id: 5,
     featureHeading: "LGBTQ",
     featureSlogan: "रसो नाम परं प्रेम।",
-    featureImage: lgbtq,
+    featureImages: [feature51],
     featureDesc: `Love holds immense significance in every relationship 
     and without self-love, life would lose meaning. Recognizing the rise of LGBTQ+ 
     community and their rights, we support diverse expressions of love. Respecting the 
@@ -77,7 +108,7 @@ export const features = [
     id: 6,
     featureHeading: "Animal Care",
     featureSlogan: "जीवेषु करुणा चापि मैत्री तेषु विधियताम्!!",
-    featureImage: animal,
+    featureImages: [feature61, feature62, feature63],
     featureDesc: `Compassion and friendship towards living beings are inherent in all. 
     Life's interconnectedness with Earth and our reliance on other beings for survival 
     highlight the importance of protecting them. Across religions, compassion towards 
@@ -157,30 +188,79 @@ export const stats = [
 ];
 
 export const testimonials = [
-  // {
-  //   id: 1,
-  //   profilePhoto: "https://bit.ly/sage-adebayo",
-  //   personName: "Segun Adebayo",
-  //   designation: "Creator, Chakra UI",
-  //   message:
-  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  // },
-  // {
-  //   id: 2,
-  //   profilePhoto: "https://bit.ly/sage-adebayo",
-  //   personName: "Segun Adebayo",
-  //   designation: "Creator, Chakra UI",
-  //   message:
-  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  // },
-  // {
-  //   id: 3,
-  //   profilePhoto: "https://bit.ly/sage-adebayo",
-  //   personName: "Segun Adebayo",
-  //   designation: "Creator, Chakra UI",
-  //   message:
-  //     "This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic desig with a sprinkle of vintage design.",
-  // },
+  {
+    id: 1,
+    profilePhoto: testimonial1,
+    personName: "Dr. Punit Kumar Dwivedi Sir",
+    designation:
+      "- Brand Ambassador Swachh Indore and Director, Morden Group of institutions",
+    message: `
+        MIC Organization, founded by Rupanshi Shrivastav, has emerged as a
+        significant force in serving society. With a dedicated team and a clear
+        vision, this organization has been tirelessly working towards making a
+        positive impact in multiple sectors. From healthcare and education to
+        environmental conservation and community development.
+        In a changing world, the organization stays
+        up-to-date on emerging issues and devises innovative solutions
+        accordingly.As we look to the future, it is with great anticipation that
+        we watch MIC Organization continue to make a positive impact in
+        communities around the world.
+      `,
+  },
+  {
+    id: 2,
+    profilePhoto: testimonial2,
+    personName: "DSP Umakant Choudhary",
+    designation: "- Cyber Crime Branch, Indore",
+    message: `
+        I have been watching the MIC works continuously from 2018 till now. A
+        positive and youth-driven organisation working selflessly for society.
+        During the period of the pandemic, MIC served many lives and made a
+        difference in their lives. Module-based education was for
+        underprivileged children, and continuous blood donation, medicine
+        availability, and bed updates were provided by the team. The tasks,
+        social awareness even and ts, and services handled in perfection by MIC
+        organisation India are consistently remarkable. I wish all the very best
+        and all the luck to the MIC team in their future endeavors.
+      `,
+  },
+
+  {
+    id: 3,
+    profilePhoto: testimonial3,
+    personName: "Mrs. Shubhi Jain ",
+    designation:
+      "- Social Influencer, and Yatayat Traffic Prabandhan Mitra Traffic Volunteer, Indore",
+    message: `
+        I have been watching the MIC works continuously from 2018 till now. A
+        positive and youth-driven organisation working selflessly for society.
+        During the period of the pandemic, MIC served many lives and made a
+        difference in their lives. Module-based education was for
+        underprivileged children, and continuous blood donation, medicine
+        availability, and bed updates were provided by the team. The tasks,
+        social awareness even and ts, and services handled in perfection by MIC
+        organisation India are consistently remarkable. I wish all the very best
+        and all the luck to the MIC team in their future endeavors.`,
+  },
+
+  {
+    id: 4,
+    profilePhoto: testimonial4,
+    personName: "Dr. Ragini Makkhar",
+    designation:
+      "- International Kathak Dancer, Naadyog Institute of Khatak & Music",
+    message: `      
+        I have been watching the MIC works continuously from 2018 till now. A
+        positive and youth-driven organisation working selflessly for society.
+        During the period of the pandemic, MIC served many lives and made a
+        difference in their lives. Module-based education was for
+        underprivileged children, and continuous blood donation, medicine
+        availability, and bed updates were provided by the team. The tasks,
+        social awareness even and ts, and services handled in perfection by MIC
+        organisation India are consistently remarkable. I wish all the very best
+        and all the luck to the MIC team in their future endeavors.
+      `,
+  },
 ];
 
 export const collabs = [

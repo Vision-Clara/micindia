@@ -3,7 +3,6 @@ import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { ReactElement } from "react";
 import Head from "next/head";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -19,6 +18,8 @@ import AwardIcon from "@/components/icon/AwardIcon";
 import Layout from "@/components/layout/user/Layout";
 import { IEvent } from "@/types";
 import { getAllEvents } from "@/api/event";
+import ACrousal from "@/components/crousal/ACrousal";
+import ASlide from "@/components/crousal/ASlide";
 
 export const getStaticProps: GetStaticProps<{
   events: IEvent[];
@@ -59,7 +60,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               as="section"
               position="relative"
               h={["50vh", "70vh", "90vh"]}
-              bgImage={"url('./banner.jpg')"}
+              bgImage={"url('./assets/banner1.jpg')"}
               bgSize="cover"
               bgPos="center"
               display="flex"
@@ -102,7 +103,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               as="section"
               position="relative"
               h={["50vh", "70vh", "90vh"]}
-              bgImage={"url('./banner2.jpg')"}
+              bgImage={"url('./assets/banner2.jpeg')"}
               bgSize="cover"
               bgPos="center"
               display="flex"
@@ -120,7 +121,93 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 background="blackAlpha.600"
                 color="white"
               >
-                Empowering Communities, <br /> Building a Better Society
+                Creating Hope, <br /> Transforming Futures
+              </Heading>
+              <Heading
+                position="absolute"
+                bottom="5vh"
+                left="0px"
+                as="h3"
+                size={["sm", "md", "lg"]}
+                backgroundColor="orange.300"
+                w="fit"
+                p={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blue.500"
+                color="white"
+                borderEndEndRadius="10px"
+              >
+                <i> We Rise By Lifting Others</i>
+              </Heading>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box
+              as="section"
+              position="relative"
+              h={["50vh", "70vh", "90vh"]}
+              bgImage={"url('./assets/banner3.jpeg')"}
+              bgSize="cover"
+              bgPos="center"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Heading
+                as="h1"
+                size={["md", "lg", "xl"]}
+                backgroundColor="orange.300"
+                w="fit"
+                px={["20px", "24px", "30px"]}
+                py={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blackAlpha.600"
+                color="white"
+              >
+                Serving with Love, <br /> Sowing Seeds of Change
+              </Heading>
+              <Heading
+                position="absolute"
+                bottom="5vh"
+                left="0px"
+                as="h3"
+                size={["sm", "md", "lg"]}
+                backgroundColor="orange.300"
+                w="fit"
+                p={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blue.500"
+                color="white"
+                borderEndEndRadius="10px"
+              >
+                <i> We Rise By Lifting Others</i>
+              </Heading>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box
+              as="section"
+              position="relative"
+              h={["50vh", "70vh", "90vh"]}
+              bgImage={"url('./assets/banner4.jpeg')"}
+              bgSize="cover"
+              bgPos="center"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Heading
+                as="h1"
+                size={["md", "lg", "xl"]}
+                backgroundColor="orange.300"
+                w="fit"
+                px={["20px", "24px", "30px"]}
+                py={["10px", "12px", "15px"]}
+                textAlign="center"
+                background="blackAlpha.600"
+                color="white"
+              >
+                Together We Can Make a Difference
               </Heading>
               <Heading
                 position="absolute"
@@ -167,7 +254,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   featureDesc={item.featureDesc}
                   featureHeading={item.featureHeading}
                   featureSlogan={item.featureSlogan}
-                  featureImage={item.featureImage}
+                  featureImages={item.featureImages}
                 />
               );
             })}
@@ -241,8 +328,9 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             ]}
             gap={4}
             mx={["20px", "30px", "40px"]}
+            mb={["20px", "30px", "40px"]}
           >
-            <GridItem p="20px" bgColor="white">
+            <GridItem bgColor="white" p="20px">
               <StatCard
                 count={2000}
                 countSpeed={5}
@@ -346,25 +434,22 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             >
               Testimonials
             </Heading>
-            <Flex
-              justify="space-between"
-              flexWrap="wrap"
-              mx={["20px", "30px", "40px"]}
-              gap={["10px", "20px", "30px"]}
-            >
-              {testimonials.map((item) => {
-                return (
-                  <Box maxW={["100%", "300px", "350px"]} key={item.id}>
-                    <TestimonialCard
-                      profilePhoto={item.profilePhoto}
-                      personName={item.personName}
-                      designation={item.designation}
-                      message={item.message}
-                    />
-                  </Box>
-                );
-              })}
-            </Flex>
+            <Box mx={["20px", "30px", "40px"]}>
+              <ACrousal isNavigation isPagination height={["420px", "500px"]}>
+                {testimonials.map((item) => {
+                  return (
+                    <ASlide key={item.id}>
+                      <TestimonialCard
+                        profilePhoto={item.profilePhoto}
+                        personName={item.personName}
+                        designation={item.designation}
+                        message={item.message}
+                      />
+                    </ASlide>
+                  );
+                })}
+              </ACrousal>
+            </Box>
           </Box>
         )}
 

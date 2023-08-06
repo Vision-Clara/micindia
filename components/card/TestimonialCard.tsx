@@ -1,16 +1,20 @@
 import {
-  Avatar,
+  AspectRatio,
   Box,
   Card,
   CardBody,
   Flex,
   Heading,
-  Stack,
+  Hide,
+  Show,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import LeftQuoteIcon from "../icon/LeftQuoteIcon";
 import RightQuoteIcon from "../icon/RightQuoteIcon";
-import { useEffect, useState } from "react";
+import { StaticImageData } from "next/image";
+import { Image } from "@chakra-ui/next-js";
+import { useState } from "react";
 
 const TestimonialCard = ({
   profilePhoto,
@@ -18,37 +22,45 @@ const TestimonialCard = ({
   designation,
   message,
 }: {
-  profilePhoto: string;
+  profilePhoto: StaticImageData;
   personName: string;
   designation: string;
   message: string;
 }) => {
+  const [isRead, setIsRead] = useState(false);
+
+  const readHandler = () => {
+    setIsRead(!isRead);
+  };
+
   return (
     <Card boxShadow="md">
       <CardBody textAlign="center">
-        <Stack spacing="3">
-          <Flex flexDir="column" gap="30px">
-            <Flex
-              direction={["row", "column"]}
-              alignItems={["center"]}
-              gap="20px"
-            >
-              <Flex justifyContent="center">
-                <Avatar
-                  size={["md", "xl"]}
-                  name={personName}
-                  src={profilePhoto}
-                />
-              </Flex>
+        <Flex
+          gap={["10px", "20px", "30px"]}
+          direction={["column", "column", "column", "row"]}
+        >
+          <Box marginX="auto" overflow="hidden" flex="6">
+            <Image
+              src={profilePhoto}
+              alt="testimonial-photo"
+              rounded={["full", "full", "full", "2xl"]}
+              boxSize={["150px", "150px", "150px", "full"]}
+            />
+          </Box>
 
-              <Box fontSize={["sm", "md", "md"]}>
-                <Heading as="h3" size={["sm", "md", "lg"]}>
-                  {personName}
-                </Heading>
-                <Text>{designation}</Text>
-              </Box>
-            </Flex>
-
+          <VStack
+            flex="9"
+            justifyContent="center"
+            gap={["10px", "20px", "30px"]}
+            paddingX={["10px", "20px", "25px"]}
+          >
+            <Box>
+              <Heading as="h3" size={["sm", "md", "lg"]}>
+                {personName}
+              </Heading>
+              <Text fontSize={["xs", "sm", "md"]}>{designation}</Text>
+            </Box>
             <Box p={["10px", "20px"]} position="relative">
               <LeftQuoteIcon
                 color="blue.500"
@@ -57,7 +69,23 @@ const TestimonialCard = ({
                 top="0px"
                 boxSize={["15px", " 20px"]}
               />
-              <Text fontSize={["sm", "md", "md"]}>{message}</Text>
+              <Show above="lg">
+                <Text fontSize={["xs", "sm", "md"]}>{message}</Text>
+              </Show>
+              <Hide above="lg">
+                <Text
+                  fontSize={["xs", "sm", "md"]}
+                  overflow="scroll"
+                  height={isRead ? "120px" : "initial"}
+                >
+                  {message.slice(0, 200)}
+                  {isRead ? message.slice(200) : " "}
+                  <Box as="button" color="blue.500" onClick={readHandler}>
+                    {!isRead ? "Read More..." : "Read Less"}
+                  </Box>
+                </Text>{" "}
+              </Hide>
+
               <RightQuoteIcon
                 color="blue.500"
                 position="absolute"
@@ -66,8 +94,8 @@ const TestimonialCard = ({
                 boxSize={["15px", " 20px"]}
               />
             </Box>
-          </Flex>
-        </Stack>
+          </VStack>
+        </Flex>
       </CardBody>
     </Card>
   );
