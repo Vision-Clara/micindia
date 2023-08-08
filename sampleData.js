@@ -11,13 +11,6 @@ import collab10 from "/assets/collab/seg.jpeg";
 import collab11 from "/assets/collab/treasure.jpg";
 import collab12 from "/assets/collab/women.png";
 
-import education from "/assets/images/education.jpg";
-import women from "/assets/images/women.jpg";
-import oldage from "/assets/images/oldage.jpg";
-import lgbtq from "/assets/images/lgbtq.jpg";
-import blood from "/assets/images/blood.jpg";
-import animal from "/assets/images/animal.jpg";
-
 import testimonial1 from "/assets/testimonial/testimonial1.jpeg";
 import testimonial2 from "/assets/testimonial/testimonial2.jpeg";
 import testimonial3 from "/assets/testimonial/testimonial3.jpeg";
@@ -48,6 +41,14 @@ import feature63 from "/assets/images/animal3.png";
 import feature71 from "/assets/images/women1.png";
 import feature72 from "/assets/images/women2.png";
 import feature73 from "/assets/images/women3.png";
+
+import indore from "/assets/images/indore.jpeg";
+import bhopal from "/assets/images/bhopal.jpeg";
+import jaipur from "/assets/images/jaipur.jpeg";
+import jabalpur from "/assets/images/jabalpur.jpeg";
+import khandwa from "/assets/images/khandwa.jpeg";
+import mhow from "/assets/images/mhow.jpeg";
+import harda from "/assets/images/harda.jpeg";
 
 export const features = [
   {
@@ -343,4 +344,70 @@ export const status = [
   "NEW_REGISTRATION",
   "INTERVIEW_PENDING",
   "CONFIRMED_VOLUNTEER",
+];
+
+export const meetCities = [
+  {
+    name: "MIC Indore",
+    image: indore,
+    desc: `MIC Indore has made impactful initiatives in child education, blood
+        donation, women's empowerment, LGBTQ+ advocacy, environmental
+        stewardship, and elderly care. Their dedication touches diverse aspects
+        of society, promoting education, health, equality, sustainability, and
+        compassion.`,
+  },
+  {
+    name: "MIC Bhopal",
+    image: bhopal,
+    desc: `MIC Bhopal has made impactful initiatives in child education, blood
+    donation, women's empowerment, LGBTQ+ advocacy, environmental
+    stewardship, and elderly care. Their dedication touches diverse aspects
+    of society, promoting education, health, equality, sustainability, and
+    compassion.`,
+  },
+  {
+    name: "MIC Jaipur",
+    image: jaipur,
+    desc: `MIC Jaipur has made impactful initiatives in child education, blood
+        donation, women's empowerment, LGBTQ+ advocacy, environmental
+        stewardship, and elderly care. Their dedication touches diverse aspects
+        of society, promoting education, health, equality, sustainability, and
+        compassion.`,
+  },
+  {
+    name: "MIC Harda",
+    image: harda,
+    desc: `MIC Harda has made impactful initiatives in child education, blood
+        donation, women's empowerment, LGBTQ+ advocacy, environmental
+        stewardship, and elderly care. Their dedication touches diverse aspects
+        of society, promoting education, health, equality, sustainability, and
+        compassion.`,
+  },
+  {
+    name: "MIC Jabalpur",
+    image: harda,
+    desc: `MIC Jabalpur has made impactful initiatives in child education, blood
+        donation, women's empowerment, LGBTQ+ advocacy, environmental
+        stewardship, and elderly care. Their dedication touches diverse aspects
+        of society, promoting education, health, equality, sustainability, and
+        compassion.`,
+  },
+  {
+    name: "MIC Khandwa",
+    image: khandwa,
+    desc: `MIC Khandwa has made impactful initiatives in child education, blood
+        donation, women's empowerment, LGBTQ+ advocacy, environmental
+        stewardship, and elderly care. Their dedication touches diverse aspects
+        of society, promoting education, health, equality, sustainability, and
+        compassion.`,
+  },
+  {
+    name: "MIC MHOW",
+    image: mhow,
+    desc: `MIC MHOW has made impactful initiatives in child education, blood
+    donation, women's empowerment, LGBTQ+ advocacy, environmental
+    stewardship, and elderly care. Their dedication touches diverse aspects
+    of society, promoting education, health, equality, sustainability, and
+    compassion.`,
+  },
 ];

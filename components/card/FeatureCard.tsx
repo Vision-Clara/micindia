@@ -25,11 +25,11 @@ const FeatureCard = ({
   return (
     <Box w={["100%", "350px"]}>
       <Box>
-        <ACrousal isNavigation height="200px">
+        <ACrousal isNavigation height={["180px", "200px"]}>
           {featureImages.map((image, index) => (
             <ASlide key={index}>
               <AspectRatio ratio={6 / 4} w="350px">
-                <Image src={image} alt="feature image" width={300}></Image>
+                <Image src={image} alt="feature image"></Image>
               </AspectRatio>
             </ASlide>
           ))}
