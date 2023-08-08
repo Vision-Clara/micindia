@@ -63,12 +63,13 @@ const ACrousal = ({
   return (
     <Box overflow="hidden" position="relative" height="fit-content">
       {/* slides */}
-      <HStack position="relative" height={height}>
+      <Box position="relative" height={height}>
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             style={{
               zIndex: 1,
               position: "absolute",
+              width: "100%",
             }}
             key={page}
             custom={direction}
@@ -96,7 +97,7 @@ const ACrousal = ({
             {children[currentIndex]}
           </motion.div>
         </AnimatePresence>
-      </HStack>
+      </Box>
 
       {/* navigation */}
       {isNavigation && (

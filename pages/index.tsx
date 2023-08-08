@@ -1,4 +1,13 @@
-import { Box, Flex, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Grid,
+  GridItem,
+  AspectRatio,
+  Stack,
+} from "@chakra-ui/react";
 import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { ReactElement } from "react";
@@ -8,7 +17,13 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { features, testimonials, collabs, achievements } from "@/sampleData";
+import {
+  features,
+  testimonials,
+  collabs,
+  achievements,
+  meetCities,
+} from "@/sampleData";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
 import EventCard from "@/components/card/EventCard";
@@ -42,7 +57,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/favicon.ico" rel="icon"></link>
       </Head>
-      <Box>
+      <Box backgroundColor="whiteAlpha.50">
         {/* hero section */}
         <Swiper
           slidesPerView={1}
@@ -259,6 +274,60 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               );
             })}
           </Flex>
+        </Box>
+
+        {/* meet our cities */}
+        <Box as="section" my={["20px", "30px", "40px"]}>
+          <Heading
+            as="h1"
+            size={["md", "lg", "xl"]}
+            textAlign="center"
+            mx={["20px", "30px", "40px"]}
+            my={["20px", "30px", "40px"]}
+          >
+            Meet Our Cities
+          </Heading>
+          <Box gap={["10px", "20px", "100px"]} mx={["20px", "30px", "40px"]}>
+            <ACrousal height={["480px", "480px", "420px"]} isNavigation>
+              {meetCities.map((city, index) => {
+                return (
+                  <ASlide key={index}>
+                    <Flex
+                      direction={["column", "column", "row"]}
+                      justifyContent="space-between"
+                      alignItems={["center", "center", "flex-start"]}
+                      padding={["10px", "20px", "30px"]}
+                      margin={["10px", "20px", "30px"]}
+                      gap={["10px", "20px", "30px"]}
+                      backgroundColor="orange.50"
+                      shadow={"md"}
+                      rounded="md"
+                    >
+                      <Stack spacing="20px">
+                        <Heading
+                          as="h2"
+                          size={["sm", "md", "lg"]}
+                          color="blue.500"
+                        >
+                          {city.name}
+                        </Heading>
+
+                        <Box fontSize={["xs", "sm", "md"]}>{city.desc}</Box>
+                      </Stack>
+                      <Box flex={1}>
+                        <AspectRatio
+                          ratio={4 / 4}
+                          w={["250px", "250px", "350px"]}
+                        >
+                          <Image src={city.image} alt="city image"></Image>
+                        </AspectRatio>
+                      </Box>
+                    </Flex>
+                  </ASlide>
+                );
+              })}
+            </ACrousal>
+          </Box>
         </Box>
 
         {/* achivements */}
