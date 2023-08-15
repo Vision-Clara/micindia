@@ -45,7 +45,7 @@ const TestimonialCard = ({
               src={profilePhoto}
               alt="testimonial-photo"
               rounded={["full", "full", "full", "2xl"]}
-              boxSize={["150px", "150px", "150px", "full"]}
+              boxSize={["100px", "150px", "150px", "full"]}
             />
           </Box>
 
@@ -53,7 +53,7 @@ const TestimonialCard = ({
             flex="9"
             justifyContent="center"
             gap={["10px", "20px", "30px"]}
-            paddingX={["10px", "20px", "25px"]}
+            paddingX={["5px", "20px", "25px"]}
           >
             <Box>
               <Heading as="h3" size={["sm", "md", "lg"]}>
@@ -78,8 +78,8 @@ const TestimonialCard = ({
                   overflow="scroll"
                   height={isRead ? "120px" : "initial"}
                 >
-                  {message.slice(0, 200)}
-                  {isRead ? message.slice(200) : " "}
+                  {message.slice(0, 205)}
+                  {isRead ? message.slice(205) : " "}
                   <Box as="button" color="blue.500" onClick={readHandler}>
                     {!isRead ? "Read More..." : "Read Less"}
                   </Box>

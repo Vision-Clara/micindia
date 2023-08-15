@@ -29,7 +29,6 @@ import feature33 from "/assets/images/oldage3.png";
 
 import feature41 from "/assets/images/plant1.png";
 import feature42 from "/assets/images/plant2.png";
-import feature43 from "/assets/images/plant3.png";
 import feature44 from "/assets/images/plant4.png";
 
 import feature51 from "/assets/images/lgbtq1.jpeg";
@@ -107,14 +106,15 @@ export const features = [
   },
   {
     id: 6,
-    featureHeading: "Animal Care",
+    featureHeading: "Plantation & Animal Care",
     featureSlogan: "जीवेषु करुणा चापि मैत्री तेषु विधियताम्!!",
-    featureImages: [feature61, feature62, feature63],
-    featureDesc: `Compassion and friendship towards living beings are inherent in all. 
-    Life's interconnectedness with Earth and our reliance on other beings for survival 
-    highlight the importance of protecting them. Across religions, compassion towards 
-    living beings is evident. Let's heed our ancestors' advice and prioritize food and 
-    water treaties for their preservation.`,
+    featureImages: [feature61, feature62, feature63, feature41, feature44],
+    featureDesc: `Committed to a greener tomorrow, our NGO is dedicated to reinvigorating 
+    our planet through plantation drives in MIC locations. Compassion and friendship 
+    towards all living beings are inherent in all. Life's interconnectedness with Earth 
+    and our reliance on other beings for survival 
+    highlight the importance of protecting them. Let's heed our ancestors' advice and 
+    prioritize food and water treaties for their preservation.`,
   },
 ];
 
@@ -359,55 +359,48 @@ export const meetCities = [
   {
     name: "MIC Bhopal",
     image: bhopal,
-    desc: `MIC Bhopal has made impactful initiatives in child education, blood
-    donation, women's empowerment, LGBTQ+ advocacy, environmental
-    stewardship, and elderly care. Their dedication touches diverse aspects
-    of society, promoting education, health, equality, sustainability, and
-    compassion.`,
+    desc: `MIC Bhopal has undertaken significant endeavors in areas such as child
+        education, blood donation, empowerment of women, environmental
+        preservation, and care for the elderly. Their commitment extends across
+        a wide spectrum of society, advancing education, well-being,
+        inclusivity, environmental consciousness, and empathy.`,
   },
   {
     name: "MIC Jaipur",
     image: jaipur,
-    desc: `MIC Jaipur has made impactful initiatives in child education, blood
-        donation, women's empowerment, LGBTQ+ advocacy, environmental
-        stewardship, and elderly care. Their dedication touches diverse aspects
-        of society, promoting education, health, equality, sustainability, and
-        compassion.`,
+    desc: `MIC Jaipur has taken the lead in significant undertakings, spanning child education, 
+    women's empowerment, and environmental conservation. Their steadfast dedication has a 
+    far-reaching impact on multiple aspects of society, championing education, welfare, equality, 
+    sustainability, and empathy.`,
   },
   {
     name: "MIC Harda",
     image: harda,
-    desc: `MIC Harda has made impactful initiatives in child education, blood
-        donation, women's empowerment, LGBTQ+ advocacy, environmental
-        stewardship, and elderly care. Their dedication touches diverse aspects
-        of society, promoting education, health, equality, sustainability, and
-        compassion.`,
+    desc: `MIC Harda has initiated impactful programs in the domains of child education, 
+    blood donation, women's empowerment, environmental stewardship, and elderly care. 
+    Their unwavering commitment spans various facets of society, fostering education, 
+    well-being, parity, sustainability, and compassion.`,
   },
   {
     name: "MIC Jabalpur",
-    image: harda,
-    desc: `MIC Jabalpur has made impactful initiatives in child education, blood
-        donation, women's empowerment, LGBTQ+ advocacy, environmental
-        stewardship, and elderly care. Their dedication touches diverse aspects
-        of society, promoting education, health, equality, sustainability, and
-        compassion.`,
+    image: jabalpur,
+    desc: `MIC Jabalpur has initiated impactful endeavors related to child education, 
+    blood donation, women's empowerment, and environmental stewardship. Their unwavering 
+    dedication influences various dimensions of society, advocating for education, well-being, 
+    parity, sustainability, and compassion.`,
   },
   {
     name: "MIC Khandwa",
     image: khandwa,
-    desc: `MIC Khandwa has made impactful initiatives in child education, blood
-        donation, women's empowerment, LGBTQ+ advocacy, environmental
-        stewardship, and elderly care. Their dedication touches diverse aspects
-        of society, promoting education, health, equality, sustainability, and
-        compassion.`,
+    desc: `MIC Khandwa has undertaken impactful initiatives concerning child education and 
+    environmental stewardship. Their commitment extends across diverse aspects of society, 
+    advocating for education, well-being, equality, sustainability, and compassion.`,
   },
   {
     name: "MIC MHOW",
     image: mhow,
-    desc: `MIC MHOW has made impactful initiatives in child education, blood
-    donation, women's empowerment, LGBTQ+ advocacy, environmental
-    stewardship, and elderly care. Their dedication touches diverse aspects
-    of society, promoting education, health, equality, sustainability, and
-    compassion.`,
+    desc: `MIC MHOW has undertaken impactful initiatives in the realms of child education, 
+    empowerment of women, and environmental stewardship. Their unwavering dedication influences 
+    various dimensions of society, advancing education, well-being, parity, sustainability, and compassion.`,
   },
 ];
