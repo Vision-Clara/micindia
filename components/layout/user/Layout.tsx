@@ -4,7 +4,7 @@ import Header from "./Header";
 import { ReactNode, useState } from "react";
 
 const toDate =
-  process.env.NEXT_PUBLIC_LAUNCH_DATE || "August 16, 2023 22:00:00";
+  process.env.NEXT_PUBLIC_LAUNCH_DATE || "August 15, 2023 17:00:00";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const [isLaunched, setLaunched] = useState(new Date(toDate) <= new Date());
