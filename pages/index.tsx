@@ -469,7 +469,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               gap={["10px", "20px", "30px"]}
               mx={["20px", "30px", "40px"]}
             >
-              {events.map((item) => {
+              {events.slice(0, 3).map((item) => {
                 return (
                   <Box maxW={["100%", "350px", "380px"]} key={item._id}>
                     <EventCard
@@ -527,10 +527,10 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <Flex
             align="center"
             justify="space-between"
-            gap="30px"
+            gap={["10px", "20px", "30px"]}
             flexWrap="wrap"
             mx={["20px", "30px", "40px"]}
-            py="30px"
+            py={["20px", "25px", "30px"]}
           >
             <Text
               bgGradient="linear(to-l, #7928CA, #FF0080)"
@@ -544,8 +544,8 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <Link
                 mx="auto"
                 w="150px"
-                px="20px"
-                py="15px"
+                px={["10px", "15px", "20px"]}
+                py={["10px", "12px", "15px"]}
                 border="1px"
                 borderColor="red.500"
                 bgColor="red.500"
