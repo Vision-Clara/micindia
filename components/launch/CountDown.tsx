@@ -99,6 +99,9 @@ const CountDown = ({
       justifyContent="center"
       gap="10px"
       height="100vh"
+      bgImage="url('./flag.jpg')"
+      bgSize="cover"
+      bgPos="center"
     >
       <Link href="/">
         <Image w="80px" src={logo} alt="mic logo" priority></Image>
