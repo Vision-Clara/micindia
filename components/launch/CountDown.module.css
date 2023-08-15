@@ -82,6 +82,8 @@
 
 .segment-title {
   font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
 }
 
 @media (min-width: 700px) {
@@ -103,7 +105,8 @@
   }
 
   .segment {
-    font-size: 4rem;
+    width: 9rem;
+    font-size: 3.5rem;
   }
 
   .segment-title {
