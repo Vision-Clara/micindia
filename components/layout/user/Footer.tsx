@@ -143,7 +143,7 @@ const Footer = () => {
         <Box as="p">
           MIC 354 Ring Road, Piplya Rao Indore, <br /> +91 8104744738, +91
           9993987710, <br />
-          micorganisationindia@gmail.com
+          info@micindia.org
         </Box>
       </Box>
 

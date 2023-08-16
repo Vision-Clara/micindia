@@ -194,7 +194,7 @@ const Contact = () => {
                 <MapIcon /> MIC 354 Ring Road, Piplya Rao Indore (M.P.)
               </Box>
               <Box my="2">
-                <EmailIcon /> micorganisationindia@gmail.com
+                <EmailIcon /> info@micindia.org
               </Box>
               <Box my="2">
                 <PhoneIcon />
