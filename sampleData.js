@@ -228,7 +228,7 @@ export const testimonials = [
 
   {
     id: 3,
-    profilePhoto: testimonial3,
+    profilePhoto: testimonial4,
     personName: "Mrs. Shubhi Jain ",
     designation:
       "- Social Influencer, and Yatayat Traffic Prabandhan Mitra Traffic Volunteer, Indore",
@@ -246,7 +246,7 @@ export const testimonials = [
 
   {
     id: 4,
-    profilePhoto: testimonial4,
+    profilePhoto: testimonial3,
     personName: "Dr. Ragini Makkhar",
     designation:
       "- International Kathak Dancer, Naadyog Institute of Khatak & Music",
