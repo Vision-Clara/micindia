@@ -18,8 +18,19 @@ import logo from "../../../public/logo.png";
 import meri_logo from "../../../assets/logo/meri_logo.png";
 import col_logo from "../../../assets/logo/collective_logo.jpg";
 import CustomModal from "../../modal/CustomModal";
+import { useUser } from "@/hooks/useUser";
+import { useSWRConfig } from "swr";
+import { signOut } from "@/api/auth";
 
 const Header = () => {
+  const { mutate } = useSWRConfig();
+  const user = useUser({});
+
+  const handleLogout = async () => {
+    await signOut();
+    mutate("/profile", null);
+  };
+
   return (
     <Flex
       as="header"
@@ -147,6 +158,27 @@ const Header = () => {
               <Link href="/contact">Contact Us</Link>
             </Box>
             <CustomModal />
+            {user && (
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rightIcon={<ChevronDownIcon />}
+                  variant={"unstyled"}
+                  fontWeight={"normal"}
+                >
+                  @ {user.name}
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>My ID Card</MenuItem>
+                  {user.role === "ADMIN" && (
+                    <MenuItem>
+                      <Link href="/admin/users">Admin?</Link>
+                    </MenuItem>
+                  )}
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </MenuList>
+              </Menu>
+            )}
           </Flex>
         </Box>
       </Show>
@@ -155,11 +187,18 @@ const Header = () => {
         <Flex as="nav" justifyContent="space-between" zIndex={2}>
           <Menu>
             <MenuButton color="blue.500">
-              Menu
+              {user ? `@ ${user.name}` : "Menu"}
               <ChevronDownIcon />
             </MenuButton>
 
             <MenuList>
+              {user && (
+                <>
+                  <MenuItem> My Id Card</MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  <Divider />
+                </>
+              )}
               <MenuItem>
                 <Link href="/" w="100%">
                   Home

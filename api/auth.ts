@@ -11,6 +11,13 @@ export const signIn = async (payload: { email: string; password: string }) => {
   return response.data.user;
 };
 
+//sign out
+export const signOut = async () => {
+  const response = await axiosInstance.post("/auth/signout");
+
+  return response.data;
+};
+
 //forget password
 export const forgetPassword = async (payload: { email: string }) => {
   const response = await axiosInstance.post("/auth/forget-password", payload);

@@ -3,6 +3,7 @@ import {
   Flex,
   Grid,
   GridItem,
+  HStack,
   Heading,
   Hide,
   Menu,
@@ -10,14 +11,39 @@ import {
   MenuItem,
   MenuList,
   Show,
+  VStack,
 } from "@chakra-ui/react";
 
 import logo from "../../../public/logo.png";
 import { Image, Link } from "@chakra-ui/next-js";
 import admin from "@/assets/images/admin.jpg";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useUser } from "@/hooks/useUser";
+import { signOut } from "@/api/auth";
+import { useSWRConfig } from "swr";
+import Router from "next/router";
 
 const Navbar = ({ children }: any) => {
+  const user = useUser({ redirectTo: "/auth/signin" });
+  const { mutate } = useSWRConfig();
+
+  const handleLogout = async () => {
+    await signOut();
+    mutate("/profile", null);
+    Router.push("/auth/signin");
+  };
+
+  if (!user) {
+    return (
+      <style jsx>{`
+        pre {
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        }
+      `}</style>
+    );
+  }
+
   return (
     <>
       <Hide above="lg">
@@ -82,11 +108,12 @@ const Navbar = ({ children }: any) => {
         <Grid templateColumns="200px 1fr" minHeight="100vh" templateRows="1fr">
           <GridItem as="nav">
             <Box shadow="lg" height="full">
-              <Box paddingY="10px" paddingX="20px">
+              <VStack paddingY="10px" paddingX="20px">
                 <Link href="/">
-                  <Image w="65px" src={logo} alt="mic logo" priority></Image>
+                  <Image w="50px" src={logo} alt="mic logo" priority></Image>
                 </Link>
-              </Box>
+                {user && <Box>@ {user.name}</Box>}
+              </VStack>
 
               <Box>
                 <Box
@@ -102,7 +129,7 @@ const Navbar = ({ children }: any) => {
                     },
                   }}
                 >
-                  <Link href="/admin/users">Manage Users</Link>
+                  <Link href="/admin/users">Users</Link>
                 </Box>
                 <Box
                   paddingX="20px"
@@ -117,7 +144,7 @@ const Navbar = ({ children }: any) => {
                     },
                   }}
                 >
-                  <Link href="/admin/events">Manage Events</Link>
+                  <Link href="/admin/events">Events</Link>
                 </Box>
                 <Box
                   paddingX="20px"
@@ -133,6 +160,21 @@ const Navbar = ({ children }: any) => {
                   }}
                 >
                   <Link href="/admin/certificate">Certificate</Link>
+                </Box>
+                <Box
+                  paddingX="20px"
+                  paddingY="10px"
+                  cursor="pointer"
+                  sx={{
+                    transition: "all 100ms ease-in-out",
+                    ":hover": {
+                      paddingBottom: "10px",
+                      bgColor: "blue.500",
+                      color: "white",
+                    },
+                  }}
+                >
+                  <Box onClick={handleLogout}>Logout</Box>
                 </Box>
               </Box>
             </Box>
