@@ -17,6 +17,7 @@ import SuccessToast from "@/components/toast/SuccessToast";
 import useForm from "@/hooks/useForm";
 import { ISignUpFormData } from "@/types";
 import { isFilled } from "@/utils/validators";
+import Router from "next/router";
 
 const initialFormData = {
   values: {
@@ -55,6 +56,8 @@ const SignIn = () => {
         position: "top",
         render: () => <SuccessToast message="User Logged In" />,
       });
+
+      Router.push("/");
     } catch (error: any) {
       //show error toast
       toast({

@@ -12,6 +12,13 @@ export const getAllUsers = async (url: string) => {
   }
 };
 
+export const getUserProfile = async (url: string) => {
+  const res = await axiosInstance.get<IResponseUser>(`${url}`);
+  const user = res.data.user;
+
+  return user;
+};
+
 export const getUserById = async ([url, userId]: [string, string]) => {
   const res = await axiosInstance.get<IResponseUser>(`${url}/${userId}`);
   const user = res.data.user;
