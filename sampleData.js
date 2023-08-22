@@ -48,6 +48,7 @@ import jabalpur from "/assets/images/jabalpur.jpeg";
 import khandwa from "/assets/images/khandwa.jpeg";
 import mhow from "/assets/images/mhow.jpeg";
 import harda from "/assets/images/harda.jpeg";
+import ujjain from "/assets/images/ujjain.jpeg";
 
 export const features = [
   {
@@ -402,5 +403,16 @@ export const meetCities = [
     desc: `MIC MHOW has undertaken impactful initiatives in the realms of child education, 
     empowerment of women, and environmental stewardship. Their unwavering dedication influences 
     various dimensions of society, advancing education, well-being, parity, sustainability, and compassion.`,
+  },
+  {
+    name: "MIC Ujjain",
+    image: ujjain,
+    desc: `MIC Ujjain is Cultavating Chanage, One Step at a Time! Witness the
+        transformation unfold as MIC Ujjain takes charge, nurturing healthcare,
+        women's empowerment, and the environment. WIth 45 trees planted on
+        Independence Day under Mission Green India, our commitment to progress
+        grows stronger. As we are planning to collaborate with Ujjain Municipal
+        Corporation to spread the message of cleanliness, we are shaping a
+        future where education and nature thrive hand in hand.`,
   },
 ];
