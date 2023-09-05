@@ -1,4 +1,4 @@
-vision-clara-v.0.0.10
+micindia
 
 ## Development Instructions
 ___
