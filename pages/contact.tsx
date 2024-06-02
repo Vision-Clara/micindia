@@ -22,6 +22,7 @@ import { IContactFormData } from "@/types";
 import useForm from "@/hooks/useForm";
 import { isFilled, isValidEmail } from "@/utils/validators";
 import { sendMessage } from "@/api/contact";
+import axiosInstance from "@/utils/axiosInstance";
 
 const initialFormData = {
   values: {
@@ -94,7 +95,7 @@ const Contact = () => {
         email: formData.values.email,
         message: formData.values.message,
       };
-      await sendMessage(payload);
+      await axiosInstance.post("/api/contact", payload);
 
       toast({
         status: "success",

@@ -19,6 +19,7 @@ import useForm from "@/hooks/useForm";
 import { IFeedbackFormData } from "@/types";
 import { isFilled } from "@/utils/validators";
 import { sendFeedback } from "@/api/feedback";
+import axiosInstance from "@/utils/axiosInstance";
 
 const initialFormData = {
   values: {
@@ -83,7 +84,7 @@ const Feedback = () => {
         type: formData.values.type,
         message: formData.values.message,
       };
-      await sendFeedback(payload);
+      await axiosInstance.post("/api/feedback", payload);
 
       toast({
         status: "success",
