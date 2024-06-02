@@ -18,8 +18,4 @@ const Blood = () => {
   );
 };
 
-Blood.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
 export default Blood;

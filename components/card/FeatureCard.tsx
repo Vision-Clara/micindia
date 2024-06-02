@@ -1,6 +1,5 @@
-import { Image } from "@chakra-ui/next-js";
 import { AspectRatio, Box } from "@chakra-ui/react";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import {
   Accordion,
   AccordionItem,

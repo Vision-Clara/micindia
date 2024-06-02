@@ -8,9 +8,10 @@ import linkedin from "../../../assets/social/linkedin.png";
 import whatsapp from "../../../assets/social/whatsapp.png";
 
 //import next components
-import { Link, Image } from "@chakra-ui/next-js";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import VerifiedIcon from "../../icon/VerifiedIcon";
+import Link from "next/link";
+import Image from "next/image";
 
 //Declare constants
 const MIC_INSTA_URL = "https://www.instagram.com/mic_organisation_india/";
@@ -50,7 +51,9 @@ const Footer = () => {
             }}
           >
             <Link href={MIC_INSTA_URL} target="_blank">
-              <Image src={insta} alt="@mic_organisation_india" w="35px" />
+              <Box w="35px">
+                <Image src={insta} width={100} alt="@mic_organisation_india" />
+              </Box>
             </Link>
           </Box>
           <Box
@@ -64,7 +67,9 @@ const Footer = () => {
             }}
           >
             <Link href={MIC_TWITTER_URL} target="_blank">
-              <Image src={twitter} alt="@micorganisation" w="35px" />
+              <Box w="35px">
+                <Image src={twitter} alt="@micorganisation" width={100} />
+              </Box>
             </Link>
           </Box>
           <Box
@@ -78,7 +83,9 @@ const Footer = () => {
             }}
           >
             <Link href={MIC_FB_URL} target="_blank">
-              <Image src={facebook} alt="@MICOrganisation" w="35px" />
+              <Box w="35px">
+                <Image src={facebook} alt="@MICOrganisation" width={100} />
+              </Box>
             </Link>
           </Box>
           <Box
@@ -92,11 +99,13 @@ const Footer = () => {
             }}
           >
             <Link href={MIC_LINKEDIN_URL} target="_blank">
-              <Image
-                src={linkedin}
-                alt="@mic-organisation-india-20035219b"
-                w="35px"
-              />
+              <Box w="35px">
+                <Image
+                  src={linkedin}
+                  alt="@mic-organisation-india-20035219b"
+                  width={100}
+                />
+              </Box>
             </Link>
           </Box>
           <Box
@@ -110,7 +119,9 @@ const Footer = () => {
             }}
           >
             <Link href={MIC_WHATSAPP_URL} target="_blank">
-              <Image src={whatsapp} alt="@whatsapp" w="35px" />
+              <Box w="35px">
+                <Image src={whatsapp} alt="@whatsapp" width={100} />
+              </Box>
             </Link>
           </Box>
         </Flex>
@@ -155,12 +166,16 @@ const Footer = () => {
         <Flex gap="20px">
           <Box>
             <Link href={MP_URL}>
-              <Image src={mp} alt="collab" w="100px" />
+              <Box w="100px">
+                <Image src={mp} alt="collab" w={100} />
+              </Box>
             </Link>
           </Box>
           <Box>
             <Link href={NITI_URL}>
-              <Image src={niti} alt="collab" w="100px" borderRadius="5px" />
+              <Box w="100px" borderRadius="5px" overflow="hidden">
+                <Image src={niti} alt="collab" w={100} />
+              </Box>
             </Link>
           </Box>
         </Flex>

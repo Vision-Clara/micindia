@@ -226,8 +226,4 @@ const Contact = () => {
   );
 };
 
-Contact.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
 export default Contact;

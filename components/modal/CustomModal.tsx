@@ -1,4 +1,3 @@
-import { Image } from "@chakra-ui/next-js";
 import {
   Modal,
   ModalOverlay,
@@ -16,6 +15,7 @@ import {
 
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import QRImage from "@/assets/images/qr.jpg";
+import Image from "next/image";
 
 function CustomModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -60,13 +60,8 @@ function CustomModal() {
                 <RiDoubleQuotesR />
               </Box>
             </Text>
-            <Box pt="10px">
-              <Image
-                src={QRImage}
-                alt="QR Code To Donate"
-                w="full"
-                borderRadius="5px"
-              ></Image>
+            <Box pt="10px" borderRadius="5px" overflow="hidden" w="full">
+              <Image src={QRImage} alt="QR Code To Donate"></Image>
             </Box>
           </ModalBody>
 

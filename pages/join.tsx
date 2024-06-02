@@ -18,8 +18,4 @@ const Join = () => {
   );
 };
 
-Join.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
 export default Join;

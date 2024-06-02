@@ -12,8 +12,7 @@ import {
 } from "@chakra-ui/react";
 import LeftQuoteIcon from "../icon/LeftQuoteIcon";
 import RightQuoteIcon from "../icon/RightQuoteIcon";
-import { StaticImageData } from "next/image";
-import { Image } from "@chakra-ui/next-js";
+import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 
 const TestimonialCard = ({
@@ -40,15 +39,15 @@ const TestimonialCard = ({
           gap={["10px", "20px", "30px"]}
           direction={["column", "column", "column", "row"]}
         >
-          <Box marginX="auto" overflow="hidden" flex="6">
-            <Image
-              src={profilePhoto}
-              alt="testimonial-photo"
-              rounded={["full", "full", "full", "2xl"]}
-              boxSize={["100px", "150px", "150px", "full"]}
-            />
+          <Box
+            marginX="auto"
+            overflow="hidden"
+            flex="6"
+            rounded={["full", "full", "full", "2xl"]}
+            boxSize={["100px", "150px", "150px", "440px"]}
+          >
+            <Image src={profilePhoto} alt="testimonial-photo" />
           </Box>
-
           <VStack
             flex="9"
             justifyContent="center"

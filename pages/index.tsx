@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Flex,
@@ -8,9 +9,7 @@ import {
   AspectRatio,
   Stack,
 } from "@chakra-ui/react";
-import { Link, Image } from "@chakra-ui/next-js";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { ReactElement } from "react";
 import Head from "next/head";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -30,11 +29,12 @@ import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import AwardIcon from "@/components/icon/AwardIcon";
-import Layout from "@/components/layout/user/Layout";
 import { IEvent } from "@/types";
 import { getAllEvents } from "@/api/event";
 import ACrousal from "@/components/crousal/ACrousal";
 import ASlide from "@/components/crousal/ASlide";
+import Image from "next/image";
+import Link from "next/link";
 
 export const getStaticProps: GetStaticProps<{
   events: IEvent[];
@@ -540,30 +540,25 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
             >
               Together, We Can Change the World!
             </Text>
-            <Box>
-              <Link
-                mx="auto"
-                w="150px"
-                px={["10px", "15px", "20px"]}
-                py={["10px", "12px", "15px"]}
-                border="1px"
-                borderColor="red.500"
-                bgColor="red.500"
-                color="white"
-                cursor="pointer"
-                mt="20px"
-                sx={{
-                  transition: "all 100ms ease-in-out",
-                  ":hover": {
-                    bgColor: "white",
-                    color: "red.500",
-                  },
-                }}
-                fontSize={["lg", "xl", "3xl"]}
-                href="/join"
-              >
-                Join Us
-              </Link>
+            <Box
+              px={["10px", "15px", "20px"]}
+              py={["10px", "12px", "15px"]}
+              border="1px"
+              borderColor="red.500"
+              bgColor="red.500"
+              color="white"
+              cursor="pointer"
+              mt="20px"
+              sx={{
+                transition: "all 100ms ease-in-out",
+                ":hover": {
+                  bgColor: "white",
+                  color: "red.500",
+                },
+              }}
+              fontSize={["lg", "xl", "3xl"]}
+            >
+              <Link href="/join">Join Us</Link>
             </Box>
           </Flex>
         </Box>
@@ -583,13 +578,8 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               {collabs.map((item) => {
                 return (
                   <Flex key={item.id} w="100px" flex="none" alignItems="center">
-                    <Box>
-                      <Image
-                        w="full"
-                        src={item.logo}
-                        alt="collab"
-                        borderRadius="10px"
-                      />
+                    <Box borderRadius="10px" overflow={"hidden"}>
+                      <Image width={100} src={item.logo} alt="collab" />
                     </Box>
                   </Flex>
                 );
@@ -600,10 +590,6 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
       </Box>
     </>
   );
-};
-
-Home.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
 };
 
 export default Home;
