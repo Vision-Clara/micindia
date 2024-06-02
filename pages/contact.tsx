@@ -95,7 +95,7 @@ const Contact = () => {
         email: formData.values.email,
         message: formData.values.message,
       };
-      await axiosInstance.post("/api/contact", payload);
+      await sendMessage(payload);
 
       toast({
         status: "success",

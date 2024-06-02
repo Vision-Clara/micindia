@@ -84,7 +84,7 @@ const Feedback = () => {
         type: formData.values.type,
         message: formData.values.message,
       };
-      await axiosInstance.post("/api/feedback", payload);
+      await sendFeedback(payload);
 
       toast({
         status: "success",
