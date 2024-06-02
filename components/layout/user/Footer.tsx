@@ -167,14 +167,14 @@ const Footer = () => {
           <Box>
             <Link href={MP_URL}>
               <Box w="100px">
-                <Image src={mp} alt="collab" w={100} />
+                <Image src={mp} alt="collab" width={100} />
               </Box>
             </Link>
           </Box>
           <Box>
             <Link href={NITI_URL}>
               <Box w="100px" borderRadius="5px" overflow="hidden">
-                <Image src={niti} alt="collab" w={100} />
+                <Image src={niti} alt="collab" width={100} />
               </Box>
             </Link>
           </Box>
