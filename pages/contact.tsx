@@ -12,17 +12,15 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
-import { ReactElement } from "react";
 import MapIcon from "@/components/icon/MapIcon";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
-import Layout from "@/components/layout/user/Layout";
 import { MAP_URL } from "@/utils/constants";
 import { IContactFormData } from "@/types";
 import useForm from "@/hooks/useForm";
 import { isFilled, isValidEmail } from "@/utils/validators";
-import { sendMessage } from "@/api/contact";
 import axiosInstance from "@/utils/axiosInstance";
+import axios from "axios";
 
 const initialFormData = {
   values: {
@@ -95,15 +93,29 @@ const Contact = () => {
         email: formData.values.email,
         message: formData.values.message,
       };
-      await sendMessage(payload);
 
-      toast({
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "top",
-        render: () => <SuccessToast message="Thank you for contacting us." />,
-      });
+      const response = await axios.post("/api/contact", payload);
+
+      if (response.status === 200) {
+        toast({
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+          render: () => <SuccessToast message="Thank you for contacting us." />,
+        });
+      } else {
+        //show error
+        toast({
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+          render: () => (
+            <ErrorToast message={"Something went wrong, please try later."} />
+          ),
+        });
+      }
     } catch (error: any) {
       //show error
       toast({
@@ -111,7 +123,9 @@ const Contact = () => {
         duration: 5000,
         isClosable: true,
         position: "top",
-        render: () => <ErrorToast message={error.response.data.message} />,
+        render: () => (
+          <ErrorToast message={"Something went wrong, please try later."} />
+        ),
       });
     }
   };

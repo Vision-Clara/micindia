@@ -1,4 +1,3 @@
-import { Image, Link } from "@chakra-ui/next-js";
 import {
   Heading,
   Card,
@@ -17,6 +16,8 @@ import LocationIcon from "../icon/LocationIcon";
 import InstaIcon from "../icon/InstaIcon";
 import TwitterIcon from "../icon/TwitterIcon";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const EventCard = ({
   eventName,
@@ -42,12 +43,9 @@ const EventCard = ({
     <Card h="full" size={["sm", "md", "lg"]}>
       <CardBody>
         <AspectRatio ratio={10 / 6}>
-          <Image
-            src={eventPoster}
-            alt="mic event poster"
-            borderRadius="lg"
-            fill={true}
-          />
+          <Box borderRadius="lg">
+            <Image src={eventPoster} alt="mic event poster" fill={true} />
+          </Box>
         </AspectRatio>
 
         <Stack mt="6" spacing="3">
