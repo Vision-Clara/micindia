@@ -94,7 +94,10 @@ const Contact = () => {
         message: formData.values.message,
       };
 
-      const response = await axios.post("/api/contact", payload);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/contact`,
+        payload
+      );
 
       if (response.status === 200) {
         toast({
