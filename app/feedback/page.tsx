@@ -11,16 +11,14 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
-import { ReactElement } from "react";
 
 import SuccessToast from "@/components/toast/SuccessToast";
 import ErrorToast from "@/components/toast/ErrorToast";
-import Layout from "@/components/layout/user/Layout";
 import useForm from "@/hooks/useForm";
 import { IFeedbackFormData } from "@/types";
 import { isFilled } from "@/utils/validators";
 import { sendFeedback } from "@/api/feedback";
-import axiosInstance from "@/utils/axiosInstance";
+import axios from "axios";
 
 const initialFormData = {
   values: {
@@ -85,15 +83,28 @@ const Feedback = () => {
         type: formData.values.type,
         message: formData.values.message,
       };
-      await sendFeedback(payload);
+      const response = await axios.post(`/api/feedback`, payload);
 
-      toast({
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "top",
-        render: () => <SuccessToast message="Feedback sent successfully" />,
-      });
+      if (response.status === 200) {
+        toast({
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+          render: () => <SuccessToast message="Thank you for contacting us." />,
+        });
+      } else {
+        //show error
+        toast({
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+          render: () => (
+            <ErrorToast message={"Something went wrong, please try later."} />
+          ),
+        });
+      }
     } catch (error: any) {
       //show error
       toast({
