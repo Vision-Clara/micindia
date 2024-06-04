@@ -1,3 +1,4 @@
+"use client";
 import { Icon, IconProps } from "@chakra-ui/react";
 import { FaQuoteLeft } from "react-icons/fa";
 

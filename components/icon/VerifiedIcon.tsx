@@ -1,3 +1,4 @@
+"use client";
 import { Icon } from "@chakra-ui/react";
 
 const VerifiedIcon = () => {

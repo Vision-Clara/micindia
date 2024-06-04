@@ -1,3 +1,5 @@
+"use client";
+
 import useForm from "@/hooks/useForm";
 import { ICreateUserFormData, IUser } from "@/types";
 import { AddIcon } from "@chakra-ui/icons";

@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@chakra-ui/button";
 import { ViewIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";

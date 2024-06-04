@@ -1,3 +1,5 @@
+"use client";
+
 import useForm from "@/hooks/useForm";
 import { IUpdateUserFormData, IUser } from "@/types";
 import {

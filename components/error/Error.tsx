@@ -1,3 +1,4 @@
+"use client";
 import { Link } from "@chakra-ui/next-js";
 import { Box, Text } from "@chakra-ui/react";
 

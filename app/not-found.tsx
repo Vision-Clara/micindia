@@ -1,3 +1,4 @@
+"use client";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import pageNotFound from "@/assets/images/404.png";
 import { ReactPropTypes } from "react";

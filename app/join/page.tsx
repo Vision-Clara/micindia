@@ -1,15 +1,16 @@
+"use client";
 import Layout from "@/components/layout/user/Layout";
 import { AspectRatio } from "@chakra-ui/react";
 import { ReactElement } from "react";
 
-const BLOOD_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeBF5EnpXQWVHKW2KNbiVLKjp68CCrClL3HSDNzVbKRgeNngg/formResponse?embedded=true";
+const REG_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe1gnvqUkXquADmOM2uxPTxAGXxNpVIt9I7nPQkwPNeJC3_5w/formResponse?embedded=true";
 
-const Blood = () => {
+const Join = () => {
   return (
     <AspectRatio ratio={10 / 14}>
       <iframe
-        src={BLOOD_URL}
+        src={REG_URL}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
@@ -18,4 +19,4 @@ const Blood = () => {
   );
 };
 
-export default Blood;
+export default Join;

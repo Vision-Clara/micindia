@@ -1,3 +1,5 @@
+"use client";
+
 import { AspectRatio, Box } from "@chakra-ui/react";
 import Image, { StaticImageData } from "next/image";
 import {

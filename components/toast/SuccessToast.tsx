@@ -1,3 +1,4 @@
+"use client";
 import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 

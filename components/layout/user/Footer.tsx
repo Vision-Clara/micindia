@@ -1,3 +1,4 @@
+"use client";
 // import logos and social icons
 import niti from "../../../assets/logo/nitiayog-logo.png";
 import mp from "../../../assets/logo/mp_logo.png";

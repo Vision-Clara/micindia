@@ -1,3 +1,4 @@
+"use client";
 import { Image, Link } from "@chakra-ui/next-js";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import logo from "../../public/logo.png";

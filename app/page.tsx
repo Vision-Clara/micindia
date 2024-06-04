@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Box,
@@ -29,26 +31,12 @@ import EventCard from "@/components/card/EventCard";
 import TestimonialCard from "@/components/card/TestimonialCard";
 import Crousal from "@/components/crousal/Crousal";
 import AwardIcon from "@/components/icon/AwardIcon";
-import { IEvent } from "@/types";
-import { getAllEvents } from "@/api/event";
 import ACrousal from "@/components/crousal/ACrousal";
 import ASlide from "@/components/crousal/ASlide";
 import Image from "next/image";
 import Link from "next/link";
 
-export const getStaticProps: GetStaticProps<{
-  events: IEvent[];
-}> = async () => {
-  try {
-    const events = await getAllEvents();
-
-    return { props: { events } };
-  } catch (error: any) {
-    return { props: { events: [] } };
-  }
-};
-
-const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = () => {
   return (
     <>
       <Head>
@@ -453,7 +441,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </Box>
 
         {/* events section */}
-        {events.length !== 0 && (
+        {/* {events.length !== 0 && (
           <Box as="section" my={["20px", "30px", "40px"]}>
             <Heading
               as="h1"
@@ -484,7 +472,7 @@ const Home = ({ events }: InferGetStaticPropsType<typeof getStaticProps>) => {
               })}
             </Flex>
           </Box>
-        )}
+        )} */}
 
         {/* testimonials section */}
         {testimonials.length !== 0 && (

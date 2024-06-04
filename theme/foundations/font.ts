@@ -1,7 +1,7 @@
 const fonts = {
-  body: "'Montserrat', sans-serif",
-  heading: "'Montserrat', sans-serif",
-  mono: "'Montserrat', sans-serif",
+  body: "var(--font-montserrat)",
+  heading: "var(--font-montserrat)",
+  mono: "var(--font-montserrat)",
 };
 
 export default fonts;

@@ -1,3 +1,4 @@
+"use client";
 import CountDown from "@/components/launch/CountDown";
 import Footer from "./Footer";
 import Header from "./Header";

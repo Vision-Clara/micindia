@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button, Flex, HStack } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { ReactNode, useState } from "react";

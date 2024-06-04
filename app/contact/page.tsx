@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Heading,
@@ -19,7 +20,6 @@ import { MAP_URL } from "@/utils/constants";
 import { IContactFormData } from "@/types";
 import useForm from "@/hooks/useForm";
 import { isFilled, isValidEmail } from "@/utils/validators";
-import axiosInstance from "@/utils/axiosInstance";
 import axios from "axios";
 
 const initialFormData = {

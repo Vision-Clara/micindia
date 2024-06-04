@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/components/layout/user/Layout";
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import { ReactElement } from "react";
