@@ -17,7 +17,6 @@ import ErrorToast from "@/components/toast/ErrorToast";
 import useForm from "@/hooks/useForm";
 import { IFeedbackFormData } from "@/types";
 import { isFilled } from "@/utils/validators";
-import { sendFeedback } from "@/api/feedback";
 import axios from "axios";
 
 const initialFormData = {
