@@ -11,7 +11,6 @@ import {
   AspectRatio,
   Stack,
 } from "@chakra-ui/react";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -24,6 +23,7 @@ import {
   collabs,
   achievements,
   meetCities,
+  events,
 } from "@/sampleData";
 import FeatureCard from "@/components/card/FeatureCard";
 import StatCard from "@/components/card/StatCard";
@@ -441,7 +441,7 @@ const Home = () => {
         </Box>
 
         {/* events section */}
-        {/* {events.length !== 0 && (
+        {events.length !== 0 && (
           <Box as="section" my={["20px", "30px", "40px"]}>
             <Heading
               as="h1"
@@ -457,9 +457,9 @@ const Home = () => {
               gap={["10px", "20px", "30px"]}
               mx={["20px", "30px", "40px"]}
             >
-              {events.slice(0, 3).map((item) => {
+              {events.slice(0, 3).map((item, index) => {
                 return (
-                  <Box maxW={["100%", "350px", "380px"]} key={item._id}>
+                  <Box maxW={["100%", "350px", "380px"]} key={`event_${index}`}>
                     <EventCard
                       eventName={item.eventName}
                       eventDesc={item.eventDesc}
@@ -472,7 +472,7 @@ const Home = () => {
               })}
             </Flex>
           </Box>
-        )} */}
+        )}
 
         {/* testimonials section */}
         {testimonials.length !== 0 && (

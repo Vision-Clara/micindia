@@ -416,3 +416,33 @@ export const meetCities = [
         future where education and nature thrive hand in hand.`,
   },
 ];
+
+export const events = [
+  {
+    eventName: "Jhola-Dhari Indori Cyclothon",
+    eventDesc:
+      "Organised a Cyclothon with the aim of making Indore free from polythene and single-use plastics. On this occasion, Commissioner Ms. Harshika Singh, Health Officer Mr. Ashwini Shukla, Deputy Commissioner Mr. Siddharth Jain, Chief Engineer Mr. Mahesh Sharma, along with more than 500 bicycle enthusiasts citizens of the city, rode bicycles from Palasia Chauraha Selfie Point to Rajeev Gandhi Chauraha, following the same route.",
+    eventPoster:
+      "https://mlcx8vmjptuhq7il.public.blob.vercel-storage.com/event-posters/event2_cg4kwe-iz9lJSULPncvJMPDqiXMVLw8Xv7hoL.jpg",
+    eventDate: "2023-05-13T18:30:00.000+00:00",
+    eventLocation: "INDORE",
+  },
+  {
+    eventName: "Mother's Day Delight",
+    eventDesc:
+      "On Mother's Day, MIC Organisation in collaboration with TI Mall, Indore organised Mother's Day Delight program for the mothers of Indore. Various fun activities were organized including dance performances, ramp walks, and a musical chair race, and games like one-minute momos eating competition was organized with the support of Wow Momos became a highlight of the event. All the winners, along with their children, were presented with gift vouchers from T.I. Mall as a token of appreciation.",
+    eventPoster:
+      "https://mlcx8vmjptuhq7il.public.blob.vercel-storage.com/event-posters/event3_jfxt5w-hX18Y1z79aiYeA5gwdpj4NF2VKmkHw.jpg",
+    eventDate: "2022-12-25T18:30:00.000+00:00",
+    eventLocation: "INDORE",
+  },
+  {
+    eventName: "Open MIC Harda",
+    eventDesc:
+      "MIC Harda orchestrated a vibrant Open MIC event, creating a platform for artists to showcase their talents within the inviting ambiance of GP Mall. The event buzzed with creativity as performers from diverse genres captivated the audience with their expressions. It was an evening filled with artistic energy, fostering a sense of community and appreciation for local talent.",
+    eventPoster:
+      "https://mlcx8vmjptuhq7il.public.blob.vercel-storage.com/event-posters/open_ktevzp-8nw5gCXNXEPbwOAZHva4jytWmUtkfE.png",
+    eventDate: "2023-07-03T00:00:00.000+00:00",
+    eventLocation: "HARDA",
+  },
+];
