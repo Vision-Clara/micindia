@@ -209,7 +209,7 @@ const Contact = () => {
                 <MapIcon /> MIC 354 Ring Road, Piplya Rao Indore (M.P.)
               </Box>
               <Box my="2">
-                <EmailIcon /> info@micindia.org
+                <EmailIcon /> info@micindia.org, micorganisationindia@gmail.com
               </Box>
               <Box my="2">
                 <PhoneIcon />
