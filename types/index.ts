@@ -126,3 +126,11 @@ export interface IUpdateUserFormData {
   isActive: string;
   role: string;
 }
+
+export interface ICertificateData {
+  name: string;
+  position: string;
+  location: string;
+  fromDate: string;
+  toDate: string;
+}

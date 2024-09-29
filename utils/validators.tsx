@@ -1,5 +1,5 @@
 export const isFilled = (data: string) => {
-  return data ? true : false;
+  return !!data;
 };
 
 export function isValidEmail(data: string) {
