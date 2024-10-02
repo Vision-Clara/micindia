@@ -132,5 +132,6 @@ export interface ICertificateData {
   position: string;
   location: string;
   fromDate: string;
-  toDate: string;
+  toDate?: string;
+  months?: string;
 }

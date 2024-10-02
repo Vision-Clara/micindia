@@ -1,4 +1,4 @@
-export const isFilled = (data: string) => {
+export const isFilled = (data?: string) => {
   return !!data;
 };
 

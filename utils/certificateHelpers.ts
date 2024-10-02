@@ -1,4 +1,4 @@
-import { ICertificateData } from "@/types";
+import type { ICertificateData } from "@/types";
 
 const getSocialInterCertificate = (data: ICertificateData) => {
   // Load HTML content for the report
@@ -190,7 +190,7 @@ const getSocialInterCertificate = (data: ICertificateData) => {
     }
 
     .proudly {
-      margin: auto;
+      margin: 2rem auto;
       width: fit-content;
       position: relative;
     }
@@ -270,6 +270,10 @@ const getSocialInterCertificate = (data: ICertificateData) => {
       ;
       margin-top: 5px;
       width: 80px;
+    }
+
+    .signature_logos{
+      margin-top:2rem;
     }
     
     .signature{
@@ -358,6 +362,12 @@ const getSocialInterCertificate = (data: ICertificateData) => {
   return certificate;
 };
 
+const formatDateForCertificate = (date) => {
+  const options = { day: "2-digit", month: "short", year: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+};
+
 export default {
   getSocialInterCertificate,
+  formatDateForCertificate,
 };
