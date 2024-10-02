@@ -362,8 +362,12 @@ const getSocialInterCertificate = (data: ICertificateData) => {
   return certificate;
 };
 
-const formatDateForCertificate = (date) => {
-  const options = { day: "2-digit", month: "short", year: "numeric" };
+const formatDateForCertificate = (date: Date) => {
+  const options = {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  } as Intl.DateTimeFormatOptions;
   return date.toLocaleDateString("en-US", options);
 };
 

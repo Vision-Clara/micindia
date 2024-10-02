@@ -1,8 +1,7 @@
 "use client";
-import { Button } from "@chakra-ui/button";
 import { ViewIcon } from "@chakra-ui/icons";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
-import React, { ChangeEvent } from "react";
+import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import React, { type ChangeEvent } from "react";
 
 interface PasswordInputProps {
   onChange: (

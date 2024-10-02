@@ -17,7 +17,7 @@ import MapIcon from "@/components/icon/MapIcon";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
 import { MAP_URL } from "@/utils/constants";
-import { ICertificateData, IContactFormData } from "@/types";
+import type { IContactFormData } from "@/types";
 import useForm from "@/hooks/useForm";
 import { isFilled, isValidEmail } from "@/utils/validators";
 import axios from "axios";
@@ -38,7 +38,7 @@ const initialFormData = {
 const Contact = () => {
   const toast = useToast();
   const [formData, isSubmitting, onChangeHandler, handleSubmit] =
-    useForm<ICertificateData>({
+    useForm<IContactFormData>({
       initialFormData,
       validator,
     });
