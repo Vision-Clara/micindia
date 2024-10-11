@@ -6,7 +6,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "mlcx8vmjptuhq7il.public.blob.vercel-storage.com",
     ],
-  },
+  }
 };
 
 module.exports = nextConfig;

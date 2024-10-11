@@ -38,7 +38,7 @@ function useForm<T>({
       await f();
 
       //reinit formdata
-      setFormData(initialFormData);
+      // setFormData(initialFormData);
       setIsSubmitting(false);
     };
   };

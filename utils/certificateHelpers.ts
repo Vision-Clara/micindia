@@ -3,6 +3,7 @@ import type { ICertificateData } from "@/types";
 const getSocialInterCertificate = (data: ICertificateData) => {
   // Load HTML content for the report
   const certificate = `
+  <!DOCTYPE html>
   <html>
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
