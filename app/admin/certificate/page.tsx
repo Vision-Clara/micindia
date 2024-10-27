@@ -132,26 +132,6 @@ const Certificate = () => {
       //   })
       //   .save();
 
-      ADMIN_MAILS
-micorganisationindia@gmail.com
-
-
-SMTP_MAIL_PASSWORD
-
-ccgactzyrbdtedlj
-
-
-SMTP_MAIL_EMAIL
-
-dev.visionclara@gmail.com
-
-
-NEXT_PUBLIC_LAUNCH_DATE
-
-August 15, 2023 17:00:00
-
-
-
       const certificateHtml = pdfRef.current;
 
       const doc = new jsPDF({
