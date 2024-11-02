@@ -1,7 +1,6 @@
 const getSocialInterCertificate = () => {
   // Load HTML content for the report
   const certificate = `
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +12,12 @@ const getSocialInterCertificate = () => {
       --primary-color: #2c180dff;
     }
     
-    html { font-size: 10px; }
+    html { font-size: 12px; }
 
     body {
-      margin: 100px 100px;
+      margin: 100px 120px;
       background-image:url("https://res.cloudinary.com/dbbhjznn3/image/upload/v1727628795/certificate/certificateBG_dcpjnm.png");
-      background-size:contain;
+      background-size:cover;
       background-repeat:no-repeat;
     }
 
@@ -43,7 +42,7 @@ const getSocialInterCertificate = () => {
     }
 
     .text-base {
-      font-size: 1rem;
+      font-size: 1.6rem;
     }
 
     .signature_logos {
@@ -115,7 +114,7 @@ const getSocialInterCertificate = () => {
     }
 
     .proudly {
-      margin: 2rem auto;
+      margin: 4rem auto 2rem auto;
       width: fit-content;
       position: relative;
     }
@@ -124,7 +123,7 @@ const getSocialInterCertificate = () => {
       content: "";
       position: absolute;
       top: 0px;
-      left: -30px;
+      left: -20px;
       width: 1.6rem;
       height: 100%;
       border-radius: 1.6rem 0% 0% 1.6rem;
@@ -135,7 +134,7 @@ const getSocialInterCertificate = () => {
       content: "";
       position: absolute;
       top: 0px;
-      right: -30px;
+      right: -20px;
       width: 1.6rem;
       height: 100%;
       border-radius: 0% 1.6rem 1.6rem 0%;
@@ -150,7 +149,6 @@ const getSocialInterCertificate = () => {
 
     .appreciation {
       display: flex;
-      align-items: center;
       width: fit-content;
       margin: auto;
     }
@@ -241,17 +239,17 @@ const getSocialInterCertificate = () => {
         <div class="text-md spectral-light">THIS CERTIFICATE IS PROUDLY PRESENTED TO</div>
       </div>
       <div class="text-lg mt-08 spectral-regular">
-        <div> <%= name %></div>
+        <div> <%= name %> </div>
         <div class="name-underline"></div>
       </div>
-      <div class="text-base mt-04 spectral-regular">working as <span class="spectral-bold"><%= position %> - <%= location %></span></div>
+      <div class="text-base mt-04 spectral-regular">working as <span class="spectral-bold"> <%= position %> - <%= location %> </span></div>
     </section>
 
     <section class="cert-section text-base spectral-regular">This Internship certificate is gratefully presented to <span class="spectral-bold"><%= name %></span> for their valuable contribution from <span class="spectral-bold"><%= from %> to <%= to %></span> in <span class="spectral-regular-italic">#werisebyliftingothers</span> with MIC Organisation India. Only with kind hearted and passionate persons like you we can serve and help many.</section>
 
     <section class="cert-section signature_logos kumbh-sans-regular">
       <div class="signature">
-        <div ><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG1_1_cv9wch.png" width="100px"/></div>
+        <div ><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG1_1_cv9wch.png" width="60px"/></div>
         <div id="sig1">
           <div class="mt-08">MR. RAJU TINNA</div>
           <div class="mt-04">(CHIEF ADVISOR)</div>
@@ -259,14 +257,14 @@ const getSocialInterCertificate = () => {
       </div>
       <div class="logos">
         <div>
-          <img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727631979/certificate/LOGO2_frenky.png" width='150px'/>
+          <img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727631979/certificate/LOGO2_frenky.png" width='120px'/>
         </div>
         <div>
-           <img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727631979/certificate/LOGO1_zykemu.png" width='200px'/>
+           <img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727631979/certificate/LOGO1_zykemu.png" width='170px'/>
         </div>
       </div>
       <div class="signature">
-        <div><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG2_1_wllaiq.png" width="200px"/></div>
+        <div><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG2_1_wllaiq.png" width="120px"/></div>
         <div id="sig2">
           <div class="mt-08">MS. RUPANSHI SHRIVASTAVA</div>
           <div class="mt-04">(FOUNDER)</div>

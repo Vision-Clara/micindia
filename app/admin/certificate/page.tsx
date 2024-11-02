@@ -141,8 +141,9 @@ const Certificate = () => {
         {
           html,
           pdfOptions: {
-            landscape: true,
+            printBackground: true,
             format: "A4",
+            landscape: true,
           },
         },
         {
