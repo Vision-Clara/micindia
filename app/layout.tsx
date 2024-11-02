@@ -3,6 +3,7 @@ import { Providers } from "./providers";
 
 import { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import GlobalScripts from "@/components/common/GlobalScripts";
 
 export const metadata: Metadata = {
   title: "MIC Organisation India",
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={globalFont.variable}>
       <body>
+        <GlobalScripts />
         <Providers>
           <Layout>{children}</Layout>
         </Providers>

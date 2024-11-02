@@ -35,7 +35,6 @@ import ACrousal from "@/components/crousal/ACrousal";
 import ASlide from "@/components/crousal/ASlide";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 
 const Home = () => {
   return (
@@ -46,12 +45,6 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/favicon.ico" rel="icon" />
       </Head>
-      <Script
-        src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-        crossOrigin="anonymous"
-        referrerPolicy="no-referrer"
-      />
       <Box backgroundColor="whiteAlpha.50">
         {/* hero section */}
         <Swiper

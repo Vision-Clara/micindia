@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
 import useForm from "@/hooks/useForm";
@@ -20,10 +21,7 @@ import {
   Heading,
   Stack,
 } from "@chakra-ui/react";
-import { useRef } from "react";
-import { jsPDF } from "jspdf";
-import CertificateView from "@/components/certificate";
-import fonts from "@/public/fonts";
+import axios from "axios";
 
 const initialFormData = {
   values: {
@@ -46,7 +44,6 @@ const initialFormData = {
 
 const Certificate = () => {
   const toast = useToast();
-  const pdfRef = useRef<HTMLDivElement | null>(null);
   const [formData, isSubmitting, onChangeHandler, handleSubmit] =
     useForm<ICertificateData>({
       initialFormData,
@@ -104,59 +101,67 @@ const Certificate = () => {
   //handles form submit
   const onSubmit = async () => {
     try {
-      //send message
-      const payload = {
-        name: formData.values.name,
-        position: formData.values.position,
-        location: formData.values.location,
-        fromDate: formData.values.fromDate,
-        months: formData.values.months
-          ? Number.parseFloat(formData.values.months)
-          : "",
-        toDate: formData.values.toDate,
-      };
+      const template = certificateHelpers.getCertificateTemplate();
 
-      // const certificateHtml = certificateHelpers.getSocialInterCertificate({
-      //   name: commonHelpers.capitalizeFirstLetter(payload.name),
-      //   position: commonHelpers.capitalizeFirstLetter(payload.position),
-      //   location: commonHelpers.capitalizeFirstLetter(payload.location),
-      //   fromDate: startDate,
-      //   toDate: endDate,
-      // });
+      const name = commonHelpers.capitalizeFirstLetter(formData.values.name);
+      const position = commonHelpers.capitalizeFirstLetter(
+        formData.values.position
+      );
+      const location = commonHelpers.capitalizeFirstLetter(
+        formData.values.location
+      );
+      const startDate = certificateHelpers.formatDateForCertificate(
+        new Date(formData.values.fromDate)
+      );
+      const endDate = formData.values.toDate
+        ? certificateHelpers.formatDateForCertificate(
+            new Date(formData.values.toDate)
+          )
+        : certificateHelpers.formatDateForCertificate(
+            commonHelpers.addMonths(
+              new Date(formData.values.fromDate),
+              Number(formData.values.months)
+            )
+          );
 
-      // html2pdf()
-      //   .from(certificateHtml, "string")
-      //   .outputPdf("pdf", {
-      //     format: [1440, 1018],
-      //     unit: "px",
-      //   })
-      //   .save();
-
-      const certificateHtml = pdfRef.current;
-
-      const doc = new jsPDF({
-        format: [1440, 1018],
-        unit: "px",
-        orientation: "landscape",
+      const html = ejs.render(template, {
+        name: name,
+        position: position,
+        location: location,
+        from: startDate,
+        to: endDate,
       });
 
-      for (const font of fonts) {
-        doc.addFileToVFS(`${font.name}${font.ext}`, font.base64String);
-        doc.addFont(
-          `${font.name}${font.ext}`,
-          font.name,
-          font.style,
-          font.weight
-        );
+      if (!process.env.NEXT_PUBLIC_AWS_PDF2HTML_API) {
+        throw new Error("NEXT_PUBLIC_AWS_PDF2HTML_API is not defined");
       }
 
-      if (certificateHtml) {
-        doc.html(certificateHtml, {
-          callback: (doc) => {
-            doc.save();
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_AWS_PDF2HTML_API,
+        {
+          html,
+          pdfOptions: {
+            printBackground: true,
+            format: "A4",
+            landscape: true,
           },
-        });
-      }
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          responseType: "blob",
+        }
+      );
+
+      const blob = new Blob([response.data], { type: "application/pdf" });
+      const encodedUri = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("target", "_blank");
+      link.setAttribute("download", `${formData.values.name}.pdf`);
+      link.click();
 
       toast({
         status: "success",
@@ -177,20 +182,6 @@ const Certificate = () => {
       });
     }
   };
-
-  const startDate = certificateHelpers.formatDateForCertificate(
-    new Date(formData.values.fromDate)
-  );
-  const endDate = formData.values.toDate
-    ? certificateHelpers.formatDateForCertificate(
-        new Date(formData.values.toDate)
-      )
-    : certificateHelpers.formatDateForCertificate(
-        commonHelpers.addMonths(
-          new Date(formData.values.fromDate),
-          formData.values.months
-        )
-      );
 
   return (
     <Stack
@@ -304,7 +295,7 @@ const Certificate = () => {
               my="20px"
               type="submit"
               isLoading={isSubmitting}
-              loadingText="Submitting"
+              loadingText="Generating"
               bg="blue.500"
               color="white"
               variant="outline"
@@ -320,26 +311,6 @@ const Certificate = () => {
             </Button>
           </Box>
         </Stack>
-      </Box>
-      <Box
-        ref={pdfRef}
-        overflowX={"scroll"}
-        overflowY={"scroll"}
-        backgroundColor={"white"}
-      >
-        <CertificateView
-          data={{
-            name: commonHelpers.capitalizeFirstLetter(formData.values.name),
-            position: commonHelpers.capitalizeFirstLetter(
-              formData.values.position
-            ),
-            location: commonHelpers.capitalizeFirstLetter(
-              formData.values.location
-            ),
-            fromDate: startDate,
-            toDate: endDate,
-          }}
-        />
       </Box>
     </Stack>
   );
