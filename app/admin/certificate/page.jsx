@@ -4,7 +4,6 @@ import React from "react";
 import ErrorToast from "@/components/toast/ErrorToast";
 import SuccessToast from "@/components/toast/SuccessToast";
 import useForm from "@/hooks/useForm";
-import type { ICertificateData } from "@/types";
 import certificateHelpers from "@/utils/certificateHelpers";
 import commonHelpers from "@/utils/commonHelpers";
 import { LOCATIONS, POSITIONS } from "@/utils/constants";
@@ -22,7 +21,6 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
-var ejs: any;
 
 const initialFormData = {
   values: {
@@ -45,13 +43,12 @@ const initialFormData = {
 
 const Certificate = () => {
   const toast = useToast();
-  const [formData, isSubmitting, onChangeHandler, handleSubmit] =
-    useForm<ICertificateData>({
-      initialFormData,
-      validator,
-    });
+  const [formData, isSubmitting, onChangeHandler, handleSubmit] = useForm({
+    initialFormData,
+    validator,
+  });
 
-  function validator(formValues: ICertificateData) {
+  function validator(formValues) {
     if (!isFilled(formValues.name)) {
       return {
         success: false,

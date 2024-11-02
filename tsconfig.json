@@ -36,8 +36,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
+    ".next/types/**/*.ts", 
+    "app/admin/certificate/page.jsx" ],
   "exclude": [
     "node_modules"
   ]
