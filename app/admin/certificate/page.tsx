@@ -22,6 +22,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
+var ejs: any;
 
 const initialFormData = {
   values: {
