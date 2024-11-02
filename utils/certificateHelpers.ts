@@ -1,4 +1,4 @@
-const getSocialInterCertificate = () => {
+const getCertificateTemplate = () => {
   // Load HTML content for the report
   const certificate = `
 <!DOCTYPE html>
@@ -245,8 +245,11 @@ const getSocialInterCertificate = () => {
       <div class="text-base mt-04 spectral-regular">working as <span class="spectral-bold"> <%= position %> - <%= location %> </span></div>
     </section>
 
-    <section class="cert-section text-base spectral-regular">This Internship certificate is gratefully presented to <span class="spectral-bold"><%= name %></span> for their valuable contribution from <span class="spectral-bold"><%= from %> to <%= to %></span> in <span class="spectral-regular-italic">#werisebyliftingothers</span> with MIC Organisation India. Only with kind hearted and passionate persons like you we can serve and help many.</section>
-
+    <% if(position === "Social Intern") { %>
+      <section class="cert-section text-base spectral-regular">This Internship certificate is gratefully presented to <span class="spectral-bold"><%= name %></span> for their valuable contribution from <span class="spectral-bold"><%= from %> to <%= to %></span> in <span class="spectral-regular-italic">#werisebyliftingothers</span> with MIC Organisation India. Only with kind hearted and passionate persons like you we can serve and help many.</section>
+    <% } else { %>
+      <section class="cert-section text-base spectral-regular">This certificate is gratefully presented to <span class="spectral-bold"><%= name %></span> for their valuable contribution from <span class="spectral-bold"><%= from %> to <%= to %></span> in <span class="spectral-regular-italic">#werisebyliftingothers</span> with MIC Organisation India. Only with kind hearted and passionate persons like you we can serve and help many.</section>
+    <% } %>
     <section class="cert-section signature_logos kumbh-sans-regular">
       <div class="signature">
         <div ><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG1_1_cv9wch.png" width="60px"/></div>
@@ -291,7 +294,7 @@ const formatDateForCertificate = (date: Date) => {
 
 const certificateHelpers = {
   formatDateForCertificate,
-  getSocialInterCertificate,
+  getCertificateTemplate,
 };
 
 export default certificateHelpers;

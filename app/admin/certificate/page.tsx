@@ -101,7 +101,7 @@ const Certificate = () => {
   //handles form submit
   const onSubmit = async () => {
     try {
-      const template = certificateHelpers.getSocialInterCertificate();
+      const template = certificateHelpers.getCertificateTemplate();
 
       const name = commonHelpers.capitalizeFirstLetter(formData.values.name);
       const position = commonHelpers.capitalizeFirstLetter(
