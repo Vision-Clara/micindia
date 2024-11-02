@@ -120,7 +120,7 @@ const Certificate = () => {
         : certificateHelpers.formatDateForCertificate(
             commonHelpers.addMonths(
               new Date(formData.values.fromDate),
-              formData.values.months
+              Number(formData.values.months)
             )
           );
 
