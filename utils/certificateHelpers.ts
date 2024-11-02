@@ -1,10 +1,9 @@
-import type { ICertificateData } from "@/types";
-
-const getSocialInterCertificate = (data: ICertificateData) => {
+const getSocialInterCertificate = () => {
   // Load HTML content for the report
   const certificate = `
-  <!DOCTYPE html>
-  <html>
+
+<!DOCTYPE html>
+<html>
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +12,10 @@ const getSocialInterCertificate = (data: ICertificateData) => {
     :root {
       --primary-color: #2c180dff;
     }
+    
+    html { font-size: 10px; }
 
     body {
-      font-family: Arial, sans-serif;
       margin: 100px 100px;
       background-image:url("https://res.cloudinary.com/dbbhjznn3/image/upload/v1727628795/certificate/certificateBG_dcpjnm.png");
       background-size:contain;
@@ -59,12 +59,6 @@ const getSocialInterCertificate = (data: ICertificateData) => {
       text-align: center;
     }
 
-    .spectral-extralight {
-      font-family: "Spectral", serif;
-      font-weight: 200;
-      font-style: normal;
-    }
-
     .spectral-light {
       font-family: "Spectral", serif;
       font-weight: 300;
@@ -77,76 +71,16 @@ const getSocialInterCertificate = (data: ICertificateData) => {
       font-style: normal;
     }
 
-    .spectral-medium {
-      font-family: "Spectral", serif;
-      font-weight: 500;
-      font-style: normal;
-    }
-
-    .spectral-semibold {
-      font-family: "Spectral", serif;
-      font-weight: 600;
-      font-style: normal;
-    }
-
     .spectral-bold {
       font-family: "Spectral", serif;
       font-weight: 700;
       font-style: normal;
     }
 
-    .spectral-extrabold {
-      font-family: "Spectral", serif;
-      font-weight: 800;
-      font-style: normal;
-    }
-
-    .spectral-extralight-italic {
-      font-family: "Spectral", serif;
-      font-weight: 200;
-      font-style: italic;
-    }
-
-    .spectral-light-italic {
-      font-family: "Spectral", serif;
-      font-weight: 300;
-      font-style: italic;
-    }
-
     .spectral-regular-italic {
       font-family: "Spectral", serif;
       font-weight: 400;
       font-style: italic;
-    }
-
-    .spectral-medium-italic {
-      font-family: "Spectral", serif;
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    .spectral-semibold-italic {
-      font-family: "Spectral", serif;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .spectral-bold-italic {
-      font-family: "Spectral", serif;
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    .spectral-extrabold-italic {
-      font-family: "Spectral", serif;
-      font-weight: 800;
-      font-style: italic;
-    }
-
-    .charmonman-regular {
-      font-family: "Charmonman", cursive;
-      font-weight: 400;
-      font-style: normal;
     }
 
     .charmonman-bold {
@@ -160,17 +94,7 @@ const getSocialInterCertificate = (data: ICertificateData) => {
       font-optical-sizing: auto;
       font-weight: 400;
       font-style: normal;
-      font-variation-settings:
-        "YOPQ"300;
-    }
-
-    .kumbh-sans-bold {
-      font-family: "Kumbh Sans", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 700;
-      font-style: normal;
-      font-variation-settings:
-        "YOPQ"300;
+      font-variation-settings:"YOPQ" 300;
     }
 
     .cert-section {
@@ -226,7 +150,7 @@ const getSocialInterCertificate = (data: ICertificateData) => {
 
     .appreciation {
       display: flex;
-      items-center: center;
+      align-items: center;
       width: fit-content;
       margin: auto;
     }
@@ -239,7 +163,6 @@ const getSocialInterCertificate = (data: ICertificateData) => {
     .appreciation-left>div:nth-child(odd) {
       margin-left: 40px;
       border-bottom: .01px solid var(--primary-color);
-      ;
       margin-top: 5px;
       width: 50px;
     }
@@ -247,7 +170,6 @@ const getSocialInterCertificate = (data: ICertificateData) => {
     .appreciation-left>div:nth-child(even) {
       margin-right: 10px;
       border-bottom: .01px solid var(--primary-color);
-      ;
       margin-top: 5px;
       width: 80px;
     }
@@ -260,7 +182,6 @@ const getSocialInterCertificate = (data: ICertificateData) => {
     .appreciation-right>div:nth-child(odd) {
       margin-right: 40px;
       border-bottom: .01px solid var(--primary-color);
-      ;
       margin-top: 5px;
       width: 50px;
     }
@@ -268,7 +189,6 @@ const getSocialInterCertificate = (data: ICertificateData) => {
     .appreciation-right>div:nth-child(even) {
       margin-left: 10px;
       border-bottom: .01px solid var(--primary-color);
-      ;
       margin-top: 5px;
       width: 80px;
     }
@@ -321,15 +241,15 @@ const getSocialInterCertificate = (data: ICertificateData) => {
         <div class="text-md spectral-light">THIS CERTIFICATE IS PROUDLY PRESENTED TO</div>
       </div>
       <div class="text-lg mt-08 spectral-regular">
-        <div>${data.name}</div>
+        <div> <%= name %></div>
         <div class="name-underline"></div>
       </div>
-      <div class="text-md mt-04 spectral-regular">working as <span class="spectral-bold">${data.position} - ${data.location}</span></div>
+      <div class="text-base mt-04 spectral-regular">working as <span class="spectral-bold"><%= position %> - <%= location %></span></div>
     </section>
 
-    <section class="cert-section text-md spectral-regular">This Internship certificate is gratefully presented to <span class="spectral-bold">${data.name}</span> for their valuable contribution from <span class="spectral-bold">${data.fromDate} to ${data.toDate}</span> in <span class="spectral-regular-italic">#werisebyliftingothers</span> with MIC Organisation India. Only with kind hearted and passionate persons like you we can serve and help many.</section>
+    <section class="cert-section text-base spectral-regular">This Internship certificate is gratefully presented to <span class="spectral-bold"><%= name %></span> for their valuable contribution from <span class="spectral-bold"><%= from %> to <%= to %></span> in <span class="spectral-regular-italic">#werisebyliftingothers</span> with MIC Organisation India. Only with kind hearted and passionate persons like you we can serve and help many.</section>
 
-    <section class="signature_logos cert-section kumbh-sans-regular">
+    <section class="cert-section signature_logos kumbh-sans-regular">
       <div class="signature">
         <div ><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG1_1_cv9wch.png" width="100px"/></div>
         <div id="sig1">
@@ -357,8 +277,7 @@ const getSocialInterCertificate = (data: ICertificateData) => {
 </body>
 
 </html>
-  
-  `;
+`;
 
   return certificate;
 };
@@ -372,7 +291,9 @@ const formatDateForCertificate = (date: Date) => {
   return date.toLocaleDateString("en-US", options);
 };
 
-export default {
-  getSocialInterCertificate,
+const certificateHelpers = {
   formatDateForCertificate,
+  getSocialInterCertificate,
 };
+
+export default certificateHelpers;
