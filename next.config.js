@@ -2,11 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "res.cloudinary.com",
-      "mlcx8vmjptuhq7il.public.blob.vercel-storage.com",
-    ],
-  }
+    domains: ["c01uczkfapwnlbwv.public.blob.vercel-storage.com"],
+  },
 };
 
 module.exports = nextConfig;

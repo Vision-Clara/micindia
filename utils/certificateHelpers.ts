@@ -16,7 +16,7 @@ const getCertificateTemplate = () => {
 
     body {
       margin: 100px 120px;
-      background-image:url("https://res.cloudinary.com/dbbhjznn3/image/upload/v1727628795/certificate/certificateBG_dcpjnm.png");
+      background-image:url("https://c01uczkfapwnlbwv.public.blob.vercel-storage.com/certificateBG_dcpjnm-If3wlZHyFJkRXVyXF86Dm7KLnmd5j3.png");
       background-size:cover;
       background-repeat:no-repeat;
     }
@@ -123,7 +123,7 @@ const getCertificateTemplate = () => {
       content: "";
       position: absolute;
       top: 0px;
-      left: -20px;
+      left: -25px;
       width: 1.6rem;
       height: 100%;
       border-radius: 1.6rem 0% 0% 1.6rem;
@@ -134,7 +134,7 @@ const getCertificateTemplate = () => {
       content: "";
       position: absolute;
       top: 0px;
-      right: -20px;
+      right: -25px;
       width: 1.6rem;
       height: 100%;
       border-radius: 0% 1.6rem 1.6rem 0%;
@@ -252,7 +252,7 @@ const getCertificateTemplate = () => {
     <% } %>
     <section class="cert-section signature_logos kumbh-sans-regular">
       <div class="signature">
-        <div ><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG1_1_cv9wch.png" width="60px"/></div>
+        <div ><img src="https://c01uczkfapwnlbwv.public.blob.vercel-storage.com/SIG1_1_cv9wch-dVWBzEF4VIBkaqAvog4myv9XnavMSg.png" width="60px"/></div>
         <div id="sig1">
           <div class="mt-08">MR. RAJU TINNA</div>
           <div class="mt-04">(CHIEF ADVISOR)</div>
@@ -260,14 +260,14 @@ const getCertificateTemplate = () => {
       </div>
       <div class="logos">
         <div>
-          <img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727631979/certificate/LOGO2_frenky.png" width='120px'/>
+          <img src="https://c01uczkfapwnlbwv.public.blob.vercel-storage.com/LOGO2_frenky-6xoroC4Uik8wcrwZy6imnLt803WdeY.png" width='120px'/>
         </div>
         <div>
-           <img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727631979/certificate/LOGO1_zykemu.png" width='170px'/>
+           <img src="https://c01uczkfapwnlbwv.public.blob.vercel-storage.com/LOGO1_zykemu-tLfxr2xsCqN4hP6cF78IMrLJ3jWpAH.png" width='170px'/>
         </div>
       </div>
       <div class="signature">
-        <div><img src="https://res.cloudinary.com/dbbhjznn3/image/upload/v1727635148/certificate/SIG2_1_wllaiq.png" width="120px"/></div>
+        <div><img src="https://c01uczkfapwnlbwv.public.blob.vercel-storage.com/SIG2_1_wllaiq-qjGnXa06XUgmeK5a8vnI9V1ArjoNfb.png" width="120px"/></div>
         <div id="sig2">
           <div class="mt-08">MS. RUPANSHI SHRIVASTAVA</div>
           <div class="mt-04">(FOUNDER)</div>
